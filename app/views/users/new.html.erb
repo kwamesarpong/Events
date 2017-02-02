@@ -1,0 +1,30 @@
+<%= display_errors_for_object @user %>
+<%= form_for @user, url: { action: :create }, html: { class: :form_nice } do |f| %>
+    <%= label_tag :first_name, "First Name" %>
+    <%= f.text_field :first_name %>
+    <br/>
+    <%= label_tag :last_namme, "Last Name" %>
+    <%= f.text_field :last_namme %>
+    <br/>
+    <%= label_tag :email, :Email %>
+    <%= f.text_field :email %>
+    <br/>
+    <%= label_tag :email_confirmation, "Confirm Email" %>
+    <%= f.text_field :email_confirmation %>
+    <br/>
+    <%= label_tag :username, :Username %>
+    <%= f.text_field :username %>
+    <br/>
+    <%= label_tag :password, :Password %>
+    <%= f.password_field :password %>
+    <br/>
+    <%= label_tag :password_confirmation, "Confirm password" %>
+    <%= f.password_field :password_confirmation %>
+    <br/>
+    <%= label_tag :kind, "Service Provider" %>
+    <%= f.radio_button :kind, "Service Provider" %>
+    <%= label_tag :kind, :Organizer %>
+    <%= f.radio_button :kind, :Organizer %>
+    <br/>
+    <%= f.submit :Create %>
+<% end %>

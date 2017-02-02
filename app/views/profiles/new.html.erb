@@ -1,0 +1,16 @@
+<%= display_errors_for_object @profile %>
+<%= form_for @profile, url: { action: :create }, html:{ class: :nice_form } do |f| %>
+    <%= label_tag :name_of_agency, "Name Of Agency" %>
+    <%= f.text_field :name_of_agency %>
+    <br/>
+    <%= label_tag :subscription_id, "Subscription" %>
+    <%= f.select :subscription_id, @subscriptions.map{|s| [s.name, s.id]} %>
+    <br/>
+    <%= label_tag :desc, "Bio" %>
+    <%= f.text_area :desc %>
+    <br/>
+    <%= label_tag :profile_picture, "Logo/Picture" %>
+    <%= f.file_field :profile_picture %>
+    <br/>
+    <%= f.submit :Create %>
+<% end %>
