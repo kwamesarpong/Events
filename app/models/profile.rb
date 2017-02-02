@@ -8,7 +8,7 @@ class Profile < ApplicationRecord
 
     has_many   :services
 
-    validates :name_of_agency, presence: true
+    validates :name_of_agency, presence: true, uniqueness: true
 
     validates :desc, presence: true
 

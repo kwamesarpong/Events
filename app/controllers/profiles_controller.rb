@@ -8,6 +8,9 @@ class ProfilesController < ApplicationController
   end
 
   def show
+    @profile = Profile.find(params[:id])
+    @service = Service.new
+    @categories = Category.all
   end
 
   def new
@@ -22,7 +25,7 @@ class ProfilesController < ApplicationController
     @profile.profile_picture = params[:profile][:profile_picture]
     @profile.paid = false
     if @profile.save!
-      redirect_to action: :index 
+      redirect_to controller: :profiles, action: :show, id: @profile.id
     else
       render :new
     end
