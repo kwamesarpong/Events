@@ -1,4 +1,7 @@
 class ServicesController < ApplicationController
+  
+  include ApplicationHelper
+
   def index
   end
 
@@ -10,7 +13,15 @@ class ServicesController < ApplicationController
   end
 
   def create
-    
+    @service = Service.new(white_list)
+    @service.profile_id = params["profile"]
+    @service.picture = params[:service][:picture]
+    if @service.save!
+        redirect_to controller: :profiles, action: :show, id: @service.profile_id
+      else
+        puts "not here"
+    end
+
   end
 
   def edit
@@ -23,5 +34,11 @@ class ServicesController < ApplicationController
   end
 
   def destroy
+  end
+
+  private 
+
+  def white_list
+    params.require(:service).permit(:category_id,:desc_service,:price)
   end
 end

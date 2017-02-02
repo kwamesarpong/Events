@@ -4,16 +4,18 @@
 
 <hr>
 
-<%= form_for @service, url: { controller: :services, action: :create } do |f| %>
+<%= form_for @service, url: { controller: :services, action: :create, profile: @profile.id } do |f| %>
     <%= f.label :Category %>
     <%= f.select :category_id, @categories.map {|c| [c.name, c.id]} %>
     <br/>
     <%= f.label :Picture%>
     <%= f.file_field :picture %>
     <br/>
-    <%= f.label :Explain%>
+    <%= f.label :desc_service%>
     <%= f.text_area :desc_service%>
     <br/>
     <%= f.label :Price%>
     <%= f.text_field :price%>
+    <%= f.submit "Upload"%>
 <% end %>
+<%= image_tag @service.picture%>
