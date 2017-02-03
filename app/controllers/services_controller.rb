@@ -3,9 +3,11 @@ class ServicesController < ApplicationController
   include ApplicationHelper
 
   def index
+    @services = Service.where(category_id: params[:nav])
   end
 
   def show
+    
   end
 
   def new
