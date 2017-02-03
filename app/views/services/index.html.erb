@@ -2,6 +2,6 @@
 <p>Find me in app/views/services/index.html.erb</p>
 <% @services.each do |s| %>
   <%= s.desc_service %>
-  <%= image_tag s.picture %>
+  <%= image_tag s.picture.thumb.url %>
   <hr>
 <% end %>

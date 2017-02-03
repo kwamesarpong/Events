@@ -38,6 +38,9 @@ gem 'rails_admin', '~> 1.0'
 #carrierwave
 gem 'carrierwave', '~> 1.0'
 
+#mini_magick for image processing
+gem "mini_magick"
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

@@ -2,7 +2,7 @@ class ProfilePictureUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+  include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -30,15 +30,30 @@ class ProfilePictureUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  # version :thumb do
-  #   process resize_to_fit: [50, 50]
-  # end
+
+  process resize_to_fit: [225, 250]
+  
+  version :xtra_small do
+    process resize_to_fit: [40, 40]
+  end
+
+  version :thumb do
+    process resize_to_fit: [90, 90]
+  end
+
+  version :large do
+    process resize_to_fit: [700, 850]
+  end
+
+  version :xtra_large do
+    process resize_to_fit: [1785, 700]
+  end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
-  # def extension_whitelist
-  #   %w(jpg jpeg gif png)
-  # end
+  def extension_whitelist
+     %w(jpg jpeg gif png)
+  end
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
@@ -46,4 +61,7 @@ class ProfilePictureUploader < CarrierWave::Uploader::Base
   #   "something.jpg" if original_filename
   # end
 
+  def content_type_whitelist
+    /image\//
+  end
 end

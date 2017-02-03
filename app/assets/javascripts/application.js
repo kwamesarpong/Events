@@ -12,5 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require app/js/move-top
+//= require app/js/easing
+//= require app/js/jquery.vide.min
+//= require app/js/bootstrap
+//= require app/js/jquery.mycart
 //= require turbolinks
 //= require_tree .
