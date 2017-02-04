@@ -19,7 +19,7 @@ class User < ApplicationRecord
 
     ORGANIZER = "Organizer"
 
-    validates :email, presence: { message: EMAIL_MESSAGE }, uniqueness: { message: EMAIL_MESSAGE, case_sensitive: false }, length: { within: 5...100 }, format: EMAIL_REGEX, confirmation: true
+    validates :email, presence: { message: EMAIL_MESSAGE }, uniqueness: { message: EMAIL_MESSAGE, case_sensitive: false }, length: { within: 5...100 }, format: EMAIL_REGEX
 
     validates :username, presence: true, uniqueness: { message: USER_MESSAGE_UNIQUE, case_sensitive: false }, length: { within: 5..25 , message: USER_MESSAGE_LENGTH }
 

@@ -34,7 +34,8 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!--<link href="css/font-awesome.css" rel="stylesheet">--> 
 <link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Noto+Sans:400,700' rel='stylesheet' type='text/css'>
-<!--- start-rate---->
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+<!--- start-rate -->
 <script src="js/jstarbox.js"></script>
 	<!--<link rel="stylesheet" href="css/jstarbox.css" type="text/css" media="screen" charset="utf-8" />-->
 		<script type="text/javascript">
@@ -69,147 +70,58 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 			
 
 			<!--The nav bar starts here-->
-			<div class="nav-top">
-					<nav class="navbar navbar-default">
-					
-					<div class="navbar-header nav_2">
-						<button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
-							<span class="sr-only">Toggle navigation</span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-						
 
-					</div> 
-					<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
-						<ul class="nav navbar-nav ">
-							<li class=" active"><a href="index.html" class="hyper "><span>Home</span></a></li>	
-							
-							<li class="dropdown ">
-								<a href="#" class="dropdown-toggle  hyper" data-toggle="dropdown" ><span>Corporate<b class="caret"></b></span></a>
-								<ul class="dropdown-menu multi">
-									<div class="row">
-										<div class="col-sm-4">
-											<ul class="multi-column-dropdown">
-			
-												<li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Trade shows</a></li>
-												<li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Seminars</a></li>
-												<li><a href="kitchen.html"> <i class="fa fa-angle-right" aria-hidden="true"></i>Conferences</a></li>
-												<li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Launches</a></li>
+				<div class="nav-top">
+					<nav class="navbar navbar-default">		
+						<div class="navbar-header nav_2">
+							<button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+						</div> 
+						<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+							<ul class="nav navbar-nav ">
+								<li class="active"><a href="index.html" class="hyper"><span>Home</span></a></li>	
+								
+								<% @categories.each do |category| %>
+									<li class="dropdown ">
 										
-											</ul>
-										
-										</div>
-										<div class="col-sm-4">
-										
-											<ul class="multi-column-dropdown">
-												<li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Exhibitions</a></li>
-												<li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Meetings</a></li>
-												<li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Team Building</a></li>
-												<li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Awards</a></li>
-										
-											</ul>
-										
-										</div>
-										<div class="col-sm-4 w3l">
-											<!--<a href="kitchen.html"><img src="images/me.png" class="img-responsive" alt=""></a>-->
-										</div>
-										<div class="clearfix"></div>
-									</div>	
-								</ul>
-							</li>
-							<li class="dropdown">
-							
-								<a href="#" class="dropdown-toggle hyper" data-toggle="dropdown" ><span> Casual <b class="caret"></b></span></a>
-								<ul class="dropdown-menu multi multi1">
-									<div class="row">
-										<div class="col-sm-3">
-											<ul class="multi-column-dropdown">
-												<li><a href="care.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Ceremonies </a></li>
-												<li><a href="care.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Religious</a></li>
-												<li><a href="care.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Art</a></li>
-												<li><a href="care.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Parties</a></li>
-										
-											</ul>
-											
-										</div>
-										<div class="col-sm-3">
-											
-											<ul class="multi-column-dropdown">
-												<li><a href="care.html"> <i class="fa fa-angle-right" aria-hidden="true"></i>Gatherings </a></li>
-												<li><a href="care.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Stage shows</a></li>
-												<li><a href="care.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Music shows</a></li>
-												<li><a href="care.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Concerts</a></li>
-										
-											</ul>
-											
-										</div>
-										<div class="col-sm-3">
-											
-											<ul class="multi-column-dropdown">
-												<li><a href="care.html"><i class="fa fa-angle-right" aria-hidden="true"></i> Recreational </a></li>
-												<li><a href="care.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Sports</a></li>
-										
-											</ul>
-										</div>
-										<div class="col-sm-3 w3l">
-											<!--<a href="care.html"><img src="images/me1.png" class="img-responsive" alt=""></a>-->
-										</div>
-										<div class="clearfix"></div>
-									</div>	
-								</ul>
-							</li>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle hyper" data-toggle="dropdown" ><span>Personal<b class="caret"></b></span></a>
-								<ul class="dropdown-menu multi multi2">
-									<div class="row">
-										<div class="col-sm-4">
-											<ul class="multi-column-dropdown">
-												<li><a href="hold.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Weddings</a></li>
-												<li><a href="hold.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Birthdays</a></li>
-												<li><a href="hold.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Anniversaries</a></li>
-												<li><a href="hold.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Showers</a></li>
-										
-											</ul>
-										
-										</div>
-										<div class="col-sm-4">
-											
-											<ul class="multi-column-dropdown">
-												<li><a href="hold.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Funerals</a></li>
-												<li><a href="hold.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Graduation</a></li>
-										
-											</ul>
-										
-										</div>
-										<div class="col-sm-4 w3l">
-											<!--<a href="hold.html"><img src="images/me2.png" class="img-responsive" alt=""></a>-->
-										</div>
-										<div class="clearfix"></div>
-									</div>	
-								</ul>
-							</li>
-							
-							<!--<li><a href="codes.html" class="hyper"> <span>Codes</span></a></li>-->
-							<li><a href="contact.html" class="hyper"><span>Contact Us</span></a></li>
-						</ul>
-					</div>
+
+											<%= link_to service_path(category.id), { class: "dropdown-toggle  hyper", "data-toggle" => "true" } do %>
+												<span><%= category.name %> 
+													<% unless category.subcategories.blank? %> 	 
+														<b class="caret"></b> 
+													<% end %> 
+												</span>
+											<% end %>
+									</li>
+	
+
+
+								<% end %>
+							</ul>
+						</div>
+
 					</nav>
+				</div>
+
+
 					 <div class="cart" >
 					
 						<!--<span class="fa fa-shopping-cart my-cart-icon"><span class="badge badge-notify my-cart-badge"></span></span>-->
 						<ul class="card">
 							<li><a href="wishlist.html" ><i class="fa fa-heart" aria-hidden="true"></i>Wishlist</a></li>
-							<li><a href="login.html" ><i class="fa fa-user" aria-hidden="true"></i>Login</a></li>
-							<li><a href="register.html" ><i class="fa fa-arrow-right" aria-hidden="true"></i>Sign up</a></li>
+							<li><%= link_to "Login", { controller: :access, action: :login }, { class: "fa fa-user", "aria-hidden" => "true" } %></li>
+							<li><%= link_to "Sign up", { controller: :users, action: :new }, { class: "fa fa-user", "aria-hidden" => "true" } %></li>
 							<!--<li><a href="about.html" ><i class="fa fa-file-text-o" aria-hidden="true"></i>Order History</a></li>
 							<li><a href="shipping.html" ><i class="fa fa-ship" aria-hidden="true"></i>Shipping</a></li>-->
 						</ul>	
 					</div>
 					<div class="clearfix"></div>
 				</div>
-
+				
 
 				<!-- The navigation bar thingy ends here -->
 				<br /><br />
@@ -504,8 +416,8 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 		<div class="col-md-3 footer-grid">
 			<h3>My Account</h3>
 			<ul>
-				<li><a href="login.html">Login</a></li>
-				<li><a href="register.html">Register</a></li>
+				<li><%= link_to "Login", { controller: :access, action: :login } %></li>
+				<li><%= link_to "Register", { controller: :users, action: :new } %></li>
 				<li><a href="wishlist.html">Wishlist</a></li>
 				
 			</ul>

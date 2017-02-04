@@ -11,9 +11,9 @@
  * It is generally better to create a new file per style scope.
  *
  *= require app/css/bootstrap
- *= require app/css/style
  *= require app/css/font-awesome
  *= require app/css/jstarbox
+ *= require app/css/style
  *= require_tree .
  *= require_self
  */

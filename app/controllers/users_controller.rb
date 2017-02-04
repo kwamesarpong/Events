@@ -2,6 +2,8 @@ class UsersController < ApplicationController
 
   #include ApplicationHelper
 
+  layout "no_search"
+  
   before_action :get_user, only: [:show, :update, :destroy]
 
 
@@ -12,6 +14,7 @@ class UsersController < ApplicationController
   end
 
   def new
+    @categories = Category.all
     @user = User.new
     render :new
   end
