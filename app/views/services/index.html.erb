@@ -1,7 +1,305 @@
-<h1>Services#index</h1>
-<p>Find me in app/views/services/index.html.erb</p>
-<% @services.each do |s| %>
-  <%= s.desc_service %>
-  <%= image_tag s.picture.thumb.url %>
-  <hr>
-<% end %>
+<!--content-->
+		<div class="product">
+		<div class="container">
+			<div class="spec ">
+				<h3>Service Listings</h3>
+				<div class="ser-t">
+					<b></b>
+					<span><i></i></span>
+					<b class="line"></b>
+				</div>
+			</div>
+				<div class=" con-w3l agileinf">
+							<div class="col-md-4 pro-1">
+								<div class="col-m">
+									<a href="#" data-toggle="modal" data-target="#myModal1" class="offer-img">
+										<%= image_tag "app/cakehouse.png", class: "img-responsive" %>
+									</a>
+									<div class="mid-1">
+										<div class="women">
+											<h6><a href="single.html">Valentine Cake House</a></h6>		<!-- All listings have to be read from the database -->
+										</div>
+										<div class="mid-2">
+											<p>Biggest cake supplier in Nairobi</p>
+											  <div class="block">
+												<div class="starbox small ghosting"> </div>				<!-- Ratings also from database -->
+											</div>
+											<div class="clearfix"></div>
+										</div>
+										<div class="add" align="right">
+											<!-- <button class="btn btn-danger my-cart-btn my-cart-b" data-id="25" data-name="Peach Halves" data-summary="summary 25" data-price="4.50" data-quantity="1" data-image="images/of25.png">Add to Cart</button> -->
+										   <%= image_tag "app/stars.png", class: "img-responsive" %>	<!-- I'm putting a fake star rating system here, it needs to be called and replaced from the database --><br />
+										   	<%= image_tag "app/viewer.png", class: "img-responsive" %>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4 pro-1">
+								<div class="col-m">
+									<a href="#" data-toggle="modal" data-target="#myModal2" class="offer-img">
+										<%= image_tag "app/cakehouse.png", class: "img-responsive" %>
+									</a>
+									<div class="mid-1">
+										<div class="women">
+											<h6><a href="single.html">Valentine Cake House</a></h6>							
+										</div>
+										<div class="mid-2">
+											<p>Biggest cake supplier in Nairobi</p>
+											  <div class="block">
+												<div class="starbox small ghosting"> </div>
+											</div>
+											<div class="clearfix"></div>
+										</div>
+										<div class="add" align="right">
+										   	<!-- <button class="btn btn-danger my-cart-btn my-cart-b" data-id="25" data-name="Peach Halves" data-summary="summary 25" data-price="4.50" data-quantity="1" data-image="images/of25.png">Add to Cart</button> -->
+										   	<%= image_tag "app/stars.png", class: "img-responsive" %>	<!-- I'm putting a fake star rating system here, it needs to be called and replaced from the database --><br />
+										   	<%= image_tag "app/viewer.png", class: "img-responsive" %>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4 pro-1">
+								<div class="col-m">
+									<a href="#" data-toggle="modal" data-target="#myModal3" class="offer-img">
+										<%= image_tag "app/cakehouse.png", class: "img-responsive" %>
+									</a>
+									<div class="mid-1">
+										<div class="women">
+											<h6><a href="single.html">Valentine Cake House</a></h6>							
+										</div>
+										<div class="mid-2">
+											<p>Biggest cake supplier in Nairobi</p>
+											  <div class="block">
+												<div class="starbox small ghosting"> </div>
+											</div>
+											<div class="clearfix"></div>
+										</div>
+										<div class="add" align="right">
+										   <!-- <button class="btn btn-danger my-cart-btn my-cart-b" data-id="25" data-name="Peach Halves" data-summary="summary 25" data-price="4.50" data-quantity="1" data-image="images/of25.png">Add to Cart</button> -->
+										   	<%= image_tag "app/stars.png", class: "img-responsive" %>	<!-- I'm putting a fake star rating system here, it needs to be called and replaced from the database --><br />
+										   	<%= image_tag "app/viewer.png", class: "img-responsive" %>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4 pro-1">
+								<div class="col-m">
+									<a href="#" data-toggle="modal" data-target="#myModal4" class="offer-img">
+										<%= image_tag "app/cakehouse.png", class: "img-responsive" %>
+									</a>
+									<div class="mid-1">
+										<div class="women">
+											<h6><a href="single.html">Valentine Cake House</a></h6>							
+										</div>
+										<div class="mid-2">
+											<p>Biggest cake supplier in Nairobi</p>
+											  <div class="block">
+												<div class="starbox small ghosting"> </div>
+											</div>
+											<div class="clearfix"></div>
+										</div>
+										<div class="add" align="right">
+										   <!-- <button class="btn btn-danger my-cart-btn my-cart-b" data-id="25" data-name="Peach Halves" data-summary="summary 25" data-price="4.50" data-quantity="1" data-image="images/of25.png">Add to Cart</button> -->
+										   	<%= image_tag "app/stars.png", class: "img-responsive" %>	<!-- I'm putting a fake star rating system here, it needs to be called and replaced from the database --><br />
+										   	<%= image_tag "app/viewer.png", class: "img-responsive" %>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="col-md-4 pro-1">
+								<div class="col-m">
+								<a href="#" data-toggle="modal" data-target="#myModal5" class="offer-img">
+										<%= image_tag "app/cakehouse.png", class: "img-responsive" %>
+									</a>
+									<div class="mid-1">
+										<div class="women">
+											<h6><a href="single.html">Valentine Cake House</a></h6>							
+										</div>
+										<div class="mid-2">
+											<p>Biggest cake supplier in Nairobi</p>
+											  <div class="block">
+												<div class="starbox small ghosting"> </div>
+											</div>
+											<div class="clearfix"></div>
+										</div>
+										<div class="add" align="right">
+										   <!-- <button class="btn btn-danger my-cart-btn my-cart-b" data-id="25" data-name="Peach Halves" data-summary="summary 25" data-price="4.50" data-quantity="1" data-image="images/of25.png">Add to Cart</button> -->
+										   	<%= image_tag "app/stars.png", class: "img-responsive" %>	<!-- I'm putting a fake star rating system here, it needs to be called and replaced from the database --><br />
+										   	<%= image_tag "app/viewer.png", class: "img-responsive" %>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4 pro-1">
+								<div class="col-m">
+									<a href="#" data-toggle="modal" data-target="#myModal6" class="offer-img">
+										<%= image_tag "app/cakehouse.png", class: "img-responsive" %>
+									</a>
+									<div class="mid-1">
+										<div class="women">
+											<h6><a href="single.html">Valentine Cake House</a></h6>							
+										</div>
+										<div class="mid-2">
+											<p>Biggest cake supplier in Nairobi</p>
+											  <div class="block">
+												<div class="starbox small ghosting"> </div>
+											</div>
+											<div class="clearfix"></div>
+										</div>
+										<div class="add" align="right">
+										   <!-- <button class="btn btn-danger my-cart-btn my-cart-b" data-id="25" data-name="Peach Halves" data-summary="summary 25" data-price="4.50" data-quantity="1" data-image="images/of25.png">Add to Cart</button> -->
+										   	<%= image_tag "app/stars.png", class: "img-responsive" %>	<!-- I'm putting a fake star rating system here, it needs to be called and replaced from the database --><br />
+										   	<%= image_tag "app/viewer.png", class: "img-responsive" %>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4 pro-1">
+								<div class="col-m">
+									<a href="#" data-toggle="modal" data-target="#myModal7" class="offer-img">
+										<%= image_tag "app/cakehouse.png", class: "img-responsive" %>
+									</a>
+									<div class="mid-1">
+										<div class="women">
+											<h6><a href="single.html">Valentine Cake House</a></h6>							
+										</div>
+										<div class="mid-2">
+											<p>Biggest cake supplier in Nairobi</p>
+											  <div class="block">
+												<div class="starbox small ghosting"> </div>
+											</div>
+											<div class="clearfix"></div>
+										</div>
+										<div class="add" align="right">
+										   <!-- <button class="btn btn-danger my-cart-btn my-cart-b" data-id="25" data-name="Peach Halves" data-summary="summary 25" data-price="4.50" data-quantity="1" data-image="images/of25.png">Add to Cart</button> -->
+										   	<%= image_tag "app/stars.png", class: "img-responsive" %>	<!-- I'm putting a fake star rating system here, it needs to be called and replaced from the database --><br />
+										   	<%= image_tag "app/viewer.png", class: "img-responsive" %>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4 pro-1">
+								<div class="col-m">
+									<a href="#" data-toggle="modal" data-target="#myModal8" class="offer-img">
+										<%= image_tag "app/cakehouse.png", class: "img-responsive" %>
+									</a>
+									<div class="mid-1">
+										<div class="women">
+											<h6><a href="single.html">Valentine Cake House</a></h6>							
+										</div>
+										<div class="mid-2">
+											<p>Biggest cake supplier in Nairobi</p>
+											  <div class="block">
+												<div class="starbox small ghosting"> </div>
+											</div>
+											<div class="clearfix"></div>
+										</div>
+										<div class="add" align="right">
+										   <!-- <button class="btn btn-danger my-cart-btn my-cart-b" data-id="25" data-name="Peach Halves" data-summary="summary 25" data-price="4.50" data-quantity="1" data-image="images/of25.png">Add to Cart</button> -->
+										   	<%= image_tag "app/stars.png", class: "img-responsive" %>	<!-- I'm putting a fake star rating system here, it needs to be called and replaced from the database --><br />
+										   	<%= image_tag "app/viewer.png", class: "img-responsive" %>
+										</div>
+									</div>
+								</div>
+							</div>
+								<div class="col-md-4 pro-1">
+								<div class="col-m">
+								<a href="#" data-toggle="modal" data-target="#myModal9" class="offer-img">
+										<%= image_tag "app/cakehouse.png", class: "img-responsive" %>
+									</a>
+									<div class="mid-1">
+										<div class="women">
+											<h6><a href="single.html">Valentine Cake House</a></h6>							
+										</div>
+										<div class="mid-2">
+											<p>Biggest cake supplier in Nairobi</p>
+											  <div class="block">
+												<div class="starbox small ghosting"> </div>
+											</div>
+											<div class="clearfix"></div>
+										</div>
+										<div class="add" align="right">
+										   <!-- <button class="btn btn-danger my-cart-btn my-cart-b" data-id="25" data-name="Peach Halves" data-summary="summary 25" data-price="4.50" data-quantity="1" data-image="images/of25.png">Add to Cart</button> -->
+										   	<%= image_tag "app/stars.png", class: "img-responsive" %>	<!-- I'm putting a fake star rating system here, it needs to be called and replaced from the database --><br />
+										   	<%= image_tag "app/viewer.png", class: "img-responsive" %>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4 pro-1">
+								<div class="col-m">
+									<a href="#" data-toggle="modal" data-target="#myModal10" class="offer-img">
+										<%= image_tag "app/cakehouse.png", class: "img-responsive" %>
+									</a>
+									<div class="mid-1">
+										<div class="women">
+											<h6><a href="single.html">Valentine Cake House</a></h6>							
+										</div>
+										<div class="mid-2">
+											<p>Biggest cake supplier in Nairobi</p>
+											  <div class="block">
+												<div class="starbox small ghosting"> </div>
+											</div>
+											<div class="clearfix"></div>
+										</div>
+										<div class="add" align="right">
+										   <!-- <button class="btn btn-danger my-cart-btn my-cart-b" data-id="25" data-name="Peach Halves" data-summary="summary 25" data-price="4.50" data-quantity="1" data-image="images/of25.png">Add to Cart</button> -->
+										   	<%= image_tag "app/stars.png", class: "img-responsive" %>	<!-- I'm putting a fake star rating system here, it needs to be called and replaced from the database --><br />
+										   	<%= image_tag "app/viewer.png", class: "img-responsive" %>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4 pro-1">
+								<div class="col-m">
+									<a href="#" data-toggle="modal" data-target="#myModal11" class="offer-img">
+										<%= image_tag "app/cakehouse.png", class: "img-responsive" %>
+									</a>
+									<div class="mid-1">
+										<div class="women">
+											<h6><a href="single.html">Valentine Cake House</a></h6>							
+										</div>
+										<div class="mid-2">
+											<p>Biggest cake supplier in Nairobi</p>
+											  <div class="block">
+												<div class="starbox small ghosting"> </div>
+											</div>
+											<div class="clearfix"></div>
+										</div>
+										<div class="add" align="right">
+										   <!-- <button class="btn btn-danger my-cart-btn my-cart-b" data-id="25" data-name="Peach Halves" data-summary="summary 25" data-price="4.50" data-quantity="1" data-image="images/of25.png">Add to Cart</button> -->
+										   	<%= image_tag "app/stars.png", class: "img-responsive" %>	<!-- I'm putting a fake star rating system here, it needs to be called and replaced from the database --><br />
+										   	<%= image_tag "app/viewer.png", class: "img-responsive" %>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4 pro-1">
+								<div class="col-m">
+									<a href="#" data-toggle="modal" data-target="#myModal12" class="offer-img">
+										<%= image_tag "app/cakehouse.png", class: "img-responsive" %>
+									</a>
+									<div class="mid-1">
+										<div class="women">
+											<h6><a href="single.html">Valentine Cake House</a></h6>							
+										</div>
+										<div class="mid-2">
+											<p>Biggest cake supplier in Nairobi</p>
+											  <div class="block">
+												<div class="starbox small ghosting"> </div>
+											</div>
+											<div class="clearfix"></div>
+										</div>
+										<div class="add" align="right">
+										   <!-- <button class="btn btn-danger my-cart-btn my-cart-b" data-id="25" data-name="Peach Halves" data-summary="summary 25" data-price="4.50" data-quantity="1" data-image="images/of25.png">Add to Cart</button> -->
+										   	<%= image_tag "app/stars.png", class: "img-responsive" %>	<!-- I'm putting a fake star rating system here, it needs to be called and replaced from the database --><br />
+										   	<%= image_tag "app/viewer.png", class: "img-responsive" %>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+						 </div>
+		</div>
+	</div>
