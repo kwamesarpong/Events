@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170203231154) do
+ActiveRecord::Schema.define(version: 20170206105719) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -27,8 +27,9 @@ ActiveRecord::Schema.define(version: 20170203231154) do
     t.string   "desc"
     t.string   "profile_picture"
     t.boolean  "paid"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.string   "short_desc",      limit: 140
     t.index ["subscription_id"], name: "index_profiles_on_subscription_id", using: :btree
     t.index ["user_id"], name: "index_profiles_on_user_id", using: :btree
   end
