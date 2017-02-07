@@ -63,14 +63,16 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 
 </head>
 <body>
-<!--<a href="offer.html"><img src="images/logo.png" class="img-head" alt=""></a>-->
-<div class="header">
+	
+		<div class="header">
 
-		<div class="container">
+			<div class="container-fluid">
 			
-
-			<!--The nav bar starts here-->
-
+				<div>
+					<a href=""><%= image_tag "app/logo.png", class: "img-head" %></a>
+				</div>
+				<!--The nav bar starts here-->
+				<!--
 				<div class="nav-top">
 					<nav class="navbar navbar-default">		
 						<div class="navbar-header nav_2">
@@ -85,52 +87,29 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 							<ul class="nav navbar-nav ">
 								<li class="active"><a href="index.html" class="hyper"><span>Home</span></a></li>	
 								
-								<% @categories.each do |category| %>
-									<li class="dropdown ">
-										
-
-											<%= link_to service_path(category.id), { class: "dropdown-toggle  hyper", "data-toggle" => "true" } do %>
-												<span><%= category.name %> 
-													<% unless category.subcategories.blank? %> 	 
-														<b class="caret"></b> 
-													<% end %> 
-												</span>
-											<% end %>
-									</li>
-	
-
-
-								<% end %>
 							</ul>
 						</div>
 
 					</nav>
 				</div>
+				-->
 
-
-					 <div class="cart" >
+				<div class="cart">
 					
-						<!--<span class="fa fa-shopping-cart my-cart-icon"><span class="badge badge-notify my-cart-badge"></span></span>-->
-						<ul class="card">
-							<li><a href="wishlist.html" ><i class="fa fa-heart" aria-hidden="true"></i>Wishlist</a></li>
-							<li><%= link_to "Login", { controller: :access, action: :login }, { class: "fa fa-user", "aria-hidden" => "true" } %></li>
-							<li><%= link_to "Sign up", { controller: :users, action: :new }, { class: "fa fa-user", "aria-hidden" => "true" } %></li>
-							<!--<li><a href="about.html" ><i class="fa fa-file-text-o" aria-hidden="true"></i>Order History</a></li>
-							<li><a href="shipping.html" ><i class="fa fa-ship" aria-hidden="true"></i>Shipping</a></li>-->
-						</ul>	
-					</div>
-					<div class="clearfix"></div>
+					<!--<span class="fa fa-shopping-cart my-cart-icon"><span class="badge badge-notify my-cart-badge"></span></span>-->
+					<ul class="card">
+						<!-- <li><a href="wishlist.html" ><i class="fa fa-heart" aria-hidden="true"></i>Wishlist</a></li> -->
+						<li><%= link_to "Login", { controller: :access, action: :login }, { class: "fa fa-user", "aria-hidden" => "true" } %></li>
+						<li><%= link_to "Sign up", { controller: :users, action: :new }, { class: "fa fa-user", "aria-hidden" => "true" } %></li>
+						<!--<li><a href="about.html" ><i class="fa fa-file-text-o" aria-hidden="true"></i>Order History</a></li>
+						<li><a href="shipping.html" ><i class="fa fa-ship" aria-hidden="true"></i>Shipping</a></li>-->
+					</ul>	
 				</div>
-				
-
-				<!-- The navigation bar thingy ends here -->
-				<br /><br />
-			<div class="logo">
-				<h1 ><a href="index.html"><a href=""><%= image_tag "app/logo.png", class: "img-head" %><span>For all your event listing needs</span></a></h1>   <!-- Probably make the name orange, create a panel and switch tab around ///////        Done     -->
+				<div class="clearfix"></div>
 			</div>
-					
-		</div>			
-</div><br /><br />
+				
+		</div>
+<br /><br />
   <!---->
 <div class="top-top-banner">                                     <!-- there are two types of images to be used here -->
     <div class="container">
