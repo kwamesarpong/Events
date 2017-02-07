@@ -14,3 +14,21 @@
     <br/>
     <%= f.submit :Create %>
 <% end %>
+
+
+<% @categories.each do |category| %>
+    <li class="dropdown ">
+        
+
+            <%= link_to service_path(category.id), { class: "dropdown-toggle  hyper", "data-toggle" => "true" } do %>
+                <span><%= category.name %> 
+                    <% unless category.subcategories.blank? %> 	 
+                        <b class="caret"></b> 
+                    <% end %> 
+                </span>
+            <% end %>
+    </li>
+
+
+
+<% end %>

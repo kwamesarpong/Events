@@ -81,22 +81,6 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 							<ul class="nav navbar-nav ">
 								<li class="active"><a href="index.html" class="hyper"><span>Home</span></a></li>	
 								
-								<% @categories.each do |category| %>
-									<li class="dropdown ">
-										
-
-											<%= link_to service_path(category.id), { class: "dropdown-toggle  hyper", "data-toggle" => "true" } do %>
-												<span><%= category.name %> 
-													<% unless category.subcategories.blank? %> 	 
-														<b class="caret"></b> 
-													<% end %> 
-												</span>
-											<% end %>
-									</li>
-	
-
-
-								<% end %>
 							</ul>
 						</div>
 
