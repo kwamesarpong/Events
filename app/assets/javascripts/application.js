@@ -12,10 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require app/js/bootstrap
 //= require app/js/move-top
 //= require app/js/easing
 //= require app/js/jquery.vide.min
-//= require app/js/bootstrap
 //= require app/js/jquery.mycart
+//= require app/js/responsiveslides.min
+//= require app/js/classie
+//= require app/js/grid3d
 //= require turbolinks
 //= require_tree .

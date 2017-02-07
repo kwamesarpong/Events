@@ -1,16 +1,122 @@
-<%= display_errors_for_object @profile %>
-<%= form_for @profile, url: { action: :create }, html:{ class: :nice_form } do |f| %>
-    <%= label_tag :name_of_agency, "Name Of Agency" %>
-    <%= f.text_field :name_of_agency %>
-    <br/>
-    <%= label_tag :subscription_id, "Subscription" %>
-    <%= f.select :subscription_id, @subscriptions.map{|s| [s.name, s.id]} %>
-    <br/>
-    <%= label_tag :desc, "Bio" %>
-    <%= f.text_area :desc %>
-    <br/>
-    <%= label_tag :profile_picture, "Logo/Picture" %>
-    <%= f.file_field :profile_picture %>
-    <br/>
-    <%= f.submit :Create %>
-<% end %>
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+<div class="banner-profile">
+	<ul class="rslides" id="slider" value="<%= @profile.id %>" >
+		<li>
+			<div class="banner-profile-info">
+				<h3 class="full_name_text"><%= @profile.name_of_agency %> <i class="full_name fa fa-pencil" aria-hidden="true"></i></h3>
+				<span class="line1"></span>
+				<p class="tagline_text"><%= @profile.tagline %><i class="tagline fa fa-pencil" aria-hidden="true"></i></p>
+				<span class="line2"></span>
+				<div class="social-icons">
+					<a href="#"><span class="facebook"></span></a>
+					<a href="#"><span class="twitter"></span></a>
+					<a href="#"><span class="linkedin"></span></a>
+					<a href="#"><span class="googleplus"></span></a>
+				</div>
+			</div>
+		</li>
+	</ul>
+</div>
+<div class="about-me" id="about">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 col-xs-12 magin-tops-profile">
+				<div class="mydetails slideanim text-center">
+					<%= image_tag "app/man", { class: "img-circle img-responsive", alt: "Generic placeholder image", width: "200", height: "200" } %>
+					<h3>Who we are</h3>
+					<p class="short_desc_text"><%= @profile.short_desc %><i class="short_desc fa fa-pencil" aria-hidden="true"></i></p>
+					<div class="contact-info">
+						<h3>Where you can find us</h3>
+						<p>We are located in the 3 major cities in Kenya.</p>
+						<i aria-hidden="true"></i>
+                        <div class="footer-info">
+							<div>
+								<i class="fa fa-globe" aria-hidden="true"></i>
+								<p class="p1">77727 Moi Avenue </p>
+								<p class="p2">Nairobi, Kenya</p>
+							</div>
+							<div>
+								<i class="fa fa-phone" aria-hidden="true"></i>
+								<p class="p1">+1 515 151515</p>
+								<p class="p2">+00 1010101010</p>
+							</div>
+							<div>
+								<i class="fa fa-envelope" aria-hidden="true"></i>
+								<p class="p1"><a href="mailto:myemail@something.com">myemail1@example.com</a></p>
+								<p class="p2"><a href="mailto:myemail@nothing.com">myemail2@example.com</a></p>
+							</div>
+						</div>
+					</div>
+
+
+
+				</div>
+			</div>
+			<div class="col-md-8 col-xs-12">
+				<div class="myskills slideanim">
+					<h3 class="text-center">Why hire us <i class="long_desc fa fa-pencil" aria-hidden="true"></i></h3>
+                    
+					<p class="skill-text long_desc_text"><%= @profile.desc %></p>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+
+$(".full_name").click(function(e){
+    $('.full_name_text').attr("contentEditable", "true");
+    $('.full_name_text').css("outline","none");
+    console.log("it");
+});
+
+    $(document).keypress(function(e) {
+    if(e.which == 13) {
+        e.preventDefault();
+        alert('You pressed enter!');
+        var profile;
+        $('#slider').attr("value", function( i, val ){
+            profile = val;
+        })
+        alert(profile);
+        $.ajax({
+        url: "/profiles/"+profile,
+        type: "PATCH",
+        data: {profile: {
+                    id: profile,
+                    name_of_agency: $('.full_name_text').text(),
+                    desc: $('.long_desc_text').text(),
+                    short_desc: $('.short_desc_text').text(),
+                    tagline: $('.tagline_text').text()
+                    }},
+        success: function(resp){ 
+            console.log(resp)
+        }
+        });
+
+    }
+});
+
+
+$(".tagline").click(function(e){
+    $('.tagline_text').attr("contentEditable", "true");
+    $('.tagline_text').css("outline","none");
+    console.log("it");
+});
+
+$(".short_desc").click(function(e){
+    $('.short_desc_text').attr("contentEditable", "true");
+    $('.full_name_text').css("outline","none");
+    console.log("it");
+});
+
+$(".long_desc").click(function(e){
+    $('.long_desc_text').attr("contentEditable", "true");
+    console.log("it");
+});
+
+</script>
+
+

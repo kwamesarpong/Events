@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170206105719) do
+ActiveRecord::Schema.define(version: 20170206192801) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -24,12 +24,14 @@ ActiveRecord::Schema.define(version: 20170206105719) do
     t.integer  "user_id"
     t.integer  "subscription_id"
     t.string   "name_of_agency"
-    t.string   "desc"
+    t.text     "desc",            limit: 4294967295
     t.string   "profile_picture"
     t.boolean  "paid"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",                                                   null: false
+    t.datetime "updated_at",                                                   null: false
     t.string   "short_desc",      limit: 140
+    t.string   "tagline",         limit: 26,         default: "Call We Serve"
+    t.string   "banner"
     t.index ["subscription_id"], name: "index_profiles_on_subscription_id", using: :btree
     t.index ["user_id"], name: "index_profiles_on_user_id", using: :btree
   end
