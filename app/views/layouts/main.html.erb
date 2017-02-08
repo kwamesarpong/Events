@@ -63,7 +63,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 
 </head>
 <body>
-	
+	<!--
 		<div class="header">
 
 			<div class="container-fluid">
@@ -93,16 +93,16 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 					</nav>
 				</div>
 				-->
-
+				<!-- ///////                 Uncomment here
 				<div class="cart">
 					
-					<!--<span class="fa fa-shopping-cart my-cart-icon"><span class="badge badge-notify my-cart-badge"></span></span>-->
+					<!--<span class="fa fa-shopping-cart my-cart-icon"><span class="badge badge-notify my-cart-badge"></span></span>--><!-- And here
 					<ul class="card">
-						<!-- <li><a href="wishlist.html" ><i class="fa fa-heart" aria-hidden="true"></i>Wishlist</a></li> -->
+						<!-- <li><a href="wishlist.html" ><i class="fa fa-heart" aria-hidden="true"></i>Wishlist</a></li> --><!-- Here too 
 						<li><%= link_to "Login", { controller: :access, action: :login }, { class: "fa fa-user", "aria-hidden" => "true" } %></li>
 						<li><%= link_to "Sign up", { controller: :users, action: :new }, { class: "fa fa-user", "aria-hidden" => "true" } %></li>
 						<!--<li><a href="about.html" ><i class="fa fa-file-text-o" aria-hidden="true"></i>Order History</a></li>
-						<li><a href="shipping.html" ><i class="fa fa-ship" aria-hidden="true"></i>Shipping</a></li>-->
+						<li><a href="shipping.html" ><i class="fa fa-ship" aria-hidden="true"></i>Shipping</a></li>--><!-- Here all
 					</ul>	
 				</div>
 				<div class="clearfix"></div>
@@ -112,9 +112,19 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 <br /><br />
   <!---->
 <div class="top-top-banner">                                     <!-- there are two types of images to be used here -->
+    <div class="container-fluid">
+    	<%= image_tag "app/logo.png", class: "img-head" %>
+    	<ul class="card">
+			<!-- <li><a href="wishlist.html" ><i class="fa fa-heart" aria-hidden="true"></i>Wishlist</a></li> -->
+			<li><%= link_to "Login", { controller: :access, action: :login }, { class: "fa fa-user", "aria-hidden" => "true" } %></li>
+			<li><%= link_to "Sign up", { controller: :users, action: :new }, { class: "fa fa-user", "aria-hidden" => "true" } %></li>
+			<!--<li><a href="about.html" ><i class="fa fa-file-text-o" aria-hidden="true"></i>Order History</a></li>
+			<li><a href="shipping.html" ><i class="fa fa-ship" aria-hidden="true"></i>Shipping</a></li>-->
+		</ul>
+    </div>
     <div class="container">
 		<div class="banner-info">
-			<h3>Search for a supplier listing by name</h3>	
+			<h3>Search for suppliers</h3>	
 			<div class="search-form container overlay">
 				<form action="#" method="post">
 					<div class="col-md-6 col-sm-4 col-xs-12 search-no-padding-left search-no-padding-right">
@@ -122,7 +132,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 					</div>
 					<div class="col-md-4 col-sm-4 hidden-xs search-no-padding-right">
 						<select>
-							<option>Select location</option>                                     <!-- fix the categories with stella -->
+							<option>Select location</option>                                     <!-- fix the locations with stella -->
 							<option>Accra</option>
 							<option>Kumasi</option>
 						</select>
@@ -133,6 +143,26 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 				</form>
 			</div>		
 		</div>	
+    </div>
+    <div class="container-fluid">
+    	<div class="col-md-2">
+    		Equipment
+    	</div>
+    	<div class="col-md-2">
+    		Catering
+    	</div>
+    	<div class="col-md-2">
+    		Decor
+    	</div>
+    	<div class="col-md-2">
+    		Entertainment
+    	</div>
+    	<div class="col-md-2">
+    		Venues
+    	</div>
+    	<div class="col-md-2">
+    		Transportation
+    	</div>
     </div>
 </div>
 
