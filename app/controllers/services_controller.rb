@@ -1,9 +1,20 @@
 class ServicesController < ApplicationController
   
-  include ApplicationHelper
+  #include ApplicationHelper
+
+  NUMBER_OF_RECORDS_PER_PAGE = 2
+
+  layout "main"
 
   def index
-    @services = Service.all
+    @page = params[:page].to_i
+    count = Service.count
+    @total_pages = count / NUMBER_OF_RECORDS_PER_PAGE
+    unless @page <= Service.count
+      @page = 1
+    end
+    offset = ( @page - 1 ) * NUMBER_OF_RECORDS_PER_PAGE
+    @services = Service.limit(NUMBER_OF_RECORDS_PER_PAGE).offset(offset)
   end
 
   def show

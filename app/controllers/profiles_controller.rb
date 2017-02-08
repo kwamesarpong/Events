@@ -2,7 +2,10 @@ class ProfilesController < ApplicationController
 
   include ApplicationHelper
 
+
   #before_action :get_user, only: [:show, :update, :destroy]
+
+  skip_before_action :verify_authenticity_token, only: [ :update, :create ]
 
   def index
   end
@@ -14,20 +17,20 @@ class ProfilesController < ApplicationController
   end
 
   def new
-    @profile = Profile.new
-    @subscriptions = Subscription.all
-    session["user"] = get_hidden_user
+    @profile = Profile.find(params[:from_there])
   end
 
   def create
     @profile = Profile.new(white_list)
-    @profile.user_id = session["user"]["id"]
     @profile.profile_picture = params[:profile][:profile_picture]
-    @profile.paid = false
-    if @profile.save!
-      redirect_to controller: :profiles, action: :show, id: @profile.id
-    else
-      render :new
+    #@profile.paid = false
+    if (Profile.find_by_user_id(@profile.id))
+      @profile.update_attributes(white_list)
+      render json :@profile
+      elsif @profile.save!
+        render json: @profile
+      else
+        render new
     end
     #display_object_attributes @profile
   end
@@ -36,6 +39,13 @@ class ProfilesController < ApplicationController
   end
 
   def update
+    @profile = Profile.find_by_id(params[:id])
+    @profile.profile_picture = params[:profile][:profile_picture]
+    if (@profile.update_attributes(white_list))
+      render json: @profile
+    else
+      render new
+    end
   end
 
   def delete
@@ -47,7 +57,7 @@ class ProfilesController < ApplicationController
   private
 
   def white_list
-    params.require(:profile).permit(:name_of_agency,:subscription_id,:desc)
+    params.require(:profile).permit(:name_of_agency, :subscription_id, :desc, :user_id, :paid, :short_desc)
   end
 
 end
