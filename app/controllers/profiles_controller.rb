@@ -57,7 +57,7 @@ class ProfilesController < ApplicationController
   private
 
   def white_list
-    params.require(:profile).permit(:name_of_agency, :subscription_id, :desc, :user_id, :paid, :short_desc)
+    params.require(:profile).permit(:name_of_agency, :subscription_id, :desc, :user_id, :paid, :short_desc,:tagline)
   end
 
 end

@@ -9,6 +9,7 @@ class ServicesController < ApplicationController
   def index
     @page = params[:page].to_i
     count = Service.count
+    #pagination
     @total_pages = count / NUMBER_OF_RECORDS_PER_PAGE
     unless @page <= Service.count
       @page = 1

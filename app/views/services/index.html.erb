@@ -31,7 +31,7 @@
 								<div class="add" align="right">
 									<!-- <button class="btn btn-danger my-cart-btn my-cart-b" data-id="25" data-name="Peach Halves" data-summary="summary 25" data-price="4.50" data-quantity="1" data-image="images/of25.png">Add to Cart</button> -->
 									<!-- I'm putting a fake star rating system here, it needs to be called and replaced from the database --><br />
-									<a href="#" data-toggle="modal" data-target="#myModal3">
+									<a href="#" data-toggle="modal" data-target="#myModa<%= service.id %>">
 										<%= image_tag "app/viewer.png", class: "img-responsive" %>
 									</a>
 								</div>
@@ -44,7 +44,7 @@
 
 				
 
-<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="myModa<%= service.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content modal-info">
 			<div class="modal-header">
