@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  #include ApplicationHelper
+  include ApplicationHelper
 
   layout :set_layout
   
@@ -29,12 +29,14 @@ class UsersController < ApplicationController
         profile = Profile.new
         profile.user_id = @user.id
         profile.name_of_agency = "Name Of Agency"
-        profile.subscription_id = 3
+        #make sure subcriptions are created beforehand
+        profile.subscription_id = 1
         profile.desc = "A short description here"
         profile.paid = false
         if profile.save
           redirect_to controller: :profiles, action: :new, from_there: profile.id
         end
+
       else
         #USER IS ORGANIZER
         redirect_to action: :index

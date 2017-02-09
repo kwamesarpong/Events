@@ -17,30 +17,36 @@
 		</li>
 	</ul>
 </div>
+<div class="about-me">
+	<br />
+</div>
 <div class="about-me" id="about">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-4 col-xs-12 magin-tops-profile">
+			<div class="col-md-4 col-xs-12">
 				<div class="mydetails slideanim text-center">
-					<%= image_tag "app/man", { class: "img-circle img-responsive", alt: "Generic placeholder image", width: "200", height: "200" } %>
-					<h3>Who we are</h3>
-					<p class="short_desc_text"><%= @profile.short_desc %><i class="short_desc fa fa-pencil" aria-hidden="true"></i></p>
-					<div class="contact-info">
-						<h3>Where you can find us <i class="address_book fa fa-pencil" aria-hidden="true"></i></h3>
+					<div>
+						<%= image_tag "app/man", { class: "img-circle img-responsive", alt: "Generic placeholder image", width: "200", height: "200" } %>
+						<h3>Who we are</h3>
+						<p class="short_desc_text"><%= @profile.short_desc %><i class="short_desc fa fa-pencil" aria-hidden="true"></i></p>
+					</div>
+					<br />
+					<div class="contact-info some-border">
+						<h3>Where you can find us</h3>
 						<p>We are located in the 3 major cities in Kenya.</p>
 						<i aria-hidden="true"></i>
                         <div class="footer-info">
-							<div>
+							<div class="some-border">
 								<i class="fa fa-globe" aria-hidden="true"></i>
 								<p class="p1">77727 Moi Avenue </p>
 								<p class="p2">Nairobi, Kenya</p>
 							</div>
-							<div>
+							<div class="some-border">
 								<i class="fa fa-phone" aria-hidden="true"></i>
 								<p class="p1">+1 515 151515</p>
 								<p class="p2">+00 1010101010</p>
 							</div>
-							<div>
+							<div class="some-border">
 								<i class="fa fa-envelope" aria-hidden="true"></i>
 								<p class="p1"><a href="mailto:myemail@something.com">myemail1@example.com</a></p>
 								<p class="p2"><a href="mailto:myemail@nothing.com">myemail2@example.com</a></p>
@@ -59,10 +65,60 @@
 					<p class="skill-text long_desc_text"><%= @profile.desc %></p>
 					
 				</div>
+				<br />
+				<div class="myskills slideanim">
+					<h3 class="text-center">Add your service details</h3>
+					<form action="" method="post" class="form-inline">
+                    <table class="table table-striped">
+                    	<tr>
+                    		<td>Your service type</td>
+                    		<td>
+								<select name="categories" class="form-control">
+									<option>Select your service type</option>
+									<option>Equipment</option>
+									<option>Catering</option>
+									<option>Decor</option>
+									<option>Entertainment</option>
+									<option>Venues</option>
+									<option>Transportation</option>
+									<option>Clothing & Accessories</option>
+									<option>Stationary & Gifts</option>
+									<option>Personnel</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>Please upload a picture of your product</td>
+							<td>
+								<input type="file" name="file" class="form-control" />
+							</td>
+						</tr>
+						<tr>
+							<td>Description of the product or service</td>
+							<td>
+								<textarea rows="10" cols="31" placeholder="Service Description" class="form-control"></textarea>
+							</td>
+						</tr>
+						<tr>
+							<td>Minimal Price</td>
+							<td>	
+								<input type="text" name="price" placeholder="Price" class="form-control" />
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2" align="center">	
+								<button type="submit" class="btn btn-success">Add listing</button>
+							</td>
+						</tr>
+					</form>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>
+	<br />
 </div>
+
 
 <script>
 

@@ -63,7 +63,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 
 </head>
 <body>
-	
+	<!--
 		<div class="header">
 
 			<div class="container-fluid">
@@ -93,16 +93,16 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 					</nav>
 				</div>
 				-->
-
+				<!-- ///////                 Uncomment here
 				<div class="cart">
 					
-					<!--<span class="fa fa-shopping-cart my-cart-icon"><span class="badge badge-notify my-cart-badge"></span></span>-->
+					<!--<span class="fa fa-shopping-cart my-cart-icon"><span class="badge badge-notify my-cart-badge"></span></span>--><!-- And here
 					<ul class="card">
-						<!-- <li><a href="wishlist.html" ><i class="fa fa-heart" aria-hidden="true"></i>Wishlist</a></li> -->
+						<!-- <li><a href="wishlist.html" ><i class="fa fa-heart" aria-hidden="true"></i>Wishlist</a></li> --><!-- Here too 
 						<li><%= link_to "Login", { controller: :access, action: :login }, { class: "fa fa-user", "aria-hidden" => "true" } %></li>
 						<li><%= link_to "Sign up", { controller: :users, action: :new }, { class: "fa fa-user", "aria-hidden" => "true" } %></li>
 						<!--<li><a href="about.html" ><i class="fa fa-file-text-o" aria-hidden="true"></i>Order History</a></li>
-						<li><a href="shipping.html" ><i class="fa fa-ship" aria-hidden="true"></i>Shipping</a></li>-->
+						<li><a href="shipping.html" ><i class="fa fa-ship" aria-hidden="true"></i>Shipping</a></li>--><!-- Here all
 					</ul>	
 				</div>
 				<div class="clearfix"></div>
@@ -112,9 +112,19 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 <br /><br />
   <!---->
 <div class="top-top-banner">                                     <!-- there are two types of images to be used here -->
+    <div class="container-fluid">
+    	<%= image_tag "app/logo.png", class: "img-head" %>
+    	<ul class="card">
+			<!-- <li><a href="wishlist.html" ><i class="fa fa-heart" aria-hidden="true"></i>Wishlist</a></li> -->
+			<li><%= link_to "Login", { controller: :access, action: :login }, { class: "fa fa-user", "aria-hidden" => "true" } %></li>
+			<li><%= link_to "Sign up", { controller: :users, action: :new }, { class: "fa fa-user", "aria-hidden" => "true" } %></li>
+			<!--<li><a href="about.html" ><i class="fa fa-file-text-o" aria-hidden="true"></i>Order History</a></li>
+			<li><a href="shipping.html" ><i class="fa fa-ship" aria-hidden="true"></i>Shipping</a></li>-->
+		</ul>
+    </div>
     <div class="container">
 		<div class="banner-info">
-			<h3>Search for a supplier listing by name</h3>	
+			<h3>Search for suppliers</h3>	
 			<div class="search-form container overlay">
 				<form action="#" method="post">
 					<div class="col-md-6 col-sm-4 col-xs-12 search-no-padding-left search-no-padding-right">
@@ -122,7 +132,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 					</div>
 					<div class="col-md-4 col-sm-4 hidden-xs search-no-padding-right">
 						<select>
-							<option>Select location</option>                                     <!-- fix the categories with stella -->
+							<option>Select location</option>                                     <!-- fix the locations with stella -->
 							<option>Accra</option>
 							<option>Kumasi</option>
 						</select>
@@ -134,6 +144,26 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 			</div>		
 		</div>	
     </div>
+    <div class="container-fluid">
+    	<div class="col-md-2">
+    		Equipment
+    	</div>
+    	<div class="col-md-2">
+    		Catering
+    	</div>
+    	<div class="col-md-2">
+    		Decor
+    	</div>
+    	<div class="col-md-2">
+    		Entertainment
+    	</div>
+    	<div class="col-md-2">
+    		Venues
+    	</div>
+    	<div class="col-md-2">
+    		Transportation
+    	</div>
+    </div>
 </div>
 
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
@@ -143,9 +173,9 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 <%= yield %>
 <!--content-->
   <!-- Carousel
-    ================================================== -->
+    ================================================== --><!--
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
-      <!-- Indicators -->
+      <!-- Indicators --><!--
       <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
         <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -172,7 +202,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 	<div class="product">
 		<div class="container">
 			<div class="spec ">
-				<h3>Special Packs</h3>
+				<h3>Featured Listings</h3>
 				<div class="ser-t">
 					<b></b>
 					<span><i></i></span>
@@ -180,183 +210,84 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 				</div>
 			</div>
 				<div class=" con-w3l">
-							<div class="col-md-3 pro-1">
+							<div class="col-md-4 pro-1">
 								<div class="col-m">
 								<a href="#" data-toggle="modal" data-target="#myModal17" class="offer-img">
-										<%= image_tag "app/of16.png", class: "img-responsive" %>
+										<%= image_tag "app/cakehouse.png", class: "img-responsive" %>
 									</a>
 									<div class="mid-1">
 										<div class="women">
-											<h6><a href="single.html">Moisturiser</a>(500 g)</h6>							
+											<h6><a href="single.html">Valentine Cake House</a></h6>							
 										</div>
 										<div class="mid-2">
-											<p ><label>$7.00</label><em class="item_price">$6.00</em></p>
-											  <div class="block">
-												<div class="starbox small ghosting"> </div>
-											</div>
+											<p>Biggest cake supplier in Nairobi</p>
 											<div class="clearfix"></div>
 										</div>
-											<div class="add add-2">
-										   <button class="btn btn-danger my-cart-btn my-cart-b" data-id="1" data-name="product 1" data-summary="summary 1" data-price="6.00" data-quantity="1" data-image="images/of16.png">Add to Cart</button>
+										<div class="block">
+											<div class="starbox small ghosting"> </div>
+										</div>
+										<br />
+										<div class="add" align="right">
+											<!-- <button class="btn btn-danger my-cart-btn my-cart-b" data-id="25" data-name="Peach Halves" data-summary="summary 25" data-price="4.50" data-quantity="1" data-image="images/of25.png">Add to Cart</button> -->
+										   	<!-- I'm putting a fake star rating system here, it needs to be called and replaced from the database --><br />
+										   	<%= image_tag "app/viewer.png", class: "img-responsive" %>
 										</div>
 									</div>
 								</div>
 							</div>
-							<div class="col-md-3 pro-1">
+							<div class="col-md-4 pro-1">
 								<div class="col-m">
 									<a href="#" data-toggle="modal" data-target="#myModal18" class="offer-img">
-										<%= image_tag "app/of17.png", class: "img-responsive" %>
+										<%= image_tag "app/cakehouse.png", class: "img-responsive" %>
 									</a>
 									<div class="mid-1">
 										<div class="women">
-											<h6><a href="single.html">  Lady Finger</a>(250 g)</h6>							
+											<h6><a href="single.html">Valentine Cake House</a></h6>							
 										</div>
 										<div class="mid-2">
-											<p ><label>$5.00</label><em class="item_price">$4.50</em></p>
-											  <div class="block">
-												<div class="starbox small ghosting"> </div>
-											</div>
+											<p>Biggest cake supplier in Nairobi</p>
 											<div class="clearfix"></div>
 										</div>
-											<div class="add">
-										   <button class="btn btn-danger my-cart-btn my-cart-b" data-id="1" data-name="product 1" data-summary="summary 1" data-price="4.50" data-quantity="1" data-image="images/of17.png">Add to Cart</button>
+										<div class="block">
+											<div class="starbox small ghosting"> </div>
+										</div>
+										<br />
+										<div class="add" align="right">
+											<!-- <button class="btn btn-danger my-cart-btn my-cart-b" data-id="25" data-name="Peach Halves" data-summary="summary 25" data-price="4.50" data-quantity="1" data-image="images/of25.png">Add to Cart</button> -->
+										   	<!-- I'm putting a fake star rating system here, it needs to be called and replaced from the database --><br />
+										   	<%= image_tag "app/viewer.png", class: "img-responsive" %>
 										</div>
 									</div>
 								</div>
 							</div>
-							<div class="col-md-3 pro-1">
+							<div class="col-md-4 pro-1">
 								<div class="col-m">
 									<a href="#" data-toggle="modal" data-target="#myModal19" class="offer-img">
-										<%= image_tag "app/of18.png", class: "img-responsive" %>
+										<%= image_tag "app/cakehouse.png", class: "img-responsive" %>
 									</a>
 									<div class="mid-1">
 										<div class="women">
-											<h6><a href="single.html"> Ribbon</a>(1 pc)</h6>							
+											<h6><a href="single.html">Valentine Cake House</a></h6>							
 										</div>
 										<div class="mid-2">
-											<p ><label>$4.00</label><em class="item_price">$3.50</em></p>
-											  <div class="block">
-												<div class="starbox small ghosting"> </div>
-											</div>
+											<p>Biggest cake supplier in Nairobi</p>
+											
 											<div class="clearfix"></div>
 										</div>
-											<div class="add">
-										   <button class="btn btn-danger my-cart-btn my-cart-b" data-id="1" data-name="product 1" data-summary="summary 1" data-price="3.50" data-quantity="1" data-image="images/of18.png">Add to Cart</button>
+										<div class="block">
+											<div class="starbox small ghosting"> </div>
 										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3 pro-1">
-								<div class="col-m">
-									<a href="#" data-toggle="modal" data-target="#myModal20" class="offer-img">
-										<%= image_tag "app/of19.png", class:"img-responsive" %>
-									</a>
-									<div class="mid-1">
-										<div class="women">
-											<h6><a href="single.html">Grapes</a>(500 g)</h6>							
-										</div>
-										<div class="mid-2">
-											<p ><label>$1.00</label><em class="item_price">$0.80</em></p>
-											  <div class="block">
-												<div class="starbox small ghosting"> </div>
-											</div>
-											<div class="clearfix"></div>
-										</div>
-											<div class="add">
-										   <button class="btn btn-danger my-cart-btn my-cart-b" data-id="1" data-name="product 1" data-summary="summary 1" data-price="0.80" data-quantity="1" data-image="images/of19.png">Add to Cart</button>
+										<br />
+										<div class="add" align="right">
+											<!-- <button class="btn btn-danger my-cart-btn my-cart-b" data-id="25" data-name="Peach Halves" data-summary="summary 25" data-price="4.50" data-quantity="1" data-image="images/of25.png">Add to Cart</button> -->
+										   	<!-- I'm putting a fake star rating system here, it needs to be called and replaced from the database --><br />
+										   	<%= image_tag "app/viewer.png", class: "img-responsive" %>
 										</div>
 									</div>
 								</div>
 							</div>
 							
-							<div class="col-md-3 pro-1">
-								<div class="col-m">
-								<a href="#" data-toggle="modal" data-target="#myModal21" class="offer-img">
-										<%= image_tag "app/of20.png", class: "img-responsive" %>
-									</a>
-									<div class="mid-1">
-										<div class="women">
-											<h6><a href="single.html">Clips</a>(1 pack)</h6>							
-										</div>
-										<div class="mid-2">
-											<p ><label>$7.00</label><em class="item_price">$6.00</em></p>
-											  <div class="block">
-												<div class="starbox small ghosting"> </div>
-											</div>
-											<div class="clearfix"></div>
-										</div>
-											<div class="add">
-										   <button class="btn btn-danger my-cart-btn my-cart-b" data-id="1" data-name="product 1" data-summary="summary 1" data-price="6.00" data-quantity="1" data-image="images/of20.png">Add to Cart</button>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3 pro-1">
-								<div class="col-m">
-									<a href="#" data-toggle="modal" data-target="#myModal22" class="offer-img">
-										<%= image_tag "app/of21.png", class:"img-responsive" %>
-									</a>
-									<div class="mid-1">
-										<div class="women">
-											<h6><a href="single.html">Conditioner</a>(250 g)</h6>							
-										</div>
-										<div class="mid-2">
-											<p ><label>$5.00</label><em class="item_price">$4.50</em></p>
-											  <div class="block">
-												<div class="starbox small ghosting"> </div>
-											</div>
-											<div class="clearfix"></div>
-										</div>
-											<div class="add">
-										   <button class="btn btn-danger my-cart-btn my-cart-b" data-id="1" data-name="product 1" data-summary="summary 1" data-price="4.50" data-quantity="1" data-image="images/of21.png">Add to Cart</button>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3 pro-1">
-								<div class="col-m">
-									<a href="#" data-toggle="modal" data-target="#myModal23" class="offer-img">
-										<%= image_tag "app/of22.png", class: "img-responsive" %>
-									</a>
-									<div class="mid-1">
-										<div class="women">
-											<h6><a href="single.html">Cleaner</a>(250 kg)</h6>							
-										</div>
-										<div class="mid-2">
-											<p ><label>$4.00</label><em class="item_price">$3.50</em></p>
-											  <div class="block">
-												<div class="starbox small ghosting"> </div>
-											</div>
-											<div class="clearfix"></div>
-										</div>
-											<div class="add">
-										   <button class="btn btn-danger my-cart-btn my-cart-b" data-id="1" data-name="product 1" data-summary="summary 1" data-price="3.50" data-quantity="1" data-image="images/of22.png">Add to Cart</button>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3 pro-1">
-								<div class="col-m">
-									<a href="#" data-toggle="modal" data-target="#myModal24" class="offer-img">
-										<%= image_tag "app/of23.png", class:"img-responsive" %>
-									</a>
-									<div class="mid-1">
-										<div class="women">
-											<h6><a href="single.html">Gel</a>(150 g)</h6>							
-										</div>
-										<div class="mid-2">
-											<p ><label>$1.00</label><em class="item_price">$0.80</em></p>
-											  <div class="block">
-												<div class="starbox small ghosting"> </div>
-											</div>
-											<div class="clearfix"></div>
-										</div>
-											<div class="add">
-										   <button class="btn btn-danger my-cart-btn my-cart-b" data-id="1" data-name="product 1" data-summary="summary 1" data-price="0.80" data-quantity="1" data-image="images/of23.png">Add to Cart</button>
-										</div>
-									</div>
-								</div>
-							</div>
+							
 							<div class="clearfix"></div>
 						 </div>
 		</div>
@@ -364,7 +295,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!--footer--> <br /><br /><br />
 <div class="footer">
 	<div class="container">
-		<div class="col-md-3 footer-grid">
+		<div class=""><!--     ////If ever we need the about us to be down there, just uncomment this out.
 			<h3>About Us</h3>
 			<p>Nam libero tempore, cum soluta nobis est eligendi 
 				optio cumque nihil impedit quo minus id quod maxime 
@@ -377,18 +308,18 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 				<li><a href="kitchen.html">Corporate</a></li>
 				<li><a href="care.html">Casual</a></li>
 				<li><a href="hold.html">Personal</a></li>						 
-				<!--<li><a href="codes.html">Short Codes</a></li>-->
-				<li><a href="contact.html">Contact</a></li>
+				<!--<li><a href="codes.html">Short Codes</a></li>-->   <!--   /////Same here
+				<!--<li><a href="contact.html">Contact</a></li>
 			</ul>
 		</div>
 		<div class="col-md-3 footer-grid ">
 			<h3>Customer Services</h3>
 			<ul>
-				<!--<li><a href="shipping.html">Shipping</a></li>-->
+				<!--<li><a href="shipping.html">Shipping</a></li>-->     <!-- .////And here too
 				<li><a href="terms.html">Terms & Conditions</a></li>
 				<li><a href="faqs.html">Faqs</a></li>
 				<li><a href="contact.html">Contact</a></li>
-				<!--<li><a href="offer.html">Online Shopping</a></li>-->					 
+				<!--<li><a href="offer.html">Online Shopping</a></li>-->	<!--  ///Here all				 
 				 
 			</ul>
 		</div>
@@ -400,11 +331,9 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 				<li><a href="wishlist.html">Wishlist</a></li>
 				
 			</ul>
-		</div>
-		<div class="clearfix"></div>
+		</div>  -->
 			<div class="footer-bottom">
-				<h2 ><a href="index.html">Eventicize<span>Find supplier listings for all events</span></a></h2>
-				<p class="fo-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
+				<h2><a href="index.html">Eventicize</a></h2>
 				<ul class="social-fo">
 					<li><a href="#" class=" face"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
 					<li><a href="#" class=" twi"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
@@ -423,7 +352,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 					</div>
 					<div class="clearfix"></div>
 					
-					</div>
+				</div>
 			</div>
 		<div class="copy-right">
 			<p> &copy; 2016 Eventicize. All Rights Reserved</p>
