@@ -5,4 +5,12 @@ class MainsController < ApplicationController
     def index
        @categories = Category.all 
     end
+
+
+    def search
+        results = PgSearch.multisearch(params[:q])
+        puts results
+    end
+
+    
 end

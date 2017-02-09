@@ -1,5 +1,9 @@
 class Profile < ApplicationRecord
 
+    include PgSearch
+
+    multisearchable against: [:name_of_agency, :tagline]
+
     mount_uploader :profile_picture, ProfilePictureUploader
 
     belongs_to :user
