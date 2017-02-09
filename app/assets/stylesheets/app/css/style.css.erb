@@ -167,7 +167,7 @@ img.img-head {
 }
 /*-- header --*/
 .header {
-    text-align: center;
+  /*text-align: center;*/
 	margin-top: 0;
 }
 .logo h1{
@@ -209,7 +209,7 @@ img.img-head {
 }
 .card li a{
 	display:inline-block;
-	color: #ffffff;
+	color: #686868;
   font-size: 1.3em;
 	margin:0 0.5em;
 }
@@ -473,15 +473,53 @@ span.fa.fa-shopping-cart.my-cart-icon {
 .top-top-banner{
     background-image: url(<%= asset_path 'app/banner1.jpg' %>);
 }
+.main-nav-shadow {
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2)
+}
 .banner-info {
-    margin:8em 0;
+    margin: 2em 0 2em 0;
 	text-align:center;
 }
+.banner-info a {
+   color: #fff;
+   text-decoration: underline;
+}
 .banner-info h3 {
-    color: #fff;
-    font-size: 3em;
+    color: #e67e22;
+    font-size: 2.0em;
     width: 80%;
     margin: 0 auto 1em;
+}
+.banner-info h4 {
+    color: #fff;
+    margin: 0 auto 1em;
+}
+.banner-info-button {
+  width: 200px;
+  height: 41px;
+  background-color: #e67e22;
+  color: #fff;
+  border: none;
+}
+.gray-div-bg {
+  background-color: #f9f9f9;
+}
+.categories-tab {
+  background-color: #ffffff;
+  text-align: center;
+  padding: 2em 0 2em 0;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2)
+}
+.the-padding {
+  padding: 3em;
+}
+.vp-header-padding {
+  padding: 2em;
+  text-align: center;
+}
+.vp-sup-pla-style {
+  padding: 0 6em 0 6em;
+  text-align: center;
 }
 .search-form {
     width: 100%;
@@ -663,7 +701,7 @@ ul.nav.tabs {
     padding: 1em 0;
 }
 .mid-1 {
-    padding: 3em 0 0;
+    /*padding: 3em 0 0;*/
     margin: 1.0em;
 }
 .block {
@@ -675,6 +713,8 @@ ul.nav.tabs {
 .col-m {
     padding: 0;
     border: 1px solid #B2B2B2;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background-color: #fff;
 }
 .offer-img{
 	position:relative;
