@@ -11,13 +11,18 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    @profile = Profile.find(params[:id])
-    @service = Service.new
-    @categories = Category.all
+    init_view(params[:id])
+    @my_services = Service.find(profile_id: params[:id])
+    puts "##########################"
+    puts @my_services
+    render :new
   end
 
   def new
-    @profile = Profile.find(params[:from_there])
+    init_view(params[:from_there])
+    @my_services = Service.where(profile_id: params[:from_there])
+    puts "##########################"
+    puts @my_services
   end
 
   def create
@@ -55,6 +60,12 @@ class ProfilesController < ApplicationController
   end
 
   private
+
+  def init_view(param)
+    @profile = Profile.find(param)
+    @service = Service.new
+    @categories = Category.all
+  end
 
   def white_list
     params.require(:profile).permit(:name_of_agency, :subscription_id, :desc, :user_id, :paid, :short_desc,:tagline)

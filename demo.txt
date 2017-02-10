@@ -32,3 +32,23 @@
 
 
 <% end %>
+
+
+
+				<%= form_tag({ controller: :mains, action: :search }, :method => "get", id: "search-form") do %>
+					<div class="col-md-6 col-sm-4 col-xs-12 search-no-padding-left search-no-padding-right">
+						<%= text_field_tag :q, params[:q], placeholder: "Search" %>
+						<!--<input type="text" placeholder="Search" name="Search">-->
+					</div>
+					<div class="col-md-4 col-sm-4 hidden-xs search-no-padding-right">
+						<select>
+							<option>Select location</option>                                     <!-- fix the locations with stella -->
+							<option>Accra</option>
+							<option>Kumasi</option>
+						</select>
+					</div>
+					<div class="col-md-2 col-sm-4 col-xs-12 search-no-padding">
+						<%= submit_tag "Search", class: "search-no-border btn-search" %>
+						<!--<button class="search-no-border" type="submit">Search</button>-->
+					</div>
+				<% end %>

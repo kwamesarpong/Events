@@ -16,6 +16,11 @@ gem 'pg'
 #postgres search
 gem 'pg_search'
 
+#omniauth
+gem 'omniauth'
+
+#for twitter authen
+gem 'omniauth-twitter'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.0'

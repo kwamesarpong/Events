@@ -67,52 +67,92 @@
 				</div>
 				<br />
 				<div class="myskills slideanim">
-					<h3 class="text-center">Add your service details</h3>
-					<form action="" method="post" class="form-inline">
+					<h3 class="text-center">Post a service</h3>
+					<%= form_for @service, url: { controller: :services, action: :create, profile: @profile.id } do |f| %>
                     <table class="table table-striped">
                     	<tr>
                     		<td>Your service type</td>
                     		<td>
-								<select name="categories" class="form-control">
-									<option>Select your service type</option>
-									<option>Equipment</option>
-									<option>Catering</option>
-									<option>Decor</option>
-									<option>Entertainment</option>
-									<option>Venues</option>
-									<option>Transportation</option>
-									<option>Clothing & Accessories</option>
-									<option>Stationary & Gifts</option>
-									<option>Personnel</option>
-								</select>
+								<%= f.select :category_id, @categories.map {|c| [c.name, c.id]}, class: "form-control" %>
 							</td>
 						</tr>
 						<tr>
 							<td>Please upload a picture of your product</td>
 							<td>
-								<input type="file" name="file" class="form-control" />
+								<%= f.file_field :picture, class: "form-control" %>
 							</td>
 						</tr>
 						<tr>
 							<td>Description of the product or service</td>
 							<td>
-								<textarea rows="10" cols="31" placeholder="Service Description" class="form-control"></textarea>
+								<%= f.text_area :desc_service, rows:"10", cols:"31", placeholder: "Service Description", class:"form-control" %>
 							</td>
 						</tr>
 						<tr>
 							<td>Minimal Price</td>
-							<td>	
-								<input type="text" name="price" placeholder="Price" class="form-control" />
+							<td>
+								<%= f.text_field :price, placeholder: "Price", class: "form-control" %>	
 							</td>
 						</tr>
 						<tr>
 							<td colspan="2" align="center">	
-								<button type="submit" class="btn btn-success">Add listing</button>
+								<%= f.submit "Upload", class: "btn btn-success" %>
 							</td>
 						</tr>
-					</form>
+					<% end %>
 					</table>
 				</div>
+			
+				<div class="myskills slideanim move-down">
+					<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+						<ol class="carousel-indicators">
+							<% 0.upto(@my_services.size - 1) do |n| %>
+								<li data-target="#carousel-example-generic" data-slide-to="<%= n %>" class="active"></li>
+							<% end %>
+						</ol>
+						<div class="carousel-inner" role="listbox">
+							<% unless @my_services.blank? %>
+								<% @my_services.each do |service| %>
+									
+									<div class="col-md-4">
+										<%= image_tag service.picture.small.url %>
+									</div>
+
+								<% end %>		
+							<% end %>
+						</div>
+					</div>
+				</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 			</div>
 		</div>
 	</div>
