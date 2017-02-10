@@ -63,16 +63,27 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 
 </head>
 <body>
-	<!--
+	
 		<div class="header">
-
+			<div class="container-fluid main-nav-shadow">
+    			<%= image_tag "app/logo1.png", class: "img-head" %>
+    			<ul class="card">
+					<!-- <li><a href="wishlist.html" ><i class="fa fa-heart" aria-hidden="true"></i>Wishlist</a></li> -->
+					<!-- Have to put a blog link here -->
+					<li><%= link_to "Login", { controller: :access, action: :login }, { class: "fa fa-user", "aria-hidden" => "true" } %></li>
+					<li><%= link_to "Sign up", { controller: :users, action: :new }, { class: "fa fa-user", "aria-hidden" => "true" } %></li>
+					<!--<li><a href="about.html" ><i class="fa fa-file-text-o" aria-hidden="true"></i>Order History</a></li>
+					<li><a href="shipping.html" ><i class="fa fa-ship" aria-hidden="true"></i>Shipping</a></li>-->
+				</ul>
+    		</div>
+    		<!-- //////////////////Can work with it later
 			<div class="container-fluid">
 			
 				<div>
 					<a href=""><%= image_tag "app/logo.png", class: "img-head" %></a>
 				</div>
 				<!--The nav bar starts here-->
-				<!--
+				<!-- ///////////////// Can clear this comment too
 				<div class="nav-top">
 					<nav class="navbar navbar-default">		
 						<div class="navbar-header nav_2">
@@ -82,50 +93,46 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 								<span class="icon-bar"></span>
 								<span class="icon-bar"></span>
 							</button>
-						</div> 
+						</div><!--
 						<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
 							<ul class="nav navbar-nav ">
 								<li class="active"><a href="index.html" class="hyper"><span>Home</span></a></li>	
 								
 							</ul>
-						</div>
-
+						</div>-->
+						<!-- Can clear this one too
 					</nav>
-				</div>
-				-->
-				<!-- ///////                 Uncomment here
+				</div> -->
+				
+				<!--   Can uncomment this one for progress too
 				<div class="cart">
 					
-					<!--<span class="fa fa-shopping-cart my-cart-icon"><span class="badge badge-notify my-cart-badge"></span></span>--><!-- And here
-					<ul class="card">
-						<!-- <li><a href="wishlist.html" ><i class="fa fa-heart" aria-hidden="true"></i>Wishlist</a></li> --><!-- Here too 
-						<li><%= link_to "Login", { controller: :access, action: :login }, { class: "fa fa-user", "aria-hidden" => "true" } %></li>
+					<!--<span class="fa fa-shopping-cart my-cart-icon"><span class="badge badge-notify my-cart-badge"></span></span>-->
+					<!-- #####This one too  <ul class="card">
+						<!-- <li><a href="wishlist.html" ><i class="fa fa-heart" aria-hidden="true"></i>Wishlist</a></li> -->
+					<!-- ####<li><%= link_to "Login", { controller: :access, action: :login }, { class: "fa fa-user", "aria-hidden" => "true" } %></li>
 						<li><%= link_to "Sign up", { controller: :users, action: :new }, { class: "fa fa-user", "aria-hidden" => "true" } %></li>
 						<!--<li><a href="about.html" ><i class="fa fa-file-text-o" aria-hidden="true"></i>Order History</a></li>
-						<li><a href="shipping.html" ><i class="fa fa-ship" aria-hidden="true"></i>Shipping</a></li>--><!-- Here all
-					</ul>	
+						<li><a href="shipping.html" ><i class="fa fa-ship" aria-hidden="true"></i>Shipping</a></li>-->
+					<!--######</ul>	
 				</div>
 				<div class="clearfix"></div>
-			</div>
+			</div> #######-->
 				
 		</div>
-<br /><br />
   <!---->
 <div class="top-top-banner">                                     <!-- there are two types of images to be used here -->
-    <div class="container-fluid">
-    	<%= image_tag "app/logo.png", class: "img-head" %>
-    	<ul class="card">
-			<!-- <li><a href="wishlist.html" ><i class="fa fa-heart" aria-hidden="true"></i>Wishlist</a></li> -->
-			<li><%= link_to "Login", { controller: :access, action: :login }, { class: "fa fa-user", "aria-hidden" => "true" } %></li>
-			<li><%= link_to "Sign up", { controller: :users, action: :new }, { class: "fa fa-user", "aria-hidden" => "true" } %></li>
-			<li><%= link_to 'Twitter', '/auth/twitter' %></li>
-			<!--<li><a href="about.html" ><i class="fa fa-file-text-o" aria-hidden="true"></i>Order History</a></li>
-			<li><a href="shipping.html" ><i class="fa fa-ship" aria-hidden="true"></i>Shipping</a></li>-->
-		</ul>
-    </div>
+    
     <div class="container">
 		<div class="banner-info">
-			<h3>Search for suppliers</h3>	
+			<br />
+			<h3>Effortlessly plan your event</h3>
+			<h4>The best events start with the best suppliers. Find everything you need, all in one place</h4>
+			<br /><br /><br />
+			<h4><a href="">See how it works</a></h4>
+			<button class="banner-info-button">Create a listing</button>
+			<br /><br /><br /><br /><br />
+			<h3>What are you looking for?</h3>
 			<div class="search-form container overlay">
 				<form action="#" method="post">
 					<div class="col-md-6 col-sm-4 col-xs-12 search-no-padding-left search-no-padding-right">
@@ -145,33 +152,220 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 			</div>		
 		</div>	
     </div>
-    <div class="container-fluid">
-    	<div class="col-md-2">
-    		Equipment
-    	</div>
-    	<div class="col-md-2">
-    		Catering
-    	</div>
-    	<div class="col-md-2">
-    		Decor
-    	</div>
-    	<div class="col-md-2">
-    		Entertainment
-    	</div>
-    	<div class="col-md-2">
-    		Venues
-    	</div>
-    	<div class="col-md-2">
-    		Transportation
-    	</div>
-    </div>
 </div>
 
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
     <script src="js/jquery.vide.min.js"></script>
+<!-- The gray background div starts from here -->
+<div class="gray-div-bg">
+<div class=" container-fluid categories-tab">
+	<h4>Explore by Categories</h4>
+</div>
+<div class="the-padding">
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-2 col-md-offset-1">
+			<div class="col-m">
+				<a href="#" data-toggle="modal" data-target="#myModal17" class="offer-img">
+					<%= image_tag "app/co1.jpg", class: "img-responsive" %>
+				</a>
+				<div class="mid-1">
+					<div class="women">
+						<h6><a href="single.html">Equipment</a></h6>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-2">
+			<div class="col-m">
+				<a href="#" data-toggle="modal" data-target="#myModal17" class="offer-img">
+					<%= image_tag "app/co1.jpg", class: "img-responsive" %>
+				</a>
+				<div class="mid-1">
+					<div class="women">
+						<h6><a href="single.html">Catering</a></h6>							
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-2">
+			<div class="col-m">
+				<a href="#" data-toggle="modal" data-target="#myModal17" class="offer-img">
+					<%= image_tag "app/co1.jpg", class: "img-responsive" %>
+				</a>
+				<div class="mid-1">
+					<div class="women">
+						<h6><a href="single.html">Decor</a></h6>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-2">
+			<div class="col-m">
+				<a href="#" data-toggle="modal" data-target="#myModal17" class="offer-img">
+					<%= image_tag "app/co1.jpg", class: "img-responsive" %>
+				</a>
+				<div class="mid-1">
+					<div class="women">
+						<h6><a href="single.html">Entertainment</a></h6>							
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-2">
+			<div class="col-m">
+				<a href="#" data-toggle="modal" data-target="#myModal17" class="offer-img">
+					<%= image_tag "app/co1.jpg", class: "img-responsive" %>
+				</a>
+				<div class="mid-1">
+					<div class="women">
+						<h6><a href="single.html">Venues</a></h6>							
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="the-padding">
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-2 col-md-offset-1">
+			<div class="col-m">
+				<a href="#" data-toggle="modal" data-target="#myModal17" class="offer-img">
+					<%= image_tag "app/co1.jpg", class: "img-responsive" %>
+				</a>
+				<div class="mid-1">
+					<div class="women">
+						<h6><a href="single.html">Transportation</a></h6>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-2">
+			<div class="col-m">
+				<a href="#" data-toggle="modal" data-target="#myModal17" class="offer-img">
+					<%= image_tag "app/co1.jpg", class: "img-responsive" %>
+				</a>
+				<div class="mid-1">
+					<div class="women">
+						<h6><a href="single.html">Clothing & Accessories</a></h6>							
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-2">
+			<div class="col-m">
+				<div class="mid-1">
+					<div class="women">
+						<h6>Find what you want Easily</h6>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-2">
+			<div class="col-m">
+				<a href="#" data-toggle="modal" data-target="#myModal17" class="offer-img">
+					<%= image_tag "app/co1.jpg", class: "img-responsive" %>
+				</a>
+				<div class="mid-1">
+					<div class="women">
+						<h6><a href="single.html">Stationary & Gifts</a></h6>							
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-2">
+			<div class="col-m">
+				<a href="#" data-toggle="modal" data-target="#myModal17" class="offer-img">
+					<%= image_tag "app/co1.jpg", class: "img-responsive" %>
+				</a>
+				<div class="mid-1">
+					<div class="women">
+						<h6><a href="single.html">Personnel</a></h6>							
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+		<div class="the-padding">
+		</div>
+</div>
+<!-- The gray background ends here -->
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-6">
+			<div class="the-padding"></div>
+			<div class="vp-header-padding">
+				<h4>
+					Evventor will help you to
+				</h4>
+			</div>
+			<div>
+				<table>
+					<tr>
+						<td></td>
+						<td>Save time with your event planning by getting all your event needs faster</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>Stop running all over town trying out multiple blind supplier auditions.Check out our reviews & ratings</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>It takes a team to plan the best event. Collaborate on the go</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>Get your own customized & personalized event supplier checklist. Save & update as you go</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>Its all free forever</td>
+					</tr>
+				</table>
+			</div>
+			<div class="the-padding"></div>
+		</div>
+		<div class="col-md-6">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="the-padding"></div>
+					<div class="vp-sup-pla-style">
+						<div class="vp-header-padding">
+							<h4>
+								For Suppliers
+							</h4>
+						</div>
+						<div>
+							<p>Get more visibility with customer product reviews & ratings & easily contact potential customers</p>
+						</div>
+					</div>
+					<div class="the-padding"></div>
+				</div>
+				<div class="col-md-12">
+					<div class="vp-sup-pla-style">
+						<div class="vp-header-padding">
+							<h4>
+								For Planners
+							</h4>
+						</div>
+						<div>
+							<p>Easily find what you need to create the best event</p>
+						</div>
+					</div>
+					<div class="the-padding"></div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</div>
 
 <!--content-->
-<%= yield %>
 <!--content-->
   <!-- Carousel
     ================================================== --><!--
@@ -292,7 +486,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 							<div class="clearfix"></div>
 						 </div>
 		</div>
-	</div> -->
+	</div>
 <!--footer--> <br /><br /><br />
 <div class="footer">
 	<div class="container">
