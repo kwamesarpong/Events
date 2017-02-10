@@ -12,10 +12,9 @@ class ProfilesController < ApplicationController
 
   def show
     init_view(params[:id])
-    @my_services = Service.find(profile_id: params[:id])
+    @services = Service.where(profile_id: params[:id])
     puts "##########################"
-    puts @my_services
-    render :new
+    puts @services
   end
 
   def new

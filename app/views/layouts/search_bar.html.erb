@@ -1,24 +1,143 @@
-<div class="top-top-banner">                                     <!-- there are two types of images to be used here -->
-    <div class="container">
-		<div class="banner-info">
-			<h3>Search for a supplier listing by name</h3>	
-			<div class="search-form container overlay">
-				<form action="#" method="post">
-					<div class="col-md-6 col-sm-4 col-xs-12 search-no-padding-left search-no-padding-right">
-						<input type="text" placeholder="Search" name="Search">
+<!DOCTYPE html>
+<html>
+<head>
+<title>Find supplier listings for all your event needs</title>
+<%= csrf_meta_tags %>
+
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta property="og:title" content="Vide" />
+<meta name="keywords" content="Search and find suppplier listings for all your event needs" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+function hideURLbar(){ window.scrollTo(0,1); } </script>
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+<!-- //for-mobile-apps -->
+<!--<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="css/style.css" rel='stylesheet' type='text/css' />-->
+<!-- js -->
+
+<!-- //js <script src="js/jquery-1.11.1.min.js"></script> -->
+<!-- start-smoth-scrolling <script type="text/javascript" src="js/move-top.js"></script>
+<script type="text/javascript" src="js/easing.js"></script> -->
+
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){		
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+</script>
+<!-- start-smoth-scrolling -->
+<!--<link href="css/font-awesome.css" rel="stylesheet">--> 
+<link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Noto+Sans:400,700' rel='stylesheet' type='text/css'>
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+<!--- start-rate -->
+	<!--<link rel="stylesheet" href="css/jstarbox.css" type="text/css" media="screen" charset="utf-8" />-->
+		<script type="text/javascript">
+			jQuery(function() {
+			jQuery('.starbox').each(function() {
+				var starbox = jQuery(this);
+					starbox.starbox({
+					average: starbox.attr('data-start-value'),
+					changeable: starbox.hasClass('unchangeable') ? false : starbox.hasClass('clickonce') ? 'once' : true,
+					ghosting: starbox.hasClass('ghosting'),
+					autoUpdateAverage: starbox.hasClass('autoupdate'),
+					buttons: starbox.hasClass('smooth') ? false : starbox.attr('data-button-count') || 5,
+					stars: starbox.attr('data-star-count') || 5
+					}).bind('starbox-value-changed', function(event, value) {
+					if(starbox.hasClass('random')) {
+					var val = Math.random();
+					starbox.next().text(' '+val);
+					return val;
+					} 
+				})
+			});
+		});
+		</script>
+<!---//End-rate -->
+
+</head>
+<body>
+	
+		<div class="header">
+			<div class="container-fluid main-nav-shadow">
+				<div class="row">
+					<div class="col-md-2" style="">
+    					<%= image_tag "app/logo1.png", class: "img-head" %>
+    				</div>
+    				<!-- ###################################### -->
+    				<div class="col-md-8 the-bar-width">
+						<form action="#" method="post">
+						<div>
+							<div class="col-md-6 col-sm-4 col-xs-12">
+								<input type="text" placeholder="Supplier or Service" name="Search" />
+							</div>
+							<div class="col-md-4 col-sm-4 hidden-xs">
+								<input type="text" placeholder="Location" name="location" />
+							</div>
+							<div class="col-md-2 col-sm-4 col-xs-12" align="center">
+								<button class="search-no-border" type="submit">Search</button>
+							</div>
+						</div>
+						</form>
+					</div>	
+					<!-- ###################################### -->
+					<div class="col-md-2">
+    					<ul class="card">
+							<!-- <li><a href="wishlist.html" ><i class="fa fa-heart" aria-hidden="true"></i>Wishlist</a></li> -->
+							<!-- Have to put a blog link here -->
+							<li><%= link_to "Login", { controller: :access, action: :login }, { class: "fa fa-user", "aria-hidden" => "true" } %></li>
+							<li><%= link_to "Sign up", { controller: :users, action: :new }, { class: "fa fa-user", "aria-hidden" => "true" } %></li>
+							<!--<li><a href="about.html" ><i class="fa fa-file-text-o" aria-hidden="true"></i>Order History</a></li>
+							<li><a href="shipping.html" ><i class="fa fa-ship" aria-hidden="true"></i>Shipping</a></li>-->
+						</ul>
 					</div>
-					<div class="col-md-4 col-sm-4 hidden-xs search-no-padding-right">
-						<select>
-							<option>Select location</option>                                     <!-- fix the categories with stella -->
-							<option>Accra</option>
-							<option>Kumasi</option>
-						</select>
+    			</div>
+    		
+			</div>
+		</div>
+  <!---->
+
+
+
+
+
+
+<%= yield %>
+
+<div class="footer">
+	<div class="container">
+		<div class="">e
+			<div class="footer-bottom">
+				<h2><a href="index.html">Evventor</a></h2>
+				<ul class="social-fo">
+					<li><a href="#" class=" face"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+					<li><a href="#" class=" twi"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+					<li><a href="#" class=" pin"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+					<li><a href="#" class=" dri"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+				</ul>
+				<div class=" address">
+					<div class="col-md-4 fo-grid1">
+							<p><i class="fa fa-home" aria-hidden="true"></i>No.32 Aluguntugui Street, East Legon, Accra</p>
 					</div>
-					<div class="col-md-2 col-sm-4 col-xs-12 search-no-padding">
-						<button class="search-no-border" type="submit">Search</button>
+					<div class="col-md-4 fo-grid1">
+							<p><i class="fa fa-phone" aria-hidden="true"></i>+1234 758 839 , +1273 748 730</p>	
 					</div>
-				</form>
-			</div>		
-		</div>	
-    </div>
+					<div class="col-md-4 fo-grid1">
+						<p><a href="mailto:info@example.com"><i class="fa fa-envelope-o" aria-hidden="true"></i>info@example1.com</a></p>
+					</div>
+					<div class="clearfix"></div>
+					
+				</div>
+			</div>
+		<div class="copy-right">
+			<p> &copy; 2017 Eventicize. All Rights Reserved</p>
+		</div>
+	</div>
 </div>
+
+	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>

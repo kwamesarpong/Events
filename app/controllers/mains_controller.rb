@@ -1,8 +1,6 @@
 class MainsController < ApplicationController
 
-    layout "main"
-
-    NUMBER_OF_RECORDS_PER_PAGE = 2
+    layout :set_layout
     
     def index
        @categories = Category.all 
@@ -12,6 +10,15 @@ class MainsController < ApplicationController
     def search
         search = PgSearch.multisearch(params[:q])
         @items = search.map(&:searchable)
+    end
+
+    def set_layout
+        case action_name
+        when "index"
+            "main"
+        else
+            "search_bar"
+        end
     end
 
     

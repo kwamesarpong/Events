@@ -4,7 +4,7 @@ class ServicesController < ApplicationController
 
   NUMBER_OF_RECORDS_PER_PAGE = 2
 
-  layout "search"
+  layout "search_bar"
 
   def index
     @page = params[:page].to_i
@@ -19,7 +19,7 @@ class ServicesController < ApplicationController
   end
 
   def show
-    #@service = Service.find(params[:id])
+    @service = Service.find(params[:id])
   end
 
   def new

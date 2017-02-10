@@ -134,17 +134,23 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 			<br /><br /><br /><br /><br />
 			<h3>What are you looking for?</h3>
 			<div class="search-form container overlay">
-				<form action="#" method="post">
+				<%= form_tag({ controller: :mains, action: :search }, :method => "get", id: "search-form") do %>
 					<div class="col-md-6 col-sm-4 col-xs-12 search-no-padding-left search-no-padding-right">
-						<input type="text" placeholder="Supplier or Service" name="Search" />
+						<%= text_field_tag :q, params[:q], placeholder: "Search" %>
+						<!--<input type="text" placeholder="Search" name="Search">-->
 					</div>
 					<div class="col-md-4 col-sm-4 hidden-xs search-no-padding-right">
-						<input type="text" placeholder="Location" name="location" />
+						<select>
+							<option>Select location</option>                                     <!-- fix the locations with stella -->
+							<option>Accra</option>
+							<option>Kumasi</option>
+						</select>
 					</div>
 					<div class="col-md-2 col-sm-4 col-xs-12 search-no-padding">
-						<button class="search-no-border" type="submit">Search</button>
+						<%= submit_tag "Search", class: "search-no-border btn-search" %>
+						<!--<button class="search-no-border" type="submit">Search</button>-->
 					</div>
-				</form>
+				<% end %>
 			</div>		
 		</div>	
     </div>

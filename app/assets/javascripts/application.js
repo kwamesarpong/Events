@@ -18,6 +18,7 @@
 //= require app/js/jquery.vide.min
 //= require app/js/jquery.mycart
 //= require app/js/responsiveslides.min
+//= require app/js/jquery.zoomtoo
 //= require app/js/classie
 //= require app/js/grid3d
 //= require turbolinks
