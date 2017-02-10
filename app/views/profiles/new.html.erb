@@ -195,12 +195,12 @@ $(".email_text_2").click(function(e){
 $(document).keypress(function(e) {
 	if(e.which == 13) {
 		e.preventDefault();
-		alert('You pressed enter!');
+		//alert('You pressed enter!');
 		var profile;
 		$('#slider').attr("value", function( i, val ){
 			profile = val;
 		})
-		alert(profile);
+		//alert(profile);
 		$.ajax({
 		url: "/profiles/"+profile,
 		type: "PATCH",
