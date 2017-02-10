@@ -32,24 +32,24 @@
 					</div>
 					<br />
 					<div class="contact-info some-border">
+						<i class="short_desc fa fa-pencil" aria-hidden="true"></i>
 						<h3>Where you can find us</h3>
-						<p>We are located in the 3 major cities in Kenya.</p>
 						<i aria-hidden="true"></i>
                         <div class="footer-info">
 							<div class="some-border">
 								<i class="fa fa-globe" aria-hidden="true"></i>
-								<p class="p1">77727 Moi Avenue </p>
-								<p class="p2">Nairobi, Kenya</p>
+								<p class="p1 address_text">77727 Moi Avenue </p>
+								<p class="p2 address_text_2">Nairobi, Kenya</p>
 							</div>
 							<div class="some-border">
 								<i class="fa fa-phone" aria-hidden="true"></i>
-								<p class="p1">+1 515 151515</p>
-								<p class="p2">+00 1010101010</p>
+								<p class="p1 phone_number_text">+1 515 151515</p>
+								<p class="p2 phone_number_text_2">+00 1010101010</p>
 							</div>
 							<div class="some-border">
 								<i class="fa fa-envelope" aria-hidden="true"></i>
-								<p class="p1"><a href="mailto:myemail@something.com">myemail1@example.com</a></p>
-								<p class="p2"><a href="mailto:myemail@nothing.com">myemail2@example.com</a></p>
+								<p class="p1 email_text"><%= @profile.user.email %></p>
+								<p class="p2 email_text_2">myemail2@example.com</p>
 							</div>
 						</div>
 					</div>
@@ -111,7 +111,14 @@
 							<% end %>
 						</ol>
 						<div class="carousel-inner" role="listbox">
-							<% unless @my_services.blank? %>
+							<% if @my_services.blank? %>
+
+								<h3 class="text-center">You are yet to post a service</h3>
+								<hr style="margin:0;">
+								<p class="text-center">When you post a service, you’ll see them here.</p>
+
+								<% else %>
+
 								<% @my_services.each do |service| %>
 									
 									<div class="col-md-4">
@@ -123,36 +130,6 @@
 						</div>
 					</div>
 				</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 			</div>
 		</div>
 	</div>
@@ -167,34 +144,6 @@ $(".full_name").click(function(e){
     $('.full_name_text').css("outline","none");
     console.log("it");
 });
-
-    $(document).keypress(function(e) {
-    if(e.which == 13) {
-        e.preventDefault();
-        alert('You pressed enter!');
-        var profile;
-        $('#slider').attr("value", function( i, val ){
-            profile = val;
-        })
-        alert(profile);
-        $.ajax({
-        url: "/profiles/"+profile,
-        type: "PATCH",
-        data: {profile: {
-                    id: profile,
-                    name_of_agency: $('.full_name_text').text(),
-                    desc: $('.long_desc_text').text(),
-                    short_desc: $('.short_desc_text').text(),
-                    tagline: $('.tagline_text').text()
-                    }},
-        success: function(resp){ 
-            console.log(resp)
-        }
-        });
-
-    }
-});
-
 
 $(".tagline").click(function(e){
     $('.tagline_text').attr("contentEditable", "true");
@@ -211,6 +160,69 @@ $(".short_desc").click(function(e){
 $(".long_desc").click(function(e){
     $('.long_desc_text').attr("contentEditable", "true");
     console.log("it");
+});
+
+$(".address_text").click(function(e){
+    $('.address_text').attr("contentEditable", "true");
+    console.log("it");
+});
+
+$(".address_text_2").click(function(e){
+    $('.address_text_2').attr("contentEditable", "true");
+    console.log("it");
+});
+
+$(".phone_number_text").click(function(e){
+    $('.phone_number_text').attr("contentEditable", "true");
+    console.log("it");
+});
+
+$(".phone_number_text").click(function(e){
+    $('.phone_number_text_2').attr("contentEditable", "true");
+    console.log("it");
+});
+
+$(".email_text").click(function(e){
+    $('.email_text').attr("contentEditable", "true");
+    console.log("it");
+});
+
+$(".email_text_2").click(function(e){
+    $('.email_text_2').attr("contentEditable", "true");
+    console.log("it");
+});
+
+$(document).keypress(function(e) {
+	if(e.which == 13) {
+		e.preventDefault();
+		alert('You pressed enter!');
+		var profile;
+		$('#slider').attr("value", function( i, val ){
+			profile = val;
+		})
+		alert(profile);
+		$.ajax({
+		url: "/profiles/"+profile,
+		type: "PATCH",
+		data: { profile: {
+					 			 id: profile,
+					 name_of_agency: $('.full_name_text').text(),
+					 		   desc: $('.long_desc_text').text(),
+					 	 short_desc: $('.short_desc_text').text(),
+					 		tagline: $('.tagline_text').text()
+					},
+				address: {
+							profile_id: profile,
+					  physical_address: $('.address_text').text()
+				}
+					
+					},
+		success: function(resp){ 
+			console.log(resp)
+		}
+		});
+
+	}
 });
 
 </script>

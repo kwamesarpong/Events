@@ -46,7 +46,19 @@ class ProfilesController < ApplicationController
   def update
     @profile = Profile.find_by_id(params[:id])
     @profile.profile_picture = params[:profile][:profile_picture]
+    #update profile
     if (@profile.update_attributes(white_list))
+      #update address here
+      address = Address.find_by(profile_id: @profile.id)
+      if address.nil?
+        address = Address.new
+        address.profile_id = @profile.id
+        address.physical_address = params[:address][:physical_address]
+        address.save
+        else
+        address.update(physical_address: params[:address][:physical_address])
+      end
+      
       render json: @profile
     else
       render new
@@ -62,7 +74,7 @@ class ProfilesController < ApplicationController
   private
 
   def init_view(param)
-    @profile = Profile.find(param)
+    @profile = Profile.find_by_id(param)
     @service = Service.new
     @categories = Category.all
   end
@@ -70,5 +82,11 @@ class ProfilesController < ApplicationController
   def white_list
     params.require(:profile).permit(:name_of_agency, :subscription_id, :desc, :user_id, :paid, :short_desc,:tagline)
   end
+
+  def add_white_list
+    params.require(:address).permit(:physical_address)
+  end
+
+
 
 end
