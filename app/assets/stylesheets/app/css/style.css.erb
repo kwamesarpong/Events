@@ -541,7 +541,7 @@ span.fa.fa-shopping-cart.my-cart-icon {
     outline: none;
     font-size: 1em;
     color: #6d6868;
-    border: 1px solid #FFF;
+    border: 1px solid #6d6868;
     background-color: #fff;
 }
 .search-form button{
@@ -625,13 +625,51 @@ span.fa.fa-shopping-cart.my-cart-icon {
 	width: 40px;
     height: 40px;
     display: block;
-    background: #fff;
+    background: #f9f9f9;
     position: absolute;
     top: -7px;
     left: 42%;  
 }
 .ser-t  span i{
 	width: 20px;height: 20px;
+    display: block;
+    border: 2px solid #e67e22;
+    -webkit-transform: rotate(45deg) translate3d(0, 0, 0);
+    -moz-transform: rotate(45deg) translate3d(0, 0, 0);
+    -ms-transform: rotate(45deg) translate3d(0, 0, 0);
+    -o-transform: rotate(45deg) translate3d(0, 0, 0);
+    transform: rotate(45deg) translate3d(0, 0, 0);
+    margin-left: 0.7em;
+}
+/* Another version of the orange bar */
+.ser-t1 {
+    text-align: center;
+    margin: 0 auto;
+    width: 20%;
+    position: relative;
+}
+.ser-t1 b{
+  width: 100%;
+    height: 2px;
+    display: block;
+    background: #e67e22;
+    margin-bottom: 3px;
+}
+.ser-t1 b.line{
+  width: 80%;
+  margin:0 auto;
+}
+.ser-t1  span{
+  width: 40px;
+    height: 40px;
+    display: block;
+    background: #fff;
+    position: absolute;
+    top: -7px;
+    left: 42%;  
+}
+.ser-t1  span i{
+  width: 20px;height: 20px;
     display: block;
     border: 2px solid #e67e22;
     -webkit-transform: rotate(45deg) translate3d(0, 0, 0);
@@ -830,6 +868,27 @@ a:focus {
   transform: scaleY(1);
 }
 /*--content--*/
+
+/*--search on all pages --*/
+.the-bar-width {
+  margin-top: 2.5em;
+}
+.the-bar-width input {
+  width: 100%;
+    padding: 10px;
+    outline: none;
+    font-size: 1em;
+    color: #6d6868;
+    border: 1px solid #6d6868;
+    background-color: #fff;
+}
+.the-bar-width button {
+    width: 100px;
+    height: 42px;
+    background-color: #e67e22;
+    color: #fff;
+}
+
 /*--product--*/
 .span-1 h3 {
 	color: #000;
@@ -1057,6 +1116,7 @@ ul.product-qty {
 /*--content-mid--*/
 .product {
 	padding:8em 0 6em;
+  background-color: #f9f9f9;
 }
 .pro-1 {
     margin-bottom: 2em;
@@ -2116,9 +2176,21 @@ p.in-pa{
 .con-sin{
 	margin:0;
 }
+/* Style the textarea */
+.style-textarea textarea {
+  width: 70%;
+  height: 150px;
+}
 .add-3 {
     margin-top: 0.5em;
     text-align: left;
+}
+.add-3 button {
+  background-color: #e67e22;
+  color: #ffffff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 .single-w3agile{
