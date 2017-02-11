@@ -65,50 +65,44 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 <body>
 <!--<a href="offer.html"><img src="images/logo.png" class="img-head" alt=""></a>-->
 <div class="header">
-
-		<div class="container">
-							<div class="nav-top">
-					<nav class="navbar navbar-default">		
-						<div class="navbar-header nav_2">
-							<button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
-								<span class="sr-only">Toggle navigation</span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>
-						</div> 
-						<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
-							<ul class="nav navbar-nav ">
-								<li class="active"><a href="index.html" class="hyper"><span>Home</span></a></li>	
-								
-							</ul>
+			<div class="container-fluid main-nav-shadow">
+				<div class="row">
+					<div class="col-md-2" style="">
+    					<%= image_tag "app/logo1.png", class: "img-head" %>
+    				</div>
+    				<!-- ###################################### -->
+    				<div class="col-md-8 the-bar-width"><!--   /////  This had to be taken away for the no-search function
+						<form action="#" method="post">
+						<div>
+							<div class="col-md-6 col-sm-4 col-xs-12">
+								<input type="text" placeholder="Supplier or Service" name="Search" />
+							</div>
+							<div class="col-md-4 col-sm-4 hidden-xs">
+								<input type="text" placeholder="Location" name="location" />
+							</div>
+							<div class="col-md-2 col-sm-4 col-xs-12" align="center">
+								<button class="search-no-border" type="submit">Search</button>
+							</div>
 						</div>
-
-					</nav>
-				</div>
-					 <div class="cart" >
-					
-						<!--<span class="fa fa-shopping-cart my-cart-icon"><span class="badge badge-notify my-cart-badge"></span></span>-->
-						<ul class="card">
-							<li><a href="wishlist.html" ><i class="fa fa-heart" aria-hidden="true"></i>Wishlist</a></li>
-							<li><%= link_to "Login", { controller: :access, action: :login }, html: { class: "fa fa-user", aria_hidden: "true" } %></li>
-							<li><%= link_to "Sign up", { controller: :users, action: :new }, html: { class: "fa fa-user", aria_hidden: "true" } %></li>
+						</form>  -->
+					</div>	
+					<!-- ###################################### -->
+					<div class="col-md-2">
+    					<ul class="card">
+							<!-- <li><a href="wishlist.html" ><i class="fa fa-heart" aria-hidden="true"></i>Wishlist</a></li> -->
+							<!-- Have to put a blog link here -->
+							<li><%= link_to "Login", { controller: :access, action: :login }, { class: "fa fa-user", "aria-hidden" => "true" } %></li>
+							<li><%= link_to "Sign up", { controller: :users, action: :new }, { class: "fa fa-user", "aria-hidden" => "true" } %></li>
 							<!--<li><a href="about.html" ><i class="fa fa-file-text-o" aria-hidden="true"></i>Order History</a></li>
 							<li><a href="shipping.html" ><i class="fa fa-ship" aria-hidden="true"></i>Shipping</a></li>-->
-						</ul>	
+						</ul>
 					</div>
-					<div class="clearfix"></div>
-				</div>
-
-
-				<!-- The navigation bar thingy ends here -->
-				<br /><br />
-			<div class="logo">
-				<h1 ><a href="index.html"><a href=""><%= image_tag "app/logo.png", class: "img-head" %><span>For all your event listing needs</span></a></h1>   <!-- Probably make the name orange, create a panel and switch tab around ///////        Done     -->
+    			</div>
+    		
 			</div>
-					
-		</div>			
-</div><br /><br />
+		</div>
+  <!---->
+  
 
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
     <script src="js/jquery.vide.min.js"></script>
@@ -116,73 +110,49 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!--content-->
 <%= yield %>
 
+<!--footer-->
 <div class="footer">
 	<div class="container">
-		<div class="col-md-3 footer-grid">
-			<h3>About Us</h3>
-			<p>Nam libero tempore, cum soluta nobis est eligendi 
-				optio cumque nihil impedit quo minus id quod maxime 
-				placeat facere possimus.</p>
-		</div>
-		<div class="col-md-3 footer-grid ">
-			<h3>Menu</h3>
-			<ul>
-				<li><a href="index.html">Home</a></li>
-				<li><a href="kitchen.html">Corporate</a></li>
-				<li><a href="care.html">Casual</a></li>
-				<li><a href="hold.html">Personal</a></li>						 
-				<!--<li><a href="codes.html">Short Codes</a></li>-->
-				<li><a href="contact.html">Contact</a></li>
-			</ul>
-		</div>
-		<div class="col-md-3 footer-grid ">
-			<h3>Customer Services</h3>
-			<ul>
-				<!--<li><a href="shipping.html">Shipping</a></li>-->
-				<li><a href="terms.html">Terms & Conditions</a></li>
-				<li><a href="faqs.html">Faqs</a></li>
-				<li><a href="contact.html">Contact</a></li>
-				<!--<li><a href="offer.html">Online Shopping</a></li>-->					 
-				 
-			</ul>
-		</div>
-		<div class="col-md-3 footer-grid">
-			<h3>My Account</h3>
-			<ul>
-				<li><%= link_to "Login", { controller: :access, action: :login } %></li>
-				<li><%= link_to "Register", { controller: :users, action: :new } %></li>
-				<li><a href="wishlist.html">Wishlist</a></li>
-				
-			</ul>
-		</div>
-		<div class="clearfix"></div>
-			<div class="footer-bottom">
-				<h2 ><a href="index.html">Eventicize<span>Find supplier listings for all events</span></a></h2>
-				<p class="fo-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
-				<ul class="social-fo">
-					<li><a href="#" class=" face"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-					<li><a href="#" class=" twi"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-					<li><a href="#" class=" pin"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
-					<li><a href="#" class=" dri"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-				</ul>
-				<div class=" address">
-					<div class="col-md-4 fo-grid1">
-							<p><i class="fa fa-home" aria-hidden="true"></i>No.32 Aluguntugui Street, East Legon, Accra</p>
-					</div>
-					<div class="col-md-4 fo-grid1">
-							<p><i class="fa fa-phone" aria-hidden="true"></i>+1234 758 839 , +1273 748 730</p>	
-					</div>
-					<div class="col-md-4 fo-grid1">
-						<p><a href="mailto:info@example.com"><i class="fa fa-envelope-o" aria-hidden="true"></i>info@example1.com</a></p>
-					</div>
-					<div class="clearfix"></div>
-					
-					</div>
+		<div class="row">
+			<div class="col-md-4">
+				<h2>About Us</h2>
+				<br />
+				<p>Evventor is an innovative community marketplace that enables people list and discover a wide variety of events suppliers around them to make their event successful. We know quality, speed and reviews are important concerns when selecting your desired event service provider. That’s why if you’re organizing your next event, Evventor is your best sourcing buddy. Our mission is to help promote businesses online.</p>
 			</div>
-		<div class="copy-right">
-			<p> &copy; 2016 Eventicize. All Rights Reserved</p>
+			<div class="col-md-8">
+				<div class="row">
+					<div class="col-md-12" align="center">
+						<h2>Evventor</h2>
+						<br />
+					</div>
+					<div class="col-md-12">
+						<div class="col-md-4 fo-grid1">
+							<p><i class="fa fa-home" aria-hidden="true"></i>No.32 Aluguntugui Street, East Legon, Accra</p>
+						</div>
+						<div class="col-md-4 fo-grid1">
+							<p><i class="fa fa-phone" aria-hidden="true"></i>+1234 758 839 , +1273 748 730</p>	
+						</div>
+						<div class="col-md-4 fo-grid1">
+							<p><a href="mailto:info@example.com"><i class="fa fa-envelope-o" aria-hidden="true"></i>info@example1.com</a></p>
+						</div>
+					</div>
+					<div class="col-md-12" align="center">
+						<ul class="social-for">
+							<li><a href="#" class=" face"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+							<li><a href="#" class=" twi"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+							<li><a href="#" class=" pin"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+							<li><a href="#" class=" dri"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+	</div>
+	<div class="row">
+		<div class="copy-right col-md-12">
+			<p> &copy; 2017 Evventor. All Rights Reserved</p>
 		</div>
 	</div>
+</div>
 </div>
 <!-- //footer-->
 
