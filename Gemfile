@@ -17,10 +17,12 @@ gem 'pg'
 gem 'pg_search'
 
 #omniauth
-gem 'omniauth'
+#gem 'omniauth'
 
 #for twitter authen
 gem 'omniauth-twitter'
+
+gem 'omniauth-facebook'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.0'

@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
   post '/search', to: 'mains#search'
 
+  get '/auth/:provider/callback', to: 'outsides#create'
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

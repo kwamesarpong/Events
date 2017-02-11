@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
 
-  include ApplicationHelper
-
   layout :set_layout
   
   before_action :get_user, only: [:show, :update, :destroy]
@@ -22,6 +20,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(white_list)
     if @user.save
+      session[:user_id] = @user.id
       #USER CREATED
       #puts display_object_attributes @user
       if @user.kind == User::SERVICE_PROVIDER
@@ -62,7 +61,7 @@ class UsersController < ApplicationController
   private
 
   def white_list
-    params.require(:user).permit(:email,:username,:password,:kind,:first_name,:last_name)
+    params.require(:user).permit(:email,:password,:kind,:name)
   end
 
   def set_layout
