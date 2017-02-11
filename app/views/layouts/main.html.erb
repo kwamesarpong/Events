@@ -70,8 +70,8 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
     			<ul class="card">
 					<!-- <li><a href="wishlist.html" ><i class="fa fa-heart" aria-hidden="true"></i>Wishlist</a></li> -->
 					<!-- Have to put a blog link here -->
-					<li><%= link_to "Login", { controller: :access, action: :login }, { class: "fa fa-user", "aria-hidden" => "true" } %></li>
-					<li><%= link_to "Sign up", { controller: :users, action: :new }, { class: "fa fa-user", "aria-hidden" => "true" } %></li>
+					<li><a href=".lgmd" data-toggle="modal"><i class="fa fa-user" aria-hidden="true"></i>Log in</a></li>
+					<li><a href=".sumd" data-toggle="modal"><i class="fa fa-user" aria-hidden="true"></i>Sign Up</a></li>
 					<!--<li><a href="about.html" ><i class="fa fa-file-text-o" aria-hidden="true"></i>Order History</a></li>
 					<li><a href="shipping.html" ><i class="fa fa-ship" aria-hidden="true"></i>Shipping</a></li>-->
 				</ul>
@@ -120,6 +120,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 			</div> #######-->
 				
 		</div>
+		
   <!---->
 <div class="top-top-banner">                                     <!-- there are two types of images to be used here -->
     
@@ -296,31 +297,32 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 		<div class="col-md-6">
 			<div class="the-padding"></div>
 			<div class="vp-header-padding">
-				<h4>
+				<h3>
 					Evventor will help you to
-				</h4>
+				</h3>
 			</div>
+			<br />
 			<div>
-				<table>
+				<table class="grid-table">
 					<tr>
-						<td></td>
-						<td>Save time with your event planning by getting all your event needs faster</td>
+						<td class="grid-table1"><%= image_tag "app/clock.png", class: "img-head" %></td>
+						<td class="grid-table2"><b>Save time with your event planning by getting all your event needs faster</b></td>
 					</tr>
 					<tr>
-						<td></td>
-						<td>Stop running all over town trying out multiple blind supplier auditions.Check out our reviews & ratings</td>
+						<td class="grid-table1"><%= image_tag "app/running.png", class: "img-head" %></td>
+						<td class="grid-table2"><b>Stop running all over town trying out multiple blind supplier auditions.Check out our reviews & ratings</b></td>
 					</tr>
 					<tr>
-						<td></td>
-						<td>It takes a team to plan the best event. Collaborate on the go</td>
+						<td class="grid-table1"><%= image_tag "app/handshake.png", class: "img-head" %></td>
+						<td class="grid-table2"><b>It takes a team to plan the best event. Collaborate on the go</b></td>
 					</tr>
 					<tr>
-						<td></td>
-						<td>Get your own customized & personalized event supplier checklist. Save & update as you go</td>
+						<td class="grid-table1"><%= image_tag "app/checklist.png", class: "img-head" %></td>
+						<td class="grid-table2"><b>Get your own customized & personalized event supplier checklist. Save & update as you go</b></td>
 					</tr>
 					<tr>
-						<td></td>
-						<td>Its all free forever</td>
+						<td class="grid-table1"><%= image_tag "app/happyimage.png", class: "img-head" %></td>
+						<td class="grid-table2"><b>Its all free forever</b></td>
 					</tr>
 				</table>
 			</div>
@@ -332,12 +334,13 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 					<div class="the-padding"></div>
 					<div class="vp-sup-pla-style">
 						<div class="vp-header-padding">
-							<h4>
+							<h3>
 								For Suppliers
-							</h4>
+							</h3>
 						</div>
+						<br /><br />
 						<div>
-							<p>Get more visibility with customer product reviews & ratings & easily contact potential customers</p>
+							<p><b>Get more visibility with customer product reviews & ratings & easily contact potential customers</b></p>
 						</div>
 					</div>
 					<div class="the-padding"></div>
@@ -345,12 +348,13 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 				<div class="col-md-12">
 					<div class="vp-sup-pla-style">
 						<div class="vp-header-padding">
-							<h4>
+							<h3>
 								For Planners
-							</h4>
+							</h3>
 						</div>
+						<br /><br />
 						<div>
-							<p>Easily find what you need to create the best event</p>
+							<p><b>Easily find what you need to create the best event</b></p>
 						</div>
 					</div>
 					<div class="the-padding"></div>
@@ -485,13 +489,13 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 	</div>
 
 <div class="container-fluid">
-	<%= image_tag "app/evventor.jpg", class: "the-image" %>
+	<!-- <%= image_tag "app/evventor.jpg", class: "the-image" %> -->
 </div>
 <!--footer-->
 <div class="footer">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-4">
+			<div class="col-md-4 some-justify">
 				<h2>About Us</h2>
 				<br />
 				<p>Evventor is an innovative community marketplace that enables people list and discover a wide variety of events suppliers around them to make their event successful. We know quality, speed and reviews are important concerns when selecting your desired event service provider. That’s why if you’re organizing your next event, Evventor is your best sourcing buddy. Our mission is to help promote businesses online.</p>
@@ -500,6 +504,10 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 				<div class="row">
 					<div class="col-md-12" align="center">
 						<h2>Evventor</h2>
+						<br />
+					</div>
+					<div class="col-md-12" align="center">
+						<h4>Connect with us</h4>
 						<br />
 					</div>
 					<div class="col-md-12">
@@ -532,6 +540,101 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 </div>
 </div>
 <!-- //footer-->
+
+<!-- Modal for signup -->
+		<div class="container">
+  			<!-- Modal -->
+  			<div class="modal fade sumd" id="signupModal" role="dialog">
+    			<div class="modal-dialog">
+    
+      			<!-- Modal content-->
+      				<div class="modal-content">
+        				<div class="modal-header the-modal-header">
+          					<button type="button" class="close" data-dismiss="modal">&times;</button>
+          					<%= image_tag "app/logo1.png", class: "img-head" %>
+          					<h3 class="modal-title">Register Today</h3>
+        				</div>
+        				<div class="modal-body md-body">
+        					<div class="md-body-fb">
+          						<button>Sign Up with Facebook</button>
+          					</div>
+          					<br />
+          					<div class="md-body-tw">
+          						<button>Sign Up with Twitter</button>
+          					</div>
+          					<br />
+          					<div>
+          						<h3>or</h3>
+          					</div>
+          					<br />
+          					<div class="md-body-em">
+          						<button>Sign Up with Email</button>
+          					</div>
+          					<br />
+          					<br />
+        				</div>
+        				<div class="modal-footer the-modal-footer">
+        					<p>By creating an account you agree to our <a href="">terms and conditions</a></p>
+        					<p>Already have an account? <a href="#loginModal" data-toggle="modal" onclick="$('#signupModal').Toggle();">Log in</a></p>
+        				</div>
+      				</div>
+      
+    			</div>
+  			</div>
+  
+		</div>
+<!-- Modal -->
+<!-- Modal for login -->
+		<div class="container">
+  			<!-- Modal -->
+  			<div class="modal fade lgmd" id="loginModal" role="dialog">
+    			<div class="modal-dialog">
+    
+      			<!-- Modal content-->
+      				<div class="modal-content">
+        				<div class="modal-header the-modal-header">
+          					<button type="button" class="close" data-dismiss="modal">&times;</button>
+          					<%= image_tag "app/logo1.png", class: "img-head" %>
+          					<h3 class="modal-title">Log in</h3>
+        				</div>
+        				<div class="modal-body md-body">
+        					<div class="md-body-fb">
+          						<button>Log in with Facebook</button>
+          					</div>
+          					<br />
+          					<div class="md-body-tw">
+          						<button>Log in with Twitter</button>
+          					</div>
+          					<br />
+          					<div>
+          						<h3>or</h3>
+          					</div>
+          					<br />
+          					<div align="center">
+          						<div class="key1">
+									<i class="fa fa-key" aria-hidden="true"></i>
+									<input type="text" placeholder="Username" name="username" />
+									<div class="clearfix"></div>
+								</div>
+								<div class="key1">
+									<i class="fa fa-lock" aria-hidden="true"></i>
+									<input type="password" placeholder="********" name="password" />
+									<div class="clearfix"></div>
+								</div>
+          					</div>
+          					<br />
+          					<br />
+        				</div>
+        				<div class="modal-footer the-modal-footer">
+        					<p>Don't have an account? <a href="">Sign up</a></p>
+        				</div>
+      				</div>
+      
+    			</div>
+  			</div>
+  
+		</div>
+<!-- Modal -->
 
 	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 <!-- //smooth scrolling -->
