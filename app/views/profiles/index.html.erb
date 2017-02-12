@@ -1,2 +1,230 @@
-<h1>Profiles#index</h1>
-<p>Find me in app/views/profiles/index.html.erb</p>
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+<div class="banner-profile">
+	<ul class="rslides" id="slider" value="<%= @profile.id %>" >
+		<li>
+			<div class="banner-profile-info">
+				<h3 class="full_name_text"><%= @profile.name_of_agency %> <i class="full_name fa fa-pencil" aria-hidden="true"></i></h3>
+				<span class="line1"></span>
+				<p class="tagline_text"><%= @profile.tagline %><i class="tagline fa fa-pencil" aria-hidden="true"></i></p>
+				<span class="line2"></span>
+				<div class="social-icons">
+					<a href="#"><span class="facebook"></span></a>
+					<a href="#"><span class="twitter"></span></a>
+					<a href="#"><span class="linkedin"></span></a>
+					<a href="#"><span class="googleplus"></span></a>
+				</div>
+			</div>
+		</li>
+	</ul>
+</div>
+<div class="about-me">
+	<br />
+</div>
+<div class="about-me" id="about">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 col-xs-12">
+				<div class="mydetails slideanim text-center">
+					<div>
+						<%= image_tag "app/man", { class: "img-circle img-responsive", alt: "Generic placeholder image", width: "200", height: "200" } %>
+						<h3>Who we are</h3>
+						<p class="short_desc_text"><%= @profile.short_desc %><i class="short_desc fa fa-pencil" aria-hidden="true"></i></p>
+					</div>
+					<br />
+					<div class="contact-info some-border">
+						<i class="short_desc fa fa-pencil" aria-hidden="true"></i>
+						<h3>Where you can find us</h3>
+						<i aria-hidden="true"></i>
+                        <div class="footer-info">
+							<div class="some-border">
+								<i class="fa fa-globe" aria-hidden="true"></i>
+								<p class="p1 address_text">77727 Moi Avenue </p>
+								<p class="p2 address_text_2">Nairobi, Kenya</p>
+							</div>
+							<div class="some-border">
+								<i class="fa fa-phone" aria-hidden="true"></i>
+								<p class="p1 phone_number_text">+1 515 151515</p>
+								<p class="p2 phone_number_text_2">+00 1010101010</p>
+							</div>
+							<div class="some-border">
+								<i class="fa fa-envelope" aria-hidden="true"></i>
+								<p class="p1 email_text"><%= @profile.user.email %></p>
+								<p class="p2 email_text_2">myemail2@example.com</p>
+							</div>
+						</div>
+					</div>
+
+
+
+				</div>
+			</div>
+			<div class="col-md-8 col-xs-12">
+				<div class="myskills slideanim">
+					<h3 class="text-center">Why hire us <i class="long_desc fa fa-pencil" aria-hidden="true"></i></h3>
+                    
+					<p class="skill-text long_desc_text"><%= @profile.desc %></p>
+					
+				</div>
+				<br />
+				<div class="myskills slideanim">
+					<h3 class="text-center">Post a service</h3>
+					<%= form_for @service, url: { controller: :services, action: :create, profile: @profile.id } do |f| %>
+                    <table class="table table-striped">
+                    	<tr>
+                    		<td>Your service type</td>
+                    		<td>
+								<%= f.select :category_id, @categories.map {|c| [c.name, c.id]}, class: "form-control" %>
+							</td>
+						</tr>
+						<tr>
+							<td>Please upload a picture of your product</td>
+							<td>
+								<%= f.file_field :picture, class: "form-control" %>
+							</td>
+						</tr>
+						<tr>
+							<td>Description of the product or service</td>
+							<td>
+								<%= f.text_area :desc_service, rows:"10", cols:"31", placeholder: "Service Description", class:"form-control" %>
+							</td>
+						</tr>
+						<tr>
+							<td>Minimal Price</td>
+							<td>
+								<%= f.text_field :price, placeholder: "Price", class: "form-control" %>	
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2" align="center">	
+								<%= f.submit "Upload", class: "btn btn-success" %>
+							</td>
+						</tr>
+					<% end %>
+					</table>
+				</div>
+			
+				<div class="myskills slideanim move-down">
+					<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+						<ol class="carousel-indicators">
+							<% 0.upto(@my_services.size - 1) do |n| %>
+								<li data-target="#carousel-example-generic" data-slide-to="<%= n %>" class="active"></li>
+							<% end %>
+						</ol>
+						<div class="carousel-inner" role="listbox">
+							<% if @my_services.blank? %>
+
+								<h3 class="text-center">You are yet to post a service</h3>
+								<hr style="margin:0;">
+								<p class="text-center">When you post a service, you’ll see them here.</p>
+
+								<% else %>
+
+								<% @my_services.each do |service| %>
+									
+									<div class="col-md-4">
+										<%= image_tag service.picture.small.url %>
+									</div>
+
+								<% end %>		
+							<% end %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br />
+</div>
+
+
+<script>
+
+$(".full_name").click(function(e){
+    $('.full_name_text').attr("contentEditable", "true");
+    $('.full_name_text').css("outline","none");
+    console.log("it");
+});
+
+$(".tagline").click(function(e){
+    $('.tagline_text').attr("contentEditable", "true");
+    $('.tagline_text').css("outline","none");
+    console.log("it");
+});
+
+$(".short_desc").click(function(e){
+    $('.short_desc_text').attr("contentEditable", "true");
+    $('.full_name_text').css("outline","none");
+    console.log("it");
+});
+
+$(".long_desc").click(function(e){
+    $('.long_desc_text').attr("contentEditable", "true");
+    console.log("it");
+});
+
+$(".address_text").click(function(e){
+    $('.address_text').attr("contentEditable", "true");
+    console.log("it");
+});
+
+$(".address_text_2").click(function(e){
+    $('.address_text_2').attr("contentEditable", "true");
+    console.log("it");
+});
+
+$(".phone_number_text").click(function(e){
+    $('.phone_number_text').attr("contentEditable", "true");
+    console.log("it");
+});
+
+$(".phone_number_text").click(function(e){
+    $('.phone_number_text_2').attr("contentEditable", "true");
+    console.log("it");
+});
+
+$(".email_text").click(function(e){
+    $('.email_text').attr("contentEditable", "true");
+    console.log("it");
+});
+
+$(".email_text_2").click(function(e){
+    $('.email_text_2').attr("contentEditable", "true");
+    console.log("it");
+});
+
+$(document).keypress(function(e) {
+	if(e.which == 13) {
+		e.preventDefault();
+		//alert('You pressed enter!');
+		var profile;
+		$('#slider').attr("value", function( i, val ){
+			profile = val;
+		})
+		//alert(profile);
+		$.ajax({
+		url: "/profiles/"+profile,
+		type: "PATCH",
+		data: { profile: {
+					 			 id: profile,
+					 name_of_agency: $('.full_name_text').text(),
+					 		   desc: $('.long_desc_text').text(),
+					 	 short_desc: $('.short_desc_text').text(),
+					 		tagline: $('.tagline_text').text()
+					},
+				address: {
+							profile_id: profile,
+					  physical_address: $('.address_text').text()
+				}
+					
+					},
+		success: function(resp){ 
+			console.log(resp)
+		}
+		});
+
+	}
+});
+
+</script>
+
+

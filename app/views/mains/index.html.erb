@@ -1,142 +1,613 @@
-<div class="content-top ">
-	<div class="container ">
-		<div class="spec ">
-			<h3>Categories</h3>
-			<div class="ser-t">
-				<b></b>
-				<span><i></i></span>
-				<b class="line"></b>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Find supplier listings for all your event needs</title>
+<%= csrf_meta_tags %>
+
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta property="og:title" content="Vide" />
+<meta name="keywords" content="Search and find suppplier listings for all your event needs" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+function hideURLbar(){ window.scrollTo(0,1); } </script>
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+<!-- //for-mobile-apps -->
+<!--<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="css/style.css" rel='stylesheet' type='text/css' />-->
+<!-- js -->
+
+<!-- //js <script src="js/jquery-1.11.1.min.js"></script> -->
+<!-- start-smoth-scrolling <script type="text/javascript" src="js/move-top.js"></script>
+<script type="text/javascript" src="js/easing.js"></script> -->
+
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){		
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+</script>
+<!-- start-smoth-scrolling -->
+<!--<link href="css/font-awesome.css" rel="stylesheet">--> 
+<link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Noto+Sans:400,700' rel='stylesheet' type='text/css'>
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+<!--- start-rate -->
+<script src="js/jstarbox.js"></script>
+	<!--<link rel="stylesheet" href="css/jstarbox.css" type="text/css" media="screen" charset="utf-8" />-->
+		<script type="text/javascript">
+			jQuery(function() {
+			jQuery('.starbox').each(function() {
+				var starbox = jQuery(this);
+					starbox.starbox({
+					average: starbox.attr('data-start-value'),
+					changeable: starbox.hasClass('unchangeable') ? false : starbox.hasClass('clickonce') ? 'once' : true,
+					ghosting: starbox.hasClass('ghosting'),
+					autoUpdateAverage: starbox.hasClass('autoupdate'),
+					buttons: starbox.hasClass('smooth') ? false : starbox.attr('data-button-count') || 5,
+					stars: starbox.attr('data-star-count') || 5
+					}).bind('starbox-value-changed', function(event, value) {
+					if(starbox.hasClass('random')) {
+					var val = Math.random();
+					starbox.next().text(' '+val);
+					return val;
+					} 
+				})
+			});
+		});
+		</script>
+<!---//End-rate -->
+
+</head>
+<body>
+	
+		<div class="header">
+			<div class="container-fluid main-nav-shadow">
+    			<%= image_tag "app/logo.png", class: "img-head" %>
+    			<ul class="card">
+					<!-- <li><a href="wishlist.html" ><i class="fa fa-heart" aria-hidden="true"></i>Wishlist</a></li> -->
+					<!-- Have to put a blog link here -->
+
+					<li><a href=".lgmd" data-toggle="modal"><i class="fa fa-user" aria-hidden="true"></i>Log in</a></li>
+					<li><a href=".sumd" data-toggle="modal"><i class="fa fa-user" aria-hidden="true"></i>Sign Up</a></li>
+					<!--<li><a href="about.html" ><i class="fa fa-file-text-o" aria-hidden="true"></i>Order History</a></li>
+					<li><a href="shipping.html" ><i class="fa fa-ship" aria-hidden="true"></i>Shipping</a></li>-->
+				</ul>
+    		</div>
+<div class="top-top-banner">                                     <!-- there are two types of images to be used here -->
+    
+    <div class="container">
+		<div class="banner-info">
+			<br />
+			<h3>You deserve the best event</h3>
+			<h4>The best events start with the best suppliers. Find everything you need, all in one place</h4>
+			<br /><br /><br />
+			<h4><a href="">See how it works</a></h4>
+			<button class="banner-info-button" onclick="window.location.href='/users/new'">Create a listing</button>
+			<br /><br /><br /><br /><br />
+			<h3>What are you looking for?</h3>
+			<div class="search-form container overlay">
+				<%= form_tag({ controller: :mains, action: :search }, :method => "get", id: "search-form") do %>
+					<div class="col-md-6 col-sm-4 col-xs-12 search-no-padding-left search-no-padding-right">
+						<%= text_field_tag :q, params[:q], placeholder: "Search" %>
+						<!--<input type="text" placeholder="Search" name="Search">-->
+					</div>
+					<div class="col-md-4 col-sm-4 hidden-xs search-no-padding-right">
+						<select>
+							<option>Select location</option>                                     <!-- fix the locations with stella -->
+							<option>Accra</option>
+							<option>Kumasi</option>
+						</select>
+					</div>
+					<div class="col-md-2 col-sm-4 col-xs-12 search-no-padding">
+						<%= submit_tag "Search", class: "search-no-border btn-search" %>
+						<!--<button class="search-no-border" type="submit">Search</button>-->
+					</div>
+				<% end %>
+			</div>		
+		</div>	
+    </div>
+</div>
+
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
+    <script src="js/jquery.vide.min.js"></script>
+<!-- The gray background div starts from here -->
+<div class="gray-div-bg">
+<div class=" container-fluid categories-tab">
+	<h4>Explore by Categories</h4>
+</div>
+<div class="the-padding">
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-2 col-md-offset-1">
+			<div class="col-m">
+				<a href="#" data-toggle="modal" data-target="#myModal17" class="offer-img">
+					<%= image_tag "app/co1.jpg", class: "img-responsive" %>
+				</a>
+				<div class="mid-1">
+					<div class="women">
+						<h6><a href="single.html">Equipment</a></h6>
+					</div>
+				</div>
 			</div>
 		</div>
-		<div align="center">
-			<p>Choose from a wide variety of categories</p>
+		<div class="col-md-2">
+			<div class="col-m">
+				<a href="#" data-toggle="modal" data-target="#myModal17" class="offer-img">
+					<%= image_tag "app/co1.jpg", class: "img-responsive" %>
+				</a>
+				<div class="mid-1">
+					<div class="women">
+						<h6><a href="single.html">Catering</a></h6>							
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-2">
+			<div class="col-m">
+				<a href="#" data-toggle="modal" data-target="#myModal17" class="offer-img">
+					<%= image_tag "app/co1.jpg", class: "img-responsive" %>
+				</a>
+				<div class="mid-1">
+					<div class="women">
+						<h6><a href="single.html">Decor</a></h6>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-2">
+			<div class="col-m">
+				<a href="#" data-toggle="modal" data-target="#myModal17" class="offer-img">
+					<%= image_tag "app/co1.jpg", class: "img-responsive" %>
+				</a>
+				<div class="mid-1">
+					<div class="women">
+						<h6><a href="single.html">Entertainment</a></h6>							
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-2">
+			<div class="col-m">
+				<a href="#" data-toggle="modal" data-target="#myModal17" class="offer-img">
+					<%= image_tag "app/co1.jpg", class: "img-responsive" %>
+				</a>
+				<div class="mid-1">
+					<div class="women">
+						<h6><a href="single.html">Venues</a></h6>							
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
-							
+<div class="the-padding">
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-2 col-md-offset-1">
+			<div class="col-m">
+				<a href="#" data-toggle="modal" data-target="#myModal17" class="offer-img">
+					<%= image_tag "app/co1.jpg", class: "img-responsive" %>
+				</a>
+				<div class="mid-1">
+					<div class="women">
+						<h6><a href="single.html">Transportation</a></h6>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-2">
+			<div class="col-m">
+				<a href="#" data-toggle="modal" data-target="#myModal17" class="offer-img">
+					<%= image_tag "app/co1.jpg", class: "img-responsive" %>
+				</a>
+				<div class="mid-1">
+					<div class="women">
+						<h6><a href="single.html">Clothing & Accessories</a></h6>							
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-2">
+			<div class="col-m">
+				<div class="mid-1 cen-div">
+					<div class="women">
+						<h6>Find what you want</h6>
+						<br />
+						<h3>Easily</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-2">
+			<div class="col-m">
+				<a href="#" data-toggle="modal" data-target="#myModal17" class="offer-img">
+					<%= image_tag "app/co1.jpg", class: "img-responsive" %>
+				</a>
+				<div class="mid-1">
+					<div class="women">
+						<h6><a href="single.html">Stationery & Gifts</a></h6>							
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-2">
+			<div class="col-m">
+				<a href="#" data-toggle="modal" data-target="#myModal17" class="offer-img">
+					<%= image_tag "app/co1.jpg", class: "img-responsive" %>
+				</a>
+				<div class="mid-1">
+					<div class="women">
+						<h6><a href="single.html">Personnel</a></h6>							
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+		<div class="the-padding">
+		</div>
+</div>
+<!-- The gray background ends here -->
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-6">
+			<div class="the-padding"></div>
+			<div class="vp-header-padding">
+				<h3>
+					Evventor will help you to
+				</h3>
+			</div>
+			<br />
+			<div>
+				<table class="grid-table">
+					<tr>
+						<td class="grid-table1"><%= image_tag "app/clock.png", class: "img-head" %></td>
+						<td class="grid-table2"><b>Save time with your event planning by getting all your event supplies faster</b></td>
+					</tr>
+					<tr>
+						<td class="grid-table1"><%= image_tag "app/running.png", class: "img-head" %></td>
+						<td class="grid-table2"><b>Stop running all over town trying out multiple blind supplier auditions.Check out our reviews & ratings</b></td>
+					</tr>
+					<tr>
+						<td class="grid-table1"><%= image_tag "app/handshake.png", class: "img-head" %></td>
+						<td class="grid-table2"><b>It takes a team to plan the best event. Collaborate on the go</b></td>
+					</tr>
+					<tr>
+						<td class="grid-table1"><%= image_tag "app/checklist.png", class: "img-head" %></td>
+						<td class="grid-table2"><b>Get your own customized & personalized event supplier checklist. Save & update as you go</b></td>
+					</tr>
+					<tr>
+						<td class="grid-table1"><%= image_tag "app/happyimage.png", class: "img-head" %></td>
+						<td class="grid-table2"><b>Its all free forever</b></td>
+					</tr>
+				</table>
+			</div>
+			<div class="the-padding"></div>
+		</div>
+		<div class="col-md-6">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="the-padding"></div>
+					<div class="vp-sup-pla-style">
+						<div class="vp-header-padding">
+							<h3>
+								For Suppliers
+							</h3>
+						</div>
+						<br /><br />
+						<div>
+							<p><b>Get more visibility with customer product reviews & ratings & easily contact potential customers</b></p>
+						</div>
+					</div>
+					<div class="the-padding"></div>
+				</div>
+				<div class="col-md-12">
+					<div class="vp-sup-pla-style">
+						<div class="vp-header-padding">
+							<h3>
+								For Planners
+							</h3>
+						</div>
+						<br /><br />
+						<div>
+							<p><b>Easily find what you need to create the best event</b></p>
+						</div>
+					</div>
+					<div class="the-padding"></div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</div>
 
 <!--content-->
-<div class="content-mid">
-	<div class="container">
-		
-		<div class="col-md-4 m-w3ls">
-			<div class="col-md1 ">
-				<a href="kitchen.html">
-					<%= image_tag "app/co1.jpg", class: "img-responsive img" %>
-					<div class="big-sa">
-						<h3>Equipm<span>ent </span></h3>
-						<p>Audio & Visual, Staging, Lighting, Sound, Tents</p>
-					</div>
-				</a>
-			</div>
-		</div>
-		<div class="col-md-4 m-w3ls1">
-			<div class="col-md ">
-				<a href="hold.html">
-					<%= image_tag "app/co.jpg", class: "img-responsive img" %>
-					<div class="big-sale">
-						<div class="big-sale1">
-							<h3>Cater<span>ing </span></h3>
-							<p>Bakery, Bar/Drinks, Food, Entrees, Delicatessen</p>
-						</div>
-					</div>
-				</a>
-			</div>
-		</div>
-		<div class="col-md-4 m-w3ls">
-			<div class="col-md1 ">
-				<a href="kitchen.html">
-					<%= image_tag "app/co4.jpg", class: "img-responsive img" %>
-					<div class="big-sa">
-						<h3>Dec<span>or </span></h3>
-						<p>Floral, Drapes, Tents</p>
-					</div>
-				</a>
-			</div>
-		</div>
-		<div class="clearfix"></div>
-	</div>
-	<br /><br />
-<!-- Second row -->
+<!--content-->
+  <!-- Carousel
+    ================================================== --><!--
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators --><!--
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+         <a href="kitchen.html"> <%= image_tag "app/ba", class: "first-slide", alt: "First Slide" %></a>
+       
+        </div>
+        <div class="item">
+         <a href="care.html"> <%= image_tag "app/ba1.jpg", class: "second-slide ", alt: "Second slide" %></a>
+         
+        </div>
+        <div class="item">
+          <a href="hold.html"><%= image_tag "app/ba2.jpg", class: "third-slide ", alt:"Third slide" %></a>
+          
+        </div>
+      </div>
+    
+    </div><!-- /.carousel -->
 
-	<div class="container">
-		
-		<div class="col-md-4 m-w3ls">
-			<div class="col-md1 ">
-				<a href="kitchen.html">
-					<%= image_tag "app/co1.jpg", class: "img-responsive img" %>
-					<div class="big-sa">
-						<h3>Entertain<span>ment </span></h3>
-						<p>Comedians, MCs, Bands, Musicians, Kids, Dancers, DJs</p>
-					</div>
-				</a>
+
+	<div class="product">
+		<div class="container">
+			<div class="spec ">
+				<h3>Featured Listings</h3>
+				<div class="ser-t">
+					<b></b>
+					<span><i></i></span>
+					<b class="line"></b>
+				</div>
 			</div>
+				<div class=" con-w3l">
+							<div class="col-md-4 pro-1">
+								<div class="col-m">
+								<a href="#" data-toggle="modal" data-target="#myModal17" class="offer-img">
+										<%= image_tag "app/cakehouse.png", class: "img-responsive" %>
+									</a>
+									<div class="mid-1">
+										<div class="women">
+											<h6><a href="single.html">Valentine Cake House</a></h6>							
+										</div>
+										<div class="mid-2">
+											<p>Biggest cake supplier in Nairobi</p>
+											<div class="clearfix"></div>
+										</div>
+										<div class="block">
+											<div class="starbox small ghosting"> </div>
+										</div>
+										<br />
+										<div class="add" align="right">
+											<!-- <button class="btn btn-danger my-cart-btn my-cart-b" data-id="25" data-name="Peach Halves" data-summary="summary 25" data-price="4.50" data-quantity="1" data-image="images/of25.png">Add to Cart</button> -->
+										   	<!-- I'm putting a fake star rating system here, it needs to be called and replaced from the database --><br />
+										   	<%= image_tag "app/viewer.png", class: "img-responsive" %>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4 pro-1">
+								<div class="col-m">
+									<a href="#" data-toggle="modal" data-target="#myModal18" class="offer-img">
+										<%= image_tag "app/cakehouse.png", class: "img-responsive" %>
+									</a>
+									<div class="mid-1">
+										<div class="women">
+											<h6><a href="single.html">Valentine Cake House</a></h6>							
+										</div>
+										<div class="mid-2">
+											<p>Biggest cake supplier in Nairobi</p>
+											<div class="clearfix"></div>
+										</div>
+										<div class="block">
+											<div class="starbox small ghosting"> </div>
+										</div>
+										<br />
+										<div class="add" align="right">
+											<!-- <button class="btn btn-danger my-cart-btn my-cart-b" data-id="25" data-name="Peach Halves" data-summary="summary 25" data-price="4.50" data-quantity="1" data-image="images/of25.png">Add to Cart</button> -->
+										   	<!-- I'm putting a fake star rating system here, it needs to be called and replaced from the database --><br />
+										   	<%= image_tag "app/viewer.png", class: "img-responsive" %>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4 pro-1">
+								<div class="col-m">
+									<a href="#" data-toggle="modal" data-target="#myModal19" class="offer-img">
+										<%= image_tag "app/cakehouse.png", class: "img-responsive" %>
+									</a>
+									<div class="mid-1">
+										<div class="women">
+											<h6><a href="single.html">Valentine Cake House</a></h6>							
+										</div>
+										<div class="mid-2">
+											<p>Biggest cake supplier in Nairobi</p>
+											
+											<div class="clearfix"></div>
+										</div>
+										<div class="block">
+											<div class="starbox small ghosting"> </div>
+										</div>
+										<br />
+										<div class="add" align="right">
+											<!-- <button class="btn btn-danger my-cart-btn my-cart-b" data-id="25" data-name="Peach Halves" data-summary="summary 25" data-price="4.50" data-quantity="1" data-image="images/of25.png">Add to Cart</button> -->
+										   	<!-- I'm putting a fake star rating system here, it needs to be called and replaced from the database --><br />
+										   	<%= image_tag "app/viewer.png", class: "img-responsive" %>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							
+							<div class="clearfix"></div>
+						 </div>
 		</div>
-		<div class="col-md-4 m-w3ls1">
-			<div class="col-md ">
-				<a href="hold.html">
-					<%= image_tag "app/co.jpg", class: "img-responsive img" %>
-					<div class="big-sale">
-						<div class="big-sale1">
-							<h3>Ven<span>ues</span></h3>
-							<p>Corporate, Estates, Restaurants</p>
-						</div>
-					</div>
-				</a>
-			</div>
-		</div>
-		<div class="col-md-4 m-w3ls">
-			<div class="col-md1 ">
-				<a href="kitchen.html">
-					<%= image_tag "app/co4.jpg", class: "img-responsive img" %>
-					<div class="big-sa">
-						<h3>Transporta<span>tion </span></h3>
-						<p>Car Rental, Chauffeur, Limousine</p>
-					</div>
-				</a>
-			</div>
-		</div>
-		<div class="clearfix"></div>
 	</div>
-	<br /><br />
-<!-- Third row -->
+
+<div class="container-fluid">
+	<!-- <%= image_tag "app/evventor.jpg", class: "the-image" %> -->
+</div>
+<!--footer-->
+<div class="footer">
 	<div class="container">
-		
-		<div class="col-md-4 m-w3ls">
-			<div class="col-md1 ">
-				<a href="kitchen.html">
-					<%= image_tag "app/co1.jpg", class: "img-responsive img" %>
-					<div class="big-sa">
-						<h3>Clothing & Access<span>ories</span></h3>
-						<p>Men, Women, Kids, Jewellery, Accessories</p>
-					</div>
-				</a>
+		<div class="row">
+			<div class="col-md-4 some-justify">
+				<h2>About Us</h2>
+				<br />
+				<p>Evventor is an innovative community marketplace that enables people list and discover a wide variety of events suppliers around them to make their event successful. We know quality, speed and reviews are important concerns when selecting your desired event service provider. That’s why if you’re organizing your next event, Evventor is your best sourcing buddy. Our mission is to help promote businesses online.</p>
 			</div>
-		</div>
-		<div class="col-md-4 m-w3ls1">
-			<div class="col-md ">
-				<a href="hold.html">
-					<%= image_tag "app/co.jpg", class: "img-responsive img" %>
-					<div class="big-sale">
-						<div class="big-sale1">
-							<h3>Stationery & G<span>ifts </span></h3>
-							<p>Cards, Gifts, Registries</p>
+			<div class="col-md-8">
+				<div class="row">
+					<div class="col-md-12" align="center">
+						<h2>Evventor</h2>
+						<br />
+					</div>
+					<div class="col-md-12" align="center">
+						<h4>Connect with us</h4>
+						<br />
+					</div>
+					<div class="col-md-12">
+						<div class="col-md-4 fo-grid1">
+							<p><i class="fa fa-home" aria-hidden="true"></i>No.32 Aluguntugui Street, East Legon, Accra</p>
+						</div>
+						<div class="col-md-4 fo-grid1">
+							<p><i class="fa fa-phone" aria-hidden="true"></i>+1234 758 839 , +1273 748 730</p>	
+						</div>
+						<div class="col-md-4 fo-grid1">
+							<p><a href="mailto:info@example.com"><i class="fa fa-envelope-o" aria-hidden="true"></i>info@evventor.com</a></p>
 						</div>
 					</div>
-				</a>
-			</div>
-		</div>
-		<div class="col-md-4 m-w3ls">
-			<div class="col-md1 ">
-				<a href="kitchen.html">
-					<%= image_tag "app/co4.jpg", class: "img-responsive img" %>
-					<div class="big-sa">
-						<h3>Person<span>nel </span></h3>
-						<p>Speakers, Waiters, Security, Cleaners, Photography, Videographers, Hair & Makeup</p>
+					<div class="col-md-12" align="center">
+						<ul class="social-for">
+							<li><a href="#" class=" face"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+							<li><a href="#" class=" twi"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+							<li><a href="#" class=" pin"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+							<li><a href="#" class=" dri"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+						</ul>
 					</div>
-				</a>
+				</div>
 			</div>
+	</div>
+	<div class="row">
+		<div class="copy-right col-md-12">
+			<p> &copy; 2017 Evventor. All Rights Reserved</p>
 		</div>
-		<div class="clearfix"></div>
 	</div>
 </div>
+</div>
+<!-- //footer-->
+
+<!-- Modal for signup -->
+		<div class="container">
+  			<!-- Modal -->
+  			<div class="modal fade sumd" id="signupModal" role="dialog">
+    			<div class="modal-dialog">
+    
+      			<!-- Modal content-->
+      				<div class="modal-content">
+        				<div class="modal-header the-modal-header">
+          					<button type="button" class="close" data-dismiss="modal">&times;</button>
+          					<%= image_tag "app/logo.png", class: "img-head" %>
+          					<h3 class="modal-title">Register Today</h3>
+        				</div>
+        				<div class="modal-body md-body">
+        					<div class="md-body-fb">
+          						<button onclick="window.location.href='/auth/facebook/'">Sign Up with Facebook</button>
+          					</div>
+          					<br />
+          					<div class="md-body-tw">
+							  <button onclick="window.location.href='/auth/twitter/'">Sign Up with Twitter</button>
+          					</div>
+          					<br />
+          					<div>
+          						<h3>or</h3>
+          					</div>
+          					<br />
+          					<div class="md-body-em">
+							  <button onclick="window.location.href='/users/new/'">Sign Up with Email</button>
+          					</div>
+          					<br />
+          					<br />
+        				</div>
+        				<div class="modal-footer the-modal-footer">
+        					<p>By creating an account you agree to our <a href="">terms and conditions</a></p>
+        					<p>Already have an account? <a href="#loginModal" data-toggle="modal" onclick="$('#signupModal').Toggle();">Log in</a></p>
+        				</div>
+      				</div>
+      
+    			</div>
+  			</div>
+  
+		</div>
+<!-- Modal -->
+<!-- Modal for login -->
+		<div class="container">
+  			<!-- Modal -->
+  			<div class="modal fade lgmd" id="loginModal" role="dialog">
+    			<div class="modal-dialog">
+    
+      			<!-- Modal content-->
+      				<div class="modal-content">
+        				<div class="modal-header the-modal-header">
+          					<button type="button" class="close" data-dismiss="modal">&times;</button>
+          					<%= image_tag "app/logo.png", class: "img-head" %>
+          					<h3 class="modal-title">Log in</h3>
+        				</div>
+        				<div class="modal-body md-body">
+        					<div class="md-body-fb">
+          						<button onclick="window.location.href='/auth/facebook/'">Log in with Facebook</button>
+          					</div>
+          					<br />
+          					<div class="md-body-tw">
+          						<button onclick="window.location.href='/auth/twitter/'">Log in with Twitter</button>
+          					</div>
+          					<br />
+          					<div>
+          						<h3>or</h3>
+          					</div>
+          					<br />
+							<%= form_tag ({ controller: "users", action: "attempt_login", method: "post"}) do %>
+          					<div align="center">
+          						<div class="key1">
+									<i class="fa fa-key" aria-hidden="true"></i>
+									<%= text_field_tag :email, nil, placeholder: :Email %>
+									<div class="clearfix"></div>
+								</div>
+								<div class="key1">
+									<i class="fa fa-lock" aria-hidden="true"></i>
+									<%= password_field_tag :password, nil, placeholder: :Password %>
+									<div class="clearfix"></div>
+								</div>
+								<%= submit_tag "Log In", class: "search-no-border btn-search" %>
+          					</div>
+							<% end %>
+          					<br />
+          					<br />
+        				</div>
+        				<div class="modal-footer the-modal-footer">
+        					<p>Don't have an account? <a href="">Sign up</a></p>
+        				</div>
+      				</div>
+      
+    			</div>
+  			</div>
+  
+		</div>
+<!-- Modal -->
+
+	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+<!-- //smooth scrolling -->
+<!-- for bootstrap working <script src="js/bootstrap.js"></script> -->
+		
+<!-- //for bootstrap working <script type='text/javascript' src="js/jquery.mycart.js"></script> -->
+  <!-- product -->
+			
+</body>
+</html>

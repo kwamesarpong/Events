@@ -8,6 +8,14 @@ class ProfilesController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [ :update, :create ]
 
   def index
+    user = User.find(params[:id].to_i)
+    if user.profile.blank?
+      redirect_to action: :new, from_there: user.profile_id
+    else
+      @profile = Profile.find(user.profile_id)
+      @services = Service.where(profile_id: user.profile_id)
+    end 
+    
   end
 
   def show
