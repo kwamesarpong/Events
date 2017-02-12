@@ -2,6 +2,7 @@
 # ======================
 # Defines a single server with a list of roles and multiple properties.
 # You can define all roles on a single server, or split them:
+ #ssh_options[:keys] = ["#{ENV['HOME']}/home/Documents/key/atrams.pem"]
  server '35.167.31.66', user: 'deploy', roles: %w{web app db}
 # server 'example.com', user: 'deploy', roles: %w{app db web}, my_property: :my_value
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
