@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   get 'access/logout'
 
+  post 'users/attempt_login', to: 'users#attempt_login'
+
   get '/search', to: 'mains#search'
 
   post '/search', to: 'mains#search'

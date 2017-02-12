@@ -70,8 +70,6 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
     			<ul class="card">
 					<!-- <li><a href="wishlist.html" ><i class="fa fa-heart" aria-hidden="true"></i>Wishlist</a></li> -->
 					<!-- Have to put a blog link here -->
-					<%= link_to "twitter", "/auth/twitter/"%>
-					<%= link_to "facebook", "/auth/facebook/"%>
 
 					<li><a href=".lgmd" data-toggle="modal"><i class="fa fa-user" aria-hidden="true"></i>Log in</a></li>
 					<li><a href=".sumd" data-toggle="modal"><i class="fa fa-user" aria-hidden="true"></i>Sign Up</a></li>
@@ -79,52 +77,6 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 					<li><a href="shipping.html" ><i class="fa fa-ship" aria-hidden="true"></i>Shipping</a></li>-->
 				</ul>
     		</div>
-    		<!-- //////////////////Can work with it later
-			<div class="container-fluid">
-			
-				<div>
-					<a href=""><%= image_tag "app/logo.png", class: "img-head" %></a>
-				</div>
-				<!--The nav bar starts here-->
-				<!-- ///////////////// Can clear this comment too
-				<div class="nav-top">
-					<nav class="navbar navbar-default">		
-						<div class="navbar-header nav_2">
-							<button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
-								<span class="sr-only">Toggle navigation</span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>
-						</div><!--
-						<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
-							<ul class="nav navbar-nav ">
-								<li class="active"><a href="index.html" class="hyper"><span>Home</span></a></li>	
-								
-							</ul>
-						</div>-->
-						<!-- Can clear this one too
-					</nav>
-				</div> -->
-				
-				<!--   Can uncomment this one for progress too
-				<div class="cart">
-					
-					<!--<span class="fa fa-shopping-cart my-cart-icon"><span class="badge badge-notify my-cart-badge"></span></span>-->
-					<!-- #####This one too  <ul class="card">
-						<!-- <li><a href="wishlist.html" ><i class="fa fa-heart" aria-hidden="true"></i>Wishlist</a></li> -->
-					<!-- ####<li><%= link_to "Login", { controller: :access, action: :login }, { class: "fa fa-user", "aria-hidden" => "true" } %></li>
-						<li><%= link_to "Sign up", { controller: :users, action: :new }, { class: "fa fa-user", "aria-hidden" => "true" } %></li>
-						<!--<li><a href="about.html" ><i class="fa fa-file-text-o" aria-hidden="true"></i>Order History</a></li>
-						<li><a href="shipping.html" ><i class="fa fa-ship" aria-hidden="true"></i>Shipping</a></li>-->
-					<!--######</ul>	
-				</div>
-				<div class="clearfix"></div>
-			</div> #######-->
-				
-		</div>
-		
-  <!---->
 <div class="top-top-banner">                                     <!-- there are two types of images to be used here -->
     
     <div class="container">
@@ -565,11 +517,11 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
         				</div>
         				<div class="modal-body md-body">
         					<div class="md-body-fb">
-          						<button>Sign Up with Facebook</button>
+          						<button onclick="window.location.href='/auth/facebook/'">Sign Up with Facebook</button>
           					</div>
           					<br />
           					<div class="md-body-tw">
-          						<button>Sign Up with Twitter</button>
+							  <button onclick="window.location.href='/auth/twitter/'">Sign Up with Twitter</button>
           					</div>
           					<br />
           					<div>
@@ -577,7 +529,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
           					</div>
           					<br />
           					<div class="md-body-em">
-          						<button>Sign Up with Email</button>
+							  <button onclick="window.location.href='/user/new/'">Sign Up with Facebook</button>
           					</div>
           					<br />
           					<br />
@@ -608,29 +560,32 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
         				</div>
         				<div class="modal-body md-body">
         					<div class="md-body-fb">
-          						<button>Log in with Facebook</button>
+          						<button onclick="window.location.href='/auth/facebook/'">Log in with Facebook</button>
           					</div>
           					<br />
           					<div class="md-body-tw">
-          						<button>Log in with Twitter</button>
+          						<button onclick="window.location.href='/auth/twitter/'">Log in with Twitter</button>
           					</div>
           					<br />
           					<div>
           						<h3>or</h3>
           					</div>
           					<br />
+							<%= form_tag ({ controller: "users", action: "attempt_login", method: "post"}) do %>
           					<div align="center">
           						<div class="key1">
 									<i class="fa fa-key" aria-hidden="true"></i>
-									<input type="text" placeholder="Username" name="username" />
+									<%= text_field_tag :email, nil, placeholder: :Email %>
 									<div class="clearfix"></div>
 								</div>
 								<div class="key1">
 									<i class="fa fa-lock" aria-hidden="true"></i>
-									<input type="password" placeholder="********" name="password" />
+									<%= password_field_tag :password, nil, placeholder: :Password %>
 									<div class="clearfix"></div>
 								</div>
+								<%= submit_tag "Log In", class: "search-no-border btn-search" %>
           					</div>
+							<% end %>
           					<br />
           					<br />
         				</div>

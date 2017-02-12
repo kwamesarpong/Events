@@ -46,6 +46,29 @@ class UsersController < ApplicationController
 
   end
 
+ def attempt_login
+    found_user = User.where(email: params[:email]).first
+    #puts found_user
+    if found_user
+      authorized_user = found_user.authenticate(params[:password])
+      #puts params[:password]
+    end
+  	if authorized_user
+  		#mark user as logged in
+  		session[:user_id] = authorized_user.id
+  		flash[:notice] = "You are now logged in"
+  		redirect_to "/"
+  	else
+  		flash[:notice] = "Invalid username/password combination"
+  	end
+
+  end
+
+
+  def login
+    
+  end
+
   def edit
   end
 

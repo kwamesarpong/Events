@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170211191714) do
+ActiveRecord::Schema.define(version: 20170211224412) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,15 @@ ActiveRecord::Schema.define(version: 20170211191714) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.index ["profile_id"], name: "index_addresses_on_profile_id", using: :btree
+  end
+
+  create_table "authorizations", force: :cascade do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_authorizations_on_user_id", using: :btree
   end
 
   create_table "categories", force: :cascade do |t|
@@ -127,8 +136,6 @@ ActiveRecord::Schema.define(version: 20170211191714) do
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
     t.string   "name"
-    t.string   "providers"
-    t.string   "uid"
   end
 
 end
