@@ -12,9 +12,15 @@ class UsersController < ApplicationController
   end
 
   def new
-    @categories = Category.all
-    @user = User.new
-    render :new
+    if session[:user_id]
+      profile = Profile.find_by_user_id(session[:user_id])
+      redirect_to controller: :profiles, action: :show, id: profile.id
+    else
+      @categories = Category.all
+      @user = User.new
+      render :new
+    end
+
   end
 
   def create

@@ -15,7 +15,7 @@ class MainsController < ApplicationController
     def set_layout
         case action_name
         when "index"
-            "main"
+            "application"
         else
             "search_bar"
         end
