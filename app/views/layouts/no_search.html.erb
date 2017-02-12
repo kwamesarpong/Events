@@ -68,7 +68,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 			<div class="container-fluid main-nav-shadow">
 				<div class="row">
 					<div class="col-md-2" style="">
-    					<%= image_tag "app/logo1.png", class: "img-head" %>
+    					<%= image_tag "app/logo.png", class: "img-head" %>
     				</div>
     				<!-- ###################################### -->
     				<div class="col-md-8 the-bar-width"><!--   /////  This had to be taken away for the no-search function
@@ -91,8 +91,8 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
     					<ul class="card">
 							<!-- <li><a href="wishlist.html" ><i class="fa fa-heart" aria-hidden="true"></i>Wishlist</a></li> -->
 							<!-- Have to put a blog link here -->
-							<li><%= link_to "Login", { controller: :access, action: :login }, { class: "fa fa-user", "aria-hidden" => "true" } %></li>
-							<li><%= link_to "Sign up", { controller: :users, action: :new }, { class: "fa fa-user", "aria-hidden" => "true" } %></li>
+							<li><a href=".lgmd" data-toggle="modal"><i class="fa fa-user" aria-hidden="true"></i>Log in</a></li>
+							<li><a href=".sumd" data-toggle="modal"><i class="fa fa-user" aria-hidden="true"></i>Sign Up</a></li>
 							<!--<li><a href="about.html" ><i class="fa fa-file-text-o" aria-hidden="true"></i>Order History</a></li>
 							<li><a href="shipping.html" ><i class="fa fa-ship" aria-hidden="true"></i>Shipping</a></li>-->
 						</ul>
@@ -137,7 +137,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 							<p><i class="fa fa-phone" aria-hidden="true"></i>+1234 758 839 , +1273 748 730</p>	
 						</div>
 						<div class="col-md-4 fo-grid1">
-							<p><a href="mailto:info@example.com"><i class="fa fa-envelope-o" aria-hidden="true"></i>info@example1.com</a></p>
+							<p><a href="mailto:info@example.com"><i class="fa fa-envelope-o" aria-hidden="true"></i>info@evventor.com</a></p>
 						</div>
 					</div>
 					<div class="col-md-12" align="center">
@@ -159,6 +159,102 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 </div>
 </div>
 <!-- //footer-->
+
+<!-- Modal for signup -->
+		<div class="container">
+  			<!-- Modal -->
+  			<div class="modal fade sumd" id="signupModal" role="dialog">
+    			<div class="modal-dialog">
+    
+      			<!-- Modal content-->
+      				<div class="modal-content">
+        				<div class="modal-header the-modal-header">
+          					<button type="button" class="close" data-dismiss="modal">&times;</button>
+          					<%= image_tag "app/logo.png", class: "img-head" %>
+          					<h3 class="modal-title">Register Today</h3>
+        				</div>
+        				<div class="modal-body md-body">
+        					<div class="md-body-fb">
+          						<button>Sign Up with Facebook</button>
+          					</div>
+          					<br />
+          					<div class="md-body-tw">
+          						<button>Sign Up with Twitter</button>
+          					</div>
+          					<br />
+          					<div>
+          						<h3>or</h3>
+          					</div>
+          					<br />
+          					<div class="md-body-em">
+          						<button>Sign Up with Email</button>
+          					</div>
+          					<br />
+          					<br />
+        				</div>
+        				<div class="modal-footer the-modal-footer">
+        					<p>By creating an account you agree to our <a href="">terms and conditions</a></p>
+        					<p>Already have an account? <a href="#loginModal" data-toggle="modal" onclick="$('#signupModal').Toggle();">Log in</a></p>
+        				</div>
+      				</div>
+      
+    			</div>
+  			</div>
+  
+		</div>
+<!-- Modal -->
+<!-- Modal for login -->
+		<div class="container">
+  			<!-- Modal -->
+  			<div class="modal fade lgmd" id="loginModal" role="dialog">
+    			<div class="modal-dialog">
+    
+      			<!-- Modal content-->
+      				<div class="modal-content">
+        				<div class="modal-header the-modal-header">
+          					<button type="button" class="close" data-dismiss="modal">&times;</button>
+          					<%= image_tag "app/logo.png", class: "img-head" %>
+          					<h3 class="modal-title">Log in</h3>
+        				</div>
+        				<div class="modal-body md-body">
+        					<div class="md-body-fb">
+          						<button>Log in with Facebook</button>
+          					</div>
+          					<br />
+          					<div class="md-body-tw">
+          						<button>Log in with Twitter</button>
+          					</div>
+          					<br />
+          					<div>
+          						<h3>or</h3>
+          					</div>
+          					<br />
+          					<div align="center">
+          						<div class="key1">
+									<i class="fa fa-key" aria-hidden="true"></i>
+									<input type="text" placeholder="Username" name="username" />
+									<div class="clearfix"></div>
+								</div>
+								<div class="key1">
+									<i class="fa fa-lock" aria-hidden="true"></i>
+									<input type="password" placeholder="********" name="password" />
+									<div class="clearfix"></div>
+								</div>
+          					</div>
+          					<br />
+          					<br />
+        				</div>
+        				<div class="modal-footer the-modal-footer">
+        					<p>Don't have an account? <a href="">Sign up</a></p>
+        				</div>
+      				</div>
+      
+    			</div>
+  			</div>
+  
+		</div>
+<!-- Modal -->
+
 
 <!-- smooth scrolling -->
 	<script type="text/javascript">
