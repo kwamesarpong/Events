@@ -42,9 +42,10 @@
 					<p class="in-pa"> <%= @service.desc_service %></p> <!--  Dummy ratings, feed the ratings from the database  -->
 			   	
 					<div class="style-textarea">
-						<form action="" method="post">
-							<textarea placeholder="Start a negotiation"></textarea>
-						</form>
+						<%= form_for @message, url: { controller: :messages, action: :create, id: @service.profile.id } do |f| %>
+							<%= f.text_area :body, placeholder: "Start a negotiation" %>
+							
+						
 					</div>
 
 					<ul class="social-top">
@@ -53,8 +54,9 @@
 						<li><a href="#" class="icon pinterest"><i class="fa fa-pinterest-p" aria-hidden="true"></i><span></span></a></li>
 						<li><a href="#" class="icon dribbble"><i class="fa fa-dribbble" aria-hidden="true"></i><span></span></a></li>
 					</ul>
-					<div class="add add-3">
-						<button>Contact Supplier</button>
+					<div class="add add-3">	
+						<%= submit_tag 'Contact Supplier' %>
+						<% end %>
 					</div>		 
 				<div class="clearfix"> </div>
 			</div>

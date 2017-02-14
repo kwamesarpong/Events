@@ -29,7 +29,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       #USER CREATED
       #puts display_object_attributes @user
-      if @user.kind == User::SERVICE_PROVIDER
+      
         #USER IS SERVICE PROVIDER
         profile = Profile.new
         profile.user_id = @user.id
@@ -38,14 +38,19 @@ class UsersController < ApplicationController
         profile.subscription_id = 1
         profile.desc = "A short description here"
         profile.paid = false
-        if profile.save
-          redirect_to controller: :profiles, action: :new, from_there: profile.id
-        end
+        profile.save
 
-      else
+        mail_box = MailBox.new
+        mail_box.user = @user
+        mail_box.save
+        if @user.kind == User::SERVICE_PROVIDER
+          redirect_to controller: :profiles, action: :new, from_there: profile.id
+        else
         #USER IS ORGANIZER
         redirect_to action: :index
-      end
+        end
+
+      
     else
       render :new
     end
