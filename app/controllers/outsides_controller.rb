@@ -43,7 +43,12 @@ class OutsidesController < ApplicationController
                 profile.subscription_id = 1
                 profile.desc = "A short description here"
                 profile.paid = false
+                mail_box = MailBox.new
+                mail_box.user = @user
+                mail_box.save
                 display_object_attributes profile
+                #redirect_to login screen and pass user id
+                #from there we can update the password field
                 #redirect_to controller: :profiles, action: :new, from_there: profile.id
             end
             

@@ -12,7 +12,9 @@ class ProfilesController < ApplicationController
 
   def show
     init_view(params[:id])
-    if params[:id].to_i == session[:user_id]
+    profile = Profile.find(params[:id].to_i)
+    #check if user is already logged in
+    if profile.user_id == session[:user_id]
       redirect_to action: :new, from_there: params[:id]
     end
     @services = Service.where(profile_id: params[:id])
