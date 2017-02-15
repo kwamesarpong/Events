@@ -6,17 +6,24 @@ Rails.application.routes.draw do
   resources :users
   resources :profiles
   resources :services
+  resources :categories
+  resources :messages
 
     
   get 'access/login'
 
   get 'access/logout'
 
+
   post 'users/attempt_login', to: 'users#attempt_login'
+
+  post 'messages/send', to: 'messages#send'
 
   get '/search', to: 'mains#search'
 
   post '/search', to: 'mains#search'
+
+  get 'outsides/finish_sign_up', to: 'outsides#finish_sign_up'
 
   get '/auth/:provider/callback', to: 'outsides#create'
 

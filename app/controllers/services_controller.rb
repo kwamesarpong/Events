@@ -16,10 +16,12 @@ class ServicesController < ApplicationController
     end
     offset = ( @page - 1 ) * NUMBER_OF_RECORDS_PER_PAGE
     @services = Service.limit(NUMBER_OF_RECORDS_PER_PAGE).offset(offset)
+
   end
 
   def show
     @service = Service.find(params[:id])
+    @message = Message.new
   end
 
   def new

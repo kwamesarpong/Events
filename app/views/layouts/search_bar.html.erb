@@ -71,19 +71,19 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
     				</div>
     				<!-- ###################################### -->
     				<div class="col-md-8 the-bar-width">
-						<form action="#" method="post">
+						<%= form_tag({ controller: :mains, action: :search }, :method => "get", id: "search-form") do %>
 						<div class="row">
 							<div class="col-md-6 col-sm-4 col-xs-12">
-								<input type="text" placeholder="Supplier or Service" name="Search" />
+								<%= text_field_tag :q, params[:q], placeholder: "Search" %>
 							</div>
 							<div class="col-md-4 col-sm-4 hidden-xs">
 								<input type="text" placeholder="Location" name="location" />
 							</div>
 							<div class="col-md-2 col-sm-4 col-xs-12" align="center">
-								<button class="search-no-border" type="submit">Search</button>
+								<%= submit_tag "Search", class: "search-no-border btn-search" %>
 							</div>
 						</div>
-						</form>
+						<% end %>
 					</div>	
 					<!-- ###################################### -->
 					<div class="col-md-2">
@@ -174,19 +174,19 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
         				</div>
         				<div class="modal-body md-body">
         					<div class="md-body-fb">
-          						<button>Sign Up with Facebook</button>
+          						<button onclick="window.location.href='/auth/facebook/'">Sign Up with Facebook</button>
           					</div>
           					<br />
           					<div class="md-body-tw">
-          						<button>Sign Up with Twitter</button>
+          						<button onclick="window.location.href='/auth/twitter/'">Sign Up with Twitter</button>
           					</div>
           					<br />
           					<div>
           						<h3>or</h3>
-          					</div>
+          					</div> 
           					<br />
           					<div class="md-body-em">
-          						<button>Sign Up with Email</button>
+          						<button onclick="window.location.href='/users/new/'">Sign Up with Email</button>
           					</div>
           					<br />
           					<br />

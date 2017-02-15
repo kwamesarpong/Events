@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  include ApplicationHelper
+
   layout :set_layout
   
   before_action :get_user, only: [:show, :update, :destroy]
@@ -13,7 +15,8 @@ class UsersController < ApplicationController
 
   def new
     if session[:user_id]
-      redirect_to controller: :profiles, action: :index, id: session[:user_id]
+      profile = Profile.find_by_user_id(session[:user_id])
+      redirect_to controller: :profiles, action: :show, id: profile.id
     else
       @categories = Category.all
       @user = User.new
@@ -27,7 +30,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       #USER CREATED
       #puts display_object_attributes @user
-      if @user.kind == User::SERVICE_PROVIDER
+      
         #USER IS SERVICE PROVIDER
         profile = Profile.new
         profile.user_id = @user.id
@@ -36,14 +39,19 @@ class UsersController < ApplicationController
         profile.subscription_id = 1
         profile.desc = "A short description here"
         profile.paid = false
-        if profile.save
-          redirect_to controller: :profiles, action: :new, from_there: profile.id
-        end
+        profile.save
 
-      else
+        mail_box = MailBox.new
+        mail_box.user = @user
+        mail_box.save
+        if @user.kind == User::SERVICE_PROVIDER
+          redirect_to controller: :profiles, action: :new, from_there: profile.id
+        else
         #USER IS ORGANIZER
         redirect_to action: :index
-      end
+        end
+
+      
     else
       render :new
     end
@@ -61,7 +69,12 @@ class UsersController < ApplicationController
   		#mark user as logged in
   		session[:user_id] = authorized_user.id
   		flash[:notice] = "You are now logged in"
-  		redirect_to "/"
+      if found_user.kind == User::SERVICE_PROVIDER
+        #send user to profile
+        redirect_to controller: :profiles, action: :new, from_there: found_user.profile.id
+      else
+        redirect_to '/'
+      end
   	else
   		flash[:notice] = "Invalid username/password combination"
   	end
@@ -77,6 +90,16 @@ class UsersController < ApplicationController
   end
 
   def update
+    #if !params[:sign_up].nil?
+      @user = User.find(params[:id].to_i)
+      puts @user.password_digest
+      @user.password = params[:user][:password]
+      @user.kind = params[:user][:kind]
+      puts @user.password
+      @user.save
+      display_object_attributes @user
+      redirect_to controller: :profiles, action: :new, from_there: @user.profile.id
+    #end
   end
 
   def delete

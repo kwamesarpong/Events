@@ -25,6 +25,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- start-smoth-scrolling -->
 <script type="text/javascript" src="js/move-top.js"></script>
 <script type="text/javascript" src="js/easing.js"></script>
+<script type="text/javascript" src="js/croppie.min.js"></script>
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
 		$(".scroll").click(function(event){		
@@ -217,7 +218,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 				<!-- The navigation bar thingy ends here -->
 				<br /><br />
 			<div class="logo">
-				<h1 ><a href="index.html"><a href=""><img src="images/logo.png" class="img-head" alt=""><span>For all your event listing needs</span></a></h1>   <!-- Probably make the name orange, create a panel and switch tab around ///////        Done     -->
+				<h1 ><a href="index.html"><a href=""><img src="images/logo.png" id="trying" class="img-head" alt=""><span>For all your event listing needs</span></a></h1>   <!-- Probably make the name orange, create a panel and switch tab around ///////        Done     -->
 			</div>
 					
 		</div>			
@@ -300,7 +301,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 		<div class="col-md-4 m-w3ls">
 			<div class="col-md1 ">
 				<a href="kitchen.html">
-					<img src="images/co4.jpg" class="img-responsive img" alt="">
+					<img src="images/co4.jpg" class="img-responsive img trying" alt="">
 					<div class="big-sa">
 						<h3>Dec<span>or </span></h3>
 						<p>Floral, Drapes, Tents</p>
@@ -1515,3 +1516,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 				</div>
 </body>
 </html>
+
+<script>
+$('.trying').croppie({});
+</script>
