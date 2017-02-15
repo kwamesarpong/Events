@@ -2,6 +2,8 @@ class OutsidesController < ApplicationController
 
     include ApplicationHelper
 
+    layout "no_search"
+
     def create
             auth = request.env['omniauth.auth']
             if @authorization = Authorization.find_by_provider_and_uid(auth.provider, auth.uid)
@@ -43,16 +45,26 @@ class OutsidesController < ApplicationController
                 profile.subscription_id = 1
                 profile.desc = "A short description here"
                 profile.paid = false
+                profile.save
                 mail_box = MailBox.new
                 mail_box.user = @user
                 mail_box.save
                 display_object_attributes profile
                 #redirect_to login screen and pass user id
                 #from there we can update the password field
-                #redirect_to controller: :profiles, action: :new, from_there: profile.id
+                redirect_to controller: :outsides, action: :finish_sign_up, from_there: @user.id
             end
             
             #session[:user_setting] = request.env['omniauth.auth']
             #puts request.env['omniauth.auth'].inspect
+    end
+
+
+    def finish_sign_up
+        user_id = params[:from_there].to_i
+        @user = User.find(user_id)
+    end
+
+    def finish_sign_up_from_outside
     end
 end

@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+
+    mount_uploader :banner, BannerUploader
+
     has_secure_password
 
     has_one  :profile

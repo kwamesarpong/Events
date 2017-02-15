@@ -3439,15 +3439,31 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
 
 /*--- reset code ---*/
-/*-- /link-effect --*/
+/*-- link-effect --*/
 .banner-profile {
-	background: url(<%= asset_path 'app/kwaku1.jpg' %>) no-repeat;
 	background-position:center;
 	background-size:cover;
 	-webkit-background-size:cover;
 	-moz-background-size:cover;
 	-o-background-size:cover;
 	min-height:500px;
+}
+.banner-profile img{
+	position: absolute;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+    height: 500px;
+}
+input.upload-custom-banner {
+    cursor: pointer;
+    margin: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
 }
 /*-- slider --*/
 .banner-profile .rslides {

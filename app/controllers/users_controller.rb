@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  include ApplicationHelper
+
   layout :set_layout
   
   before_action :get_user, only: [:show, :update, :destroy]
@@ -68,7 +70,12 @@ class UsersController < ApplicationController
   		#mark user as logged in
   		session[:user_id] = authorized_user.id
   		flash[:notice] = "You are now logged in"
-  		redirect_to "/"
+      if found_user.kind == User::SERVICE_PROVIDER
+        #send user to profile
+        redirect_to controller: :profiles, action: :new, from_there: found_user.profile.id
+      else
+        redirect_to '/'
+      end
   	else
   		flash[:notice] = "Invalid username/password combination"
   	end
@@ -84,6 +91,16 @@ class UsersController < ApplicationController
   end
 
   def update
+    #if !params[:sign_up].nil?
+      @user = User.find(params[:id].to_i)
+      puts @user.password_digest
+      @user.password = params[:user][:password]
+      @user.kind = params[:user][:kind]
+      puts @user.password
+      @user.save
+      display_object_attributes @user
+      redirect_to controller: :profiles, action: :new, from_there: @user.profile.id
+    #end
   end
 
   def delete
