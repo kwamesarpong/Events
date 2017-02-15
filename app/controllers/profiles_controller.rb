@@ -49,9 +49,11 @@ class ProfilesController < ApplicationController
 
   def update
     @profile = Profile.find_by_id(params[:id])
-    @profile.profile_picture = params[:profile][:profile_picture]
+    #@profile.profile_picture = params[:profile][:profile_picture]
     #update profile
+    #@profile.banner = params[:profile][:banner]
     if (@profile.update_attributes(white_list))
+      
       #update address here
       address = Address.find_by(profile_id: @profile.id)
       if address.nil?
@@ -59,7 +61,7 @@ class ProfilesController < ApplicationController
         address.profile_id = @profile.id
         address.physical_address = params[:address][:physical_address]
         address.save
-        else
+      else
         address.update(physical_address: params[:address][:physical_address])
       end
       
@@ -84,7 +86,7 @@ class ProfilesController < ApplicationController
   end
 
   def white_list
-    params.require(:profile).permit(:name_of_agency, :subscription_id, :desc, :user_id, :paid, :short_desc,:tagline)
+    params.require(:profile).permit(:name_of_agency, :subscription_id, :desc, :user_id, :paid, :short_desc,:tagline, :banner)
   end
 
   def add_white_list

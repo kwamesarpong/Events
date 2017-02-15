@@ -1,0 +1,27 @@
+<div class="login">
+    <div class="main-agileits">
+        <div class="form-w3agile">
+            <%= form_for @user, { controller: :users, action: :update } do |f| %>
+                <div class="key the-table">
+                    <table>
+                        <tr>
+                            <td><%= label_tag :kind, "Service Provider" %></td>
+                            <td><%= f.radio_button :kind, "Service Provider" %></td>
+                            <td><%= label_tag :kind, :Organizer %></td>
+                            <td><%= f.radio_button :kind, :Organizer %></td>
+                        </tr>
+                    </table>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="key">
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+                    <%= f.password_field :password, placeholder: :password %>
+                    <div class="clearfix"></div>
+                </div>
+                <div align="center">
+                    <%= submit_tag "Sign Up"%>
+                </div>
+            <% end %>
+        </div>
+    </div>
+ </div>   
