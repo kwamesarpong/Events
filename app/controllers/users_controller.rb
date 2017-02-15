@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
 
-  include ApplicationHelper
-
   layout :set_layout
   
   before_action :get_user, only: [:show, :update, :destroy]
@@ -14,17 +12,24 @@ class UsersController < ApplicationController
   end
 
   def new
-    @categories = Category.all
-    @user = User.new
-    render :new
+    if session[:user_id]
+      profile = Profile.find_by_user_id(session[:user_id])
+      redirect_to controller: :profiles, action: :show, id: profile.id
+    else
+      @categories = Category.all
+      @user = User.new
+      render :new
+    end
+
   end
 
   def create
     @user = User.new(white_list)
     if @user.save
+      session[:user_id] = @user.id
       #USER CREATED
       #puts display_object_attributes @user
-      if @user.kind == User::SERVICE_PROVIDER
+      
         #USER IS SERVICE PROVIDER
         profile = Profile.new
         profile.user_id = @user.id
@@ -33,18 +38,46 @@ class UsersController < ApplicationController
         profile.subscription_id = 1
         profile.desc = "A short description here"
         profile.paid = false
-        if profile.save
-          redirect_to controller: :profiles, action: :new, from_there: profile.id
-        end
+        profile.save
 
-      else
+        mail_box = MailBox.new
+        mail_box.user = @user
+        mail_box.save
+        if @user.kind == User::SERVICE_PROVIDER
+          redirect_to controller: :profiles, action: :new, from_there: profile.id
+        else
         #USER IS ORGANIZER
         redirect_to action: :index
-      end
+        end
+
+      
     else
       render :new
     end
 
+  end
+
+ def attempt_login
+    found_user = User.where(email: params[:email]).first
+    #puts found_user
+    if found_user
+      authorized_user = found_user.authenticate(params[:password])
+      #puts params[:password]
+    end
+  	if authorized_user
+  		#mark user as logged in
+  		session[:user_id] = authorized_user.id
+  		flash[:notice] = "You are now logged in"
+  		redirect_to "/"
+  	else
+  		flash[:notice] = "Invalid username/password combination"
+  	end
+
+  end
+
+
+  def login
+    
   end
 
   def edit
@@ -62,7 +95,7 @@ class UsersController < ApplicationController
   private
 
   def white_list
-    params.require(:user).permit(:email,:username,:password,:kind,:first_name,:last_name)
+    params.require(:user).permit(:email,:password,:kind,:name)
   end
 
   def set_layout

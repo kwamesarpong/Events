@@ -1,21 +1,104 @@
-<h1>Profiles#show</h1>
-<p>Find me in app/views/profiles/show.html.erb</p>
-<%= image_tag @profile.profile_picture.thumb.url %>
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+<div class="banner-profile">
+	<ul class="rslides" id="slider" value="<%= @profile.id %>" >
+		<li>
+			<div class="banner-profile-info">
+				<h3 class="full_name_text"><%= @profile.name_of_agency %></h3>
+				<span class="line1"></span>
+				<p class="tagline_text"><%= @profile.tagline %></p>
+				<span class="line2"></span>
+				<div class="social-icons">
+					<a href="#"><span class="facebook"></span></a>
+					<a href="#"><span class="twitter"></span></a>
+					<a href="#"><span class="linkedin"></span></a>
+					<a href="#"><span class="googleplus"></span></a>
+				</div>
+			</div>
+		</li>
+	</ul>
+</div>
+<div class="about-me">
+	<br />
+</div>
+<div class="about-me" id="about">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 col-xs-12">
+				<div class="mydetails slideanim text-center">
+					<div>
+						<%= image_tag "app/man.jpg", { class: "img-circle img-responsive", alt: "Generic placeholder image", width: "200", height: "200" } %>
+						<h3>Who we are</h3>
+						<p class="short_desc_text"><%= @profile.short_desc %></p>
+					</div>
+					<br />
+					<div class="contact-info some-border">
+						<h3>Where you can find us</h3>
+						<i aria-hidden="true"></i>
+                        <div class="footer-info">
+							<div class="some-border">
+								<i class="fa fa-globe" aria-hidden="true"></i>
+								<p class="p1 address_text">77727 Moi Avenue </p>
+								<p class="p2 address_text_2">Nairobi, Kenya</p>
+							</div>
+							<div class="some-border">
+								<i class="fa fa-phone" aria-hidden="true"></i>
+								<p class="p1 phone_number_text">+1 515 151515</p>
+								<p class="p2 phone_number_text_2">+00 1010101010</p>
+							</div>
+							<div class="some-border">
+								<i class="fa fa-envelope" aria-hidden="true"></i>
+								<p class="p1 email_text"><%= @profile.user.email %></p>
+								<p class="p2 email_text_2">myemail2@example.com</p>
+							</div>
+						</div>
+					</div>
 
-<hr>
 
-<%= form_for @service, url: { controller: :services, action: :create, profile: @profile.id } do |f| %>
-    <%= f.label :Category %>
-    <%= f.select :category_id, @categories.map {|c| [c.name, c.id]} %>
-    <br/>
-    <%= f.label :Picture%>
-    <%= f.file_field :picture %>
-    <br/>
-    <%= f.label :desc_service%>
-    <%= f.text_area :desc_service%>
-    <br/>
-    <%= f.label :Price%>
-    <%= f.text_field :price%>
-    <%= f.submit "Upload"%>
-<% end %>
-<%= image_tag @service.picture%>
+
+				</div>
+			</div>
+			<div class="col-md-8 col-xs-12">
+				<div class="myskills slideanim">
+					<h3 class="text-center">Why hire us</h3>
+                    
+					<p class="skill-text long_desc_text"><%= @profile.desc %></p>
+					
+				</div>
+				<br />
+
+				
+				<div class="myskills slideanim move-down">
+					<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+						<ol class="carousel-indicators">
+							<% 0.upto(@services.size - 1) do |n| %>
+								<li data-target="#carousel-example-generic" data-slide-to="<%= n %>" class="active"></li>
+							<% end %>
+						</ol>
+						<div class="carousel-inner" role="listbox">
+							<% if @services.blank? %>
+
+								<h3 class="text-center">You are yet to post a service</h3>
+								<hr style="margin:0;">
+								<p class="text-center">When you post a service, you’ll see them here.</p>
+
+								<% else %>
+
+								<% @services.each do |service| %>
+									
+									<div class="col-md-4">
+										<%= image_tag service.picture.small.url %>
+									</div>
+
+								<% end %>		
+							<% end %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br />
+</div>
+
+
+

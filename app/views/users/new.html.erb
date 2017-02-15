@@ -8,26 +8,14 @@
 					<%= form_for @user, url: { action: :create }, html: { class: :form_nice } do |f| %>
 						<div class="key">
 							<i class="fa fa-user" aria-hidden="true"></i>
-                            <%= f.text_field :first_name, placeholder: :First_Name %>
+                            <%= f.text_field :name, placeholder: :Full_Name %>
 							<!--<input  type="text" value="First name" name="first name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}" required="">-->
-							<div class="clearfix"></div>
-						</div>
-						<div class="key">
-							<i class="fa fa-user" aria-hidden="true"></i>
-                            <%= f.text_field :last_name, placeholder: :Last_Name %>
-							<!--<input  type="text" value="Last name" name="last name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}" required="">-->
 							<div class="clearfix"></div>
 						</div>
 						<div class="key">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
                             <%= f.text_field :email, placeholder: :Email, value: "" %>
 							<!-- <input  type="text" value="Username" name="username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}" required="">-->
-							<div class="clearfix"></div>
-						</div>
-						<div class="key">
-							<i class="fa fa-key" aria-hidden="true"></i>
-                            <%= f.text_field :username, placeholder: :Username %>
-							<!--<input  type="text" value="Email" name="email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required=""> -->
 							<div class="clearfix"></div>
 						</div>
 						<div class="key">

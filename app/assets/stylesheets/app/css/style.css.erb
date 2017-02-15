@@ -470,10 +470,10 @@ span.fa.fa-shopping-cart.my-cart-icon {
     top: 98%;
     left: -275%;
 }
-/*-- //header --*/
+/*-- header --*/
 /*--banner--*/
 .top-top-banner{
-    background-image: url(<%= asset_path 'app/banner1.jpg' %>);
+    background-image: url(<%= asset_path "app/banner1.jpg" %>);
 }
 .main-nav-shadow {
   box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2)
@@ -565,6 +565,13 @@ span.fa.fa-shopping-cart.my-cart-icon {
 .search-no-border{
   border: none;
   border-radius: 5px;
+}
+
+.btn-search{
+    width: 120px;
+    height: 41px;
+    background-color: #e67e22;
+    color: #fff;
 }
 
 .search-no-padding-right{
@@ -1155,7 +1162,7 @@ ul.product-qty {
     background-color: #FAB005;
     margin: 0 6px;
 }
-/*-- //footer-top --*/
+/*-- footer-top --*/
 .footer-bottom {
     text-align: center;
     margin: 4em 0 0;
@@ -1242,7 +1249,7 @@ ul.product-qty {
 .address {
     margin-top: 2em;
 }
-/*-- //footer-top --*/
+/*-- footer-top --*/
 .footer {
     background: #353535;
     padding: 5em 0;
@@ -1291,7 +1298,8 @@ ul.product-qty {
 .copy-right p a:hover {
     color: #E21737;	
 }
-/*-- //footer --*/
+
+/*-- footer --*/
 
 /* table */
 .grid-table {
@@ -1381,14 +1389,13 @@ ul.product-qty {
     text-align: center;
 }
 /* -- Modal -- */
-
 /*--product--*/
 .banner-top{
 	text-align: center;
     width: 100%;
     height: 114px;
     display: block;
-    background: url(<%= asset_path 'app/sh.jpg' %>)no-repeat ;
+    background-image: url(<%= asset_path 'app/sh.jpg' %>)no-repeat ;
     padding: 3em 0;
     background-size: cover;
 }
@@ -2492,7 +2499,7 @@ span.last {
 	height: 32px;
 	border: none;
 	text-indent: 100%;
-	background: url(<%= asset_path 'app/arr.png' %>) no-repeat 0px 0px;
+	background-image: url(<%= asset_path 'app/arr.png' %>) no-repeat 0px 0px;
 }
 /*--responsive--*/
 @media(max-width:1440px){
@@ -3146,7 +3153,7 @@ img.img-head {
 .search-form input[type='submit'] {
     width: 35px;
     height: 35px;
-    background: url(<%= asset_path 'app/can.png' %>) no-repeat 4px 3px #FCCD1E;
+    background-image: url(<%= asset_path 'app/can.png' %>) no-repeat 4px 3px #FCCD1E;
 }
 .search-form input[type='text'] {
     width: 85%;
@@ -3434,7 +3441,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 /*--- reset code ---*/
 /*-- /link-effect --*/
 .banner-profile {
-	background:url(<%= asset_path 'app/kwaku.jpg' %>) no-repeat;
+	background: url(<%= asset_path 'app/kwaku1.jpg' %>) no-repeat;
 	background-position:center;
 	background-size:cover;
 	-webkit-background-size:cover;
@@ -3512,7 +3519,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	display:inline-block;
 	width:40px;
 	height:40px;
-	background:url(<%= asset_path "app/social-icons.png" %>) no-repeat 0px 0px;
+	background: url(<%= asset_path "app/social-icons.png" %>) no-repeat 0px 0px;
 }
 .social-icons  span.facebook {
 	background-position:0px 0px;
@@ -3593,7 +3600,7 @@ img.img-responsive {
 	display:inline-block;
 	width:40px;
 	height:40px;
-	background:url(%<= asset_path "app/social-icons.png" >%) no-repeat 0px 0px;
+	background-image: url(<%= asset_path "pp/social-icons.png" %>) no-repeat 0px 0px;
 }
 .mydetails .social-icons  span.facebook {
 	background-position:0px 0px;
@@ -3765,10 +3772,13 @@ span.shortline5 {
 	-o-transition:0.5s all;
 	-ms-transition:0.5s all;
 }
-/*-- /Gallery --*/
-/*-- Footer --*/
+
 .some-border {
   border-top: 1px solid #f2f2f2;
+}
+
+.contact-info {
+    margin-top: 10%;
 }
 
 .contact-info h4 {
@@ -3843,10 +3853,11 @@ hr{
 	border-top:1px solid #BDB8B8;
 	margin-top:45px;
 }
-.
-/*-- /Footer --*/
+
+/*-- Footer --*/
 /*-- sliding --*/
-.slideanim {visibility:hidden; padding: 4%;}
+.slideanim {padding: 4%;}
+.move-down { min-height: 400px; }
 .slide {
     /* The name of the animation */
     animation-name: slide;
@@ -3878,7 +3889,7 @@ hr{
         -webkit-transform: translateY(0%);
     }
 }
-/*-- /sliding --*/
+/*-- sliding --*/
 /*---- responsive-design -----*/
 @media (max-width: 1600px) {
 	.banner-profile {
@@ -3960,7 +3971,7 @@ hr{
 	.mydetails .social-icons {
     padding: 1.2em 0 0;
 }
-	.contact-info {
+    .contact-info {
     margin-top: 30px;
 }
 }

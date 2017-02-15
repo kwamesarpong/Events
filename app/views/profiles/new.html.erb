@@ -26,30 +26,30 @@
 			<div class="col-md-4 col-xs-12">
 				<div class="mydetails slideanim text-center">
 					<div>
-						<%= image_tag "app/man", { class: "img-circle img-responsive", alt: "Generic placeholder image", width: "200", height: "200" } %>
+						<%= image_tag "app/man.jpg", { class: "img-circle img-responsive", alt: "Generic placeholder image", width: "200", height: "200" } %>
 						<h3>Who we are</h3>
 						<p class="short_desc_text"><%= @profile.short_desc %><i class="short_desc fa fa-pencil" aria-hidden="true"></i></p>
 					</div>
 					<br />
 					<div class="contact-info some-border">
+						<i class="short_desc fa fa-pencil" aria-hidden="true"></i>
 						<h3>Where you can find us</h3>
-						<p>We are located in the 3 major cities in Kenya.</p>
 						<i aria-hidden="true"></i>
                         <div class="footer-info">
 							<div class="some-border">
 								<i class="fa fa-globe" aria-hidden="true"></i>
-								<p class="p1">77727 Moi Avenue </p>
-								<p class="p2">Nairobi, Kenya</p>
+								<p class="p1 address_text">77727 Moi Avenue </p>
+								<p class="p2 address_text_2">Nairobi, Kenya</p>
 							</div>
 							<div class="some-border">
 								<i class="fa fa-phone" aria-hidden="true"></i>
-								<p class="p1">+1 515 151515</p>
-								<p class="p2">+00 1010101010</p>
+								<p class="p1 phone_number_text">+1 515 151515</p>
+								<p class="p2 phone_number_text_2">+00 1010101010</p>
 							</div>
 							<div class="some-border">
 								<i class="fa fa-envelope" aria-hidden="true"></i>
-								<p class="p1"><a href="mailto:myemail@something.com">myemail1@example.com</a></p>
-								<p class="p2"><a href="mailto:myemail@nothing.com">myemail2@example.com</a></p>
+								<p class="p1 email_text"><%= @profile.user.email %></p>
+								<p class="p2 email_text_2">myemail2@example.com</p>
 							</div>
 						</div>
 					</div>
@@ -67,51 +67,68 @@
 				</div>
 				<br />
 				<div class="myskills slideanim">
-					<h3 class="text-center">Add your service details</h3>
-					<form action="" method="post" class="form-inline">
+					<h3 class="text-center">Post a service</h3>
+					<%= form_for @service, url: { controller: :services, action: :create, profile: @profile.id } do |f| %>
                     <table class="table table-striped">
                     	<tr>
                     		<td>Your service type</td>
                     		<td>
-								<select name="categories" class="form-control">
-									<option>Select your service type</option>
-									<option>Equipment</option>
-									<option>Catering</option>
-									<option>Decor</option>
-									<option>Entertainment</option>
-									<option>Venues</option>
-									<option>Transportation</option>
-									<option>Clothing & Accessories</option>
-									<option>Stationary & Gifts</option>
-									<option>Personnel</option>
-								</select>
+								<%= f.select :category_id, @categories.map {|c| [c.name, c.id]}, class: "form-control" %>
 							</td>
 						</tr>
 						<tr>
 							<td>Please upload a picture of your product</td>
 							<td>
-								<input type="file" name="file" class="form-control" />
+								<%= f.file_field :picture, class: "form-control" %>
 							</td>
 						</tr>
 						<tr>
 							<td>Description of the product or service</td>
 							<td>
-								<textarea rows="10" cols="31" placeholder="Service Description" class="form-control"></textarea>
+								<%= f.text_area :desc_service, rows:"10", cols:"31", placeholder: "Service Description", class:"form-control" %>
 							</td>
 						</tr>
 						<tr>
 							<td>Minimal Price</td>
-							<td>	
-								<input type="text" name="price" placeholder="Price" class="form-control" />
+							<td>
+								<%= f.text_field :price, placeholder: "Price", class: "form-control" %>	
 							</td>
 						</tr>
 						<tr>
 							<td colspan="2" align="center">	
-								<button type="submit" class="btn btn-success">Add listing</button>
+								<%= f.submit "Upload", class: "btn btn-success" %>
 							</td>
 						</tr>
-					</form>
+					<% end %>
 					</table>
+				</div>
+			
+				<div class="myskills slideanim move-down">
+					<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+						<ol class="carousel-indicators">
+							<% 0.upto(@my_services.size - 1) do |n| %>
+								<li data-target="#carousel-example-generic" data-slide-to="<%= n %>" class="active"></li>
+							<% end %>
+						</ol>
+						<div class="carousel-inner" role="listbox">
+							<% if @my_services.blank? %>
+
+								<h3 class="text-center">You are yet to post a service</h3>
+								<hr style="margin:0;">
+								<p class="text-center">When you post a service, you’ll see them here.</p>
+
+								<% else %>
+
+								<% @my_services.each do |service| %>
+									
+									<div class="col-md-4">
+										<%= image_tag service.picture.small.url %>
+									</div>
+
+								<% end %>		
+							<% end %>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -128,34 +145,6 @@ $(".full_name").click(function(e){
     console.log("it");
 });
 
-    $(document).keypress(function(e) {
-    if(e.which == 13) {
-        e.preventDefault();
-        alert('You pressed enter!');
-        var profile;
-        $('#slider').attr("value", function( i, val ){
-            profile = val;
-        })
-        alert(profile);
-        $.ajax({
-        url: "/profiles/"+profile,
-        type: "PATCH",
-        data: {profile: {
-                    id: profile,
-                    name_of_agency: $('.full_name_text').text(),
-                    desc: $('.long_desc_text').text(),
-                    short_desc: $('.short_desc_text').text(),
-                    tagline: $('.tagline_text').text()
-                    }},
-        success: function(resp){ 
-            console.log(resp)
-        }
-        });
-
-    }
-});
-
-
 $(".tagline").click(function(e){
     $('.tagline_text').attr("contentEditable", "true");
     $('.tagline_text').css("outline","none");
@@ -171,6 +160,69 @@ $(".short_desc").click(function(e){
 $(".long_desc").click(function(e){
     $('.long_desc_text').attr("contentEditable", "true");
     console.log("it");
+});
+
+$(".address_text").click(function(e){
+    $('.address_text').attr("contentEditable", "true");
+    console.log("it");
+});
+
+$(".address_text_2").click(function(e){
+    $('.address_text_2').attr("contentEditable", "true");
+    console.log("it");
+});
+
+$(".phone_number_text").click(function(e){
+    $('.phone_number_text').attr("contentEditable", "true");
+    console.log("it");
+});
+
+$(".phone_number_text").click(function(e){
+    $('.phone_number_text_2').attr("contentEditable", "true");
+    console.log("it");
+});
+
+$(".email_text").click(function(e){
+    $('.email_text').attr("contentEditable", "true");
+    console.log("it");
+});
+
+$(".email_text_2").click(function(e){
+    $('.email_text_2').attr("contentEditable", "true");
+    console.log("it");
+});
+
+$(document).keypress(function(e) {
+	if(e.which == 13) {
+		e.preventDefault();
+		//alert('You pressed enter!');
+		var profile;
+		$('#slider').attr("value", function( i, val ){
+			profile = val;
+		})
+		//alert(profile);
+		$.ajax({
+		url: "/profiles/"+profile,
+		type: "PATCH",
+		data: { profile: {
+					 			 id: profile,
+					 name_of_agency: $('.full_name_text').text(),
+					 		   desc: $('.long_desc_text').text(),
+					 	 short_desc: $('.short_desc_text').text(),
+					 		tagline: $('.tagline_text').text()
+					},
+				address: {
+							profile_id: profile,
+					  physical_address: $('.address_text').text()
+				}
+					
+					},
+		success: function(resp){ 
+			console.log(resp)
+		}
+		});
+
+	}
 });
 
 </script>

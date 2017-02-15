@@ -30,7 +30,7 @@ class CategoryPicUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  process resize_to_fit: [225, 250]
+  process resize_to_fit: [250, 250]
   
   version :xtra_small do
     process resize_to_fit: [40, 40]

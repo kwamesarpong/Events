@@ -1,0 +1,114 @@
+<!--content-->
+	<div class="product">
+		<div class="container">
+			<div class="spec ">
+				<h3>Service Listings</h3>
+				<div class="ser-t">
+					<b></b>
+					<span><i></i></span>
+					<b class="line"></b>
+				</div>
+			</div>
+				<div class=" con-w3l agileinf">
+				<% @items.each do |service| %>
+				  <div class="col-md-4 pro-1">
+						<div class="col-m">
+							<%= link_to service_path(service.id) do %>
+								<%= image_tag service.picture.large.url, { class: "img-responsive img-fix-height", width:"492", height:"300" } %>
+							<% end %>
+							<div class="mid-1">
+								<div class="women">
+									<h6><%= link_to service.profile.name_of_agency, profile_path(service.profile_id) %></h6>
+									<!-- All listings have to be read from the database -->
+								</div>
+								<div class="mid-2">
+									<p><%= service.desc_service %></p>
+										<div class="block">
+										<div class="starbox small ghosting"> </div>				<!-- Ratings also from database -->
+									</div>
+									<div class="clearfix"></div>
+								</div>
+								<div class="add" align="right">
+									<!-- <button class="btn btn-danger my-cart-btn my-cart-b" data-id="25" data-name="Peach Halves" data-summary="summary 25" data-price="4.50" data-quantity="1" data-image="images/of25.png">Add to Cart</button> -->
+									<!-- I'm putting a fake star rating system here, it needs to be called and replaced from the database --><br />
+									<a href="#" data-toggle="modal" data-target="#myModa<%= service.id %>">
+										<%= image_tag "app/viewer.png", class: "img-responsive" %>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+
+
+				
+
+<div class="modal fade" id="myModa<%= service.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content modal-info">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>						
+			</div>
+			<div class="modal-body modal-spa">
+					<div class="col-md-5 span-2">
+						<div class="item">
+							<%= image_tag service.picture.large.url, class: "img-responsive" %>
+						</div>
+					</div>
+					<div class="col-md-7 span-1 ">
+						<h3><%= service.profile.name_of_agency %> </h3>
+						<p class="in-para"> <%= service.profile.short_desc %></p>
+						<div class="price_single">
+							Minimum Price:<span class="reducedfrom "><%= service.price %></span>
+						
+							<div class="clearfix"></div>
+						</div>
+						<h4 class="quick">Quick Overview:</h4>
+						<p class="quick_desc"><%= service.desc_service %></p>
+							<div class="add-to">
+								<%= button_to "Contact Service Provider",  { controller: :profiles, action: :show, id: service.profile_id }, method: :get ,class: "btn btn-danger my-cart-btn my-cart-btn1 " %>
+							</div>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+		</div>
+</div>
+
+				<% end %>				
+				<div class="clearfix"></div>
+			</div>
+			<nav>
+				<ul class="pagination pagination-lg" style="margin-left:44%;">
+				<!-- <li><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li> -->
+				<% 1.upto(@total_pages.to_i) do |n| %>
+					<li class="pag-<%= n %>"><%= link_to n, { controller: :services, action: :index, page: n } %></li>
+				<% end %>
+				<!-- <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>-->
+				</ul>
+			</nav>
+		</div>
+	</div>
+
+	<script>
+		$(document).ready(function(e){
+			page = <%= @page %>
+			$('.pag-'+page).addClass('active');
+		});
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

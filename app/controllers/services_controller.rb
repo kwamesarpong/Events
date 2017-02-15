@@ -2,23 +2,26 @@ class ServicesController < ApplicationController
   
   #include ApplicationHelper
 
-  NUMBER_OF_RECORDS_PER_PAGE = 2
+  NUMBER_OF_RECORDS_PER_PAGE = 10
 
-  layout "search"
+  layout "search_bar"
 
   def index
     @page = params[:page].to_i
     count = Service.count
+    #pagination
     @total_pages = count / NUMBER_OF_RECORDS_PER_PAGE
     unless @page <= Service.count
       @page = 1
     end
     offset = ( @page - 1 ) * NUMBER_OF_RECORDS_PER_PAGE
     @services = Service.limit(NUMBER_OF_RECORDS_PER_PAGE).offset(offset)
+
   end
 
   def show
-    #@service = Service.find(params[:id])
+    @service = Service.find(params[:id])
+    @message = Message.new
   end
 
   def new
