@@ -65,77 +65,135 @@
 				</div>
 			</div>
 			<div class="col-md-8 col-xs-12">
-				<div class="myskills slideanim">
-					<h3 class="text-center">Why hire us <i class="long_desc fa fa-pencil" aria-hidden="true"></i></h3>
-                    
-					<p class="skill-text long_desc_text"><%= @profile.desc %></p>
-					
-				</div>
-				<br />
-				<div class="myskills slideanim">
-					<h3 class="text-center">Post a service</h3>
-					<%= form_for @service, url: { controller: :services, action: :create, profile: @profile.id } do |f| %>
-                    <table class="table table-striped">
-                    	<tr>
-                    		<td>Your service type</td>
-                    		<td>
-								<%= f.select :category_id, @categories.map {|c| [c.name, c.id]}, class: "form-control" %>
-							</td>
-						</tr>
-						<tr>
-							<td>Please upload a picture of your product</td>
-							<td>
-								<%= f.file_field :picture, class: "form-control" %>
-							</td>
-						</tr>
-						<tr>
-							<td>Description of the product or service</td>
-							<td>
-								<%= f.text_area :desc_service, rows:"10", cols:"31", placeholder: "Service Description", class:"form-control" %>
-							</td>
-						</tr>
-						<tr>
-							<td>Minimal Price</td>
-							<td>
-								<%= f.text_field :price, placeholder: "Price", class: "form-control" %>	
-							</td>
-						</tr>
-						<tr>
-							<td colspan="2" align="center">	
-								<%= f.submit "Upload", class: "btn btn-success" %>
-							</td>
-						</tr>
-					<% end %>
-					</table>
-				</div>
-			
-				<div class="myskills slideanim move-down">
-					<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-						<ol class="carousel-indicators">
-							<% 0.upto(@my_services.size - 1) do |n| %>
-								<li data-target="#carousel-example-generic" data-slide-to="<%= n %>" class="active"></li>
-							<% end %>
-						</ol>
-						<div class="carousel-inner" role="listbox">
-							<% if @my_services.blank? %>
 
-								<h3 class="text-center">You are yet to post a service</h3>
-								<hr style="margin:0;">
-								<p class="text-center">When you post a service, you’ll see them here.</p>
+				<div class="navigation-div">
+					<ul class="nav nav-tabs">
+    					<li class="active"><a data-toggle="tab" href="#home">My Inbox</a></li>
+    					<li><a data-toggle="tab" href="#menu1">Post Service</a></li>
+    					<li><a data-toggle="tab" href="#menu3">About</a></li>
+  					</ul>
+  				</div>
 
-								<% else %>
+  				<div class="tab-content">
+    				<div id="home" class="tab-pane fade in active">
+      					<div class="myskills slideanim">
+							<div class="row">
+  								<div class="panel-group" id="accordion">
+    								<div class="panel panel-default">
+      									<div class="panel-heading">
+        									<h4 class="panel-title">
+          										<a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Sender Name</a>
+        									</h4>
+      									</div>
+      									<div id="collapse1" class="panel-collapse collapse">
+        									<div class="panel-body">Hi, I came across your listing and would like to book it for so and so date.</div>
+      									</div>
+    								</div>
+    								<div class="panel panel-default">
+      									<div class="panel-heading">
+        									<h4 class="panel-title">
+          										<a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Sender Name</a>
+        									</h4>
+      									</div>
+      									<div id="collapse2" class="panel-collapse collapse">
+        									<div class="panel-body">Hi, I came across your listing and would like to book it for so and so date.</div>
+      									</div>
+    								</div>
+    								<div class="panel panel-default">
+      									<div class="panel-heading">
+        									<h4 class="panel-title">
+          										<a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Sender Name</a>
+        									</h4>
+      									</div>
+      									<div id="collapse3" class="panel-collapse collapse">
+        									<div class="panel-body">Hi, I came across your listing and would like to book it for so and so date.</div>
+      									</div>
+    								</div>
+  								</div> 
+							</div>
+						</div>
+    				</div>
+    				<div id="menu1" class="tab-pane fade">
+      					<div class="myskills slideanim">
+							<h3 class="text-center">Post a service</h3>
+							<%= form_for @service, url: { controller: :services, action: :create, profile: @profile.id } do |f| %>
+                    		<table class="table table-striped">
+                    			<tr>
+                    				<td>Your service type</td>
+                    				<td>
+										<%= f.select :category_id, @categories.map {|c| [c.name, c.id]}, class: "form-control" %>
+									</td>
+								</tr>
+								<tr>
+									<td>Please upload a picture of your product</td>
+									<td>
+										<%= f.file_field :picture, class: "form-control" %>
+									</td>
+								</tr>
+								<tr>
+									<td>Description of the product or service</td>
+									<td>
+										<%= f.text_area :desc_service, rows:"10", cols:"31", placeholder: "Service Description", class:"form-control" %>
+									</td>
+								</tr>
+								<tr>
+									<td>Minimal Price</td>
+									<td>
+										<%= f.text_field :price, placeholder: "Price", class: "form-control" %>	
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2" align="center">	
+										<%= f.submit "Upload", class: "btn btn-success" %>
+									</td>
+								</tr>
+								<% end %>
+							</table>
+						</div>
+    				</div>
+    				<div id="menu3" class="tab-pane fade">
+      					<div class="myskills slideanim">
+							<h3 class="text-center">Why hire us <i class="long_desc fa fa-pencil" aria-hidden="true"></i></h3>
+							<p class="skill-text long_desc_text"><%= @profile.desc %></p>
+						</div>
+						<br />
+						<div class="myskills slideanim move-down">
+							<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+								<ol class="carousel-indicators">
+									<% 0.upto(@my_services.size - 1) do |n| %>
+									<li data-target="#carousel-example-generic" data-slide-to="<%= n %>" class="active"></li>
+									<% end %>
+								</ol>
+								<div class="carousel-inner" role="listbox">
+									<% if @my_services.blank? %>
 
-								<% @my_services.each do |service| %>
+									<h3 class="text-center">You are yet to post a service</h3>
+									<hr style="margin:0;">
+									<p class="text-center">When you post a service, you’ll see them here.</p>
+
+									<% else %>
+
+									<% @my_services.each do |service| %>
 									
 									<div class="col-md-4">
 										<%= image_tag service.picture.small.url %>
 									</div>
 
-								<% end %>		
-							<% end %>
+									<% end %>		
+									<% end %>
+								</div>
+							</div>
 						</div>
-					</div>
-				</div>
+
+
+    				</div>
+  				</div>
+			</div>
+
+				
+				
+			
+				
 			</div>
 		</div>
 	</div>
