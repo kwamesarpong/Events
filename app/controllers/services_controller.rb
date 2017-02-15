@@ -2,7 +2,7 @@ class ServicesController < ApplicationController
   
   #include ApplicationHelper
 
-  NUMBER_OF_RECORDS_PER_PAGE = 10
+  NUMBER_OF_RECORDS_PER_PAGE = 2
 
   layout "search_bar"
 
