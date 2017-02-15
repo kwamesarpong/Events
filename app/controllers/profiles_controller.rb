@@ -25,6 +25,10 @@ class ProfilesController < ApplicationController
   def new
     init_view(params[:from_there])
     @my_services = Service.where(profile_id: params[:from_there])
+    profile = Profile.find(params[:from_there])
+    user = profile.user
+    @mail_box = MailBox.find_by_user_id(user.id)
+    @mail_box = Message.where(mail_box_id: @mail_box.id) 
     puts "##########################"
     puts @my_services
   end
