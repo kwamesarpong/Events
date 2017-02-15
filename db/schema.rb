@@ -12,15 +12,12 @@
 
 ActiveRecord::Schema.define(version: 20170214163059) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "addresses", force: :cascade do |t|
     t.integer  "profile_id"
     t.string   "physical_address"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
-    t.index ["profile_id"], name: "index_addresses_on_profile_id", using: :btree
+    t.index ["profile_id"], name: "index_addresses_on_profile_id"
   end
 
   create_table "authorizations", force: :cascade do |t|
@@ -29,7 +26,7 @@ ActiveRecord::Schema.define(version: 20170214163059) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_authorizations_on_user_id", using: :btree
+    t.index ["user_id"], name: "index_authorizations_on_user_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -45,14 +42,14 @@ ActiveRecord::Schema.define(version: 20170214163059) do
     t.string   "phyiscal_location"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
-    t.index ["profile_id"], name: "index_locations_on_profile_id", using: :btree
+    t.index ["profile_id"], name: "index_locations_on_profile_id"
   end
 
   create_table "mail_boxes", force: :cascade do |t|
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_mail_boxes_on_user_id", using: :btree
+    t.index ["user_id"], name: "index_mail_boxes_on_user_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -63,7 +60,7 @@ ActiveRecord::Schema.define(version: 20170214163059) do
     t.datetime "updated_at",  null: false
     t.string   "sender"
     t.boolean  "read"
-    t.index ["mail_box_id"], name: "index_messages_on_mail_box_id", using: :btree
+    t.index ["mail_box_id"], name: "index_messages_on_mail_box_id"
   end
 
   create_table "pg_search_documents", force: :cascade do |t|
@@ -72,7 +69,7 @@ ActiveRecord::Schema.define(version: 20170214163059) do
     t.integer  "searchable_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id", using: :btree
+    t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id"
   end
 
   create_table "phone_numbers", force: :cascade do |t|
@@ -80,7 +77,7 @@ ActiveRecord::Schema.define(version: 20170214163059) do
     t.string   "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["profile_id"], name: "index_phone_numbers_on_profile_id", using: :btree
+    t.index ["profile_id"], name: "index_phone_numbers_on_profile_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -95,8 +92,8 @@ ActiveRecord::Schema.define(version: 20170214163059) do
     t.string   "short_desc",      limit: 140
     t.string   "tagline",         limit: 26,  default: "Call We Serve"
     t.string   "banner"
-    t.index ["subscription_id"], name: "index_profiles_on_subscription_id", using: :btree
-    t.index ["user_id"], name: "index_profiles_on_user_id", using: :btree
+    t.index ["subscription_id"], name: "index_profiles_on_subscription_id"
+    t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
   create_table "ratings", force: :cascade do |t|
@@ -104,7 +101,7 @@ ActiveRecord::Schema.define(version: 20170214163059) do
     t.integer  "star_index"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["service_id"], name: "index_ratings_on_service_id", using: :btree
+    t.index ["service_id"], name: "index_ratings_on_service_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -114,8 +111,8 @@ ActiveRecord::Schema.define(version: 20170214163059) do
     t.integer  "co_efficient"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.index ["service_id"], name: "index_reviews_on_service_id", using: :btree
-    t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
+    t.index ["service_id"], name: "index_reviews_on_service_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "services", force: :cascade do |t|
@@ -126,8 +123,8 @@ ActiveRecord::Schema.define(version: 20170214163059) do
     t.integer  "price"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.index ["category_id"], name: "index_services_on_category_id", using: :btree
-    t.index ["profile_id"], name: "index_services_on_profile_id", using: :btree
+    t.index ["category_id"], name: "index_services_on_category_id"
+    t.index ["profile_id"], name: "index_services_on_profile_id"
   end
 
   create_table "subcategories", force: :cascade do |t|
@@ -136,7 +133,7 @@ ActiveRecord::Schema.define(version: 20170214163059) do
     t.string   "sub_cat_image"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.index ["category_id"], name: "index_subcategories_on_category_id", using: :btree
+    t.index ["category_id"], name: "index_subcategories_on_category_id"
   end
 
   create_table "subscriptions", force: :cascade do |t|
@@ -154,8 +151,6 @@ ActiveRecord::Schema.define(version: 20170214163059) do
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
     t.string   "name"
-    t.integer  "profile_id"
-    t.index ["profile_id"], name: "index_users_on_profile_id", using: :btree
   end
 
 end

@@ -5,9 +5,9 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: postgresql
-  username: kitchenapp
-  password: playoffs
+  adapter: sqlite3
+  username: root
+  password: 
   database: eventify_dev
   host: localhost
   pool: 5
