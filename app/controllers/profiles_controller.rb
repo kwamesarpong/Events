@@ -12,25 +12,36 @@ class ProfilesController < ApplicationController
 
   def show
     init_view(params[:id])
-    profile = Profile.find(params[:id].to_i)
-    #check if user is already logged in
-    if profile.user_id == session[:user_id]
-      redirect_to action: :new, from_there: params[:id]
+    begin
+      profile = Profile.find(params[:id].to_i)
+      #check if user is already logged in
+      if profile.user_id == session[:user_id]
+        redirect_to action: :new, from_there: params[:id]
+      end
+      @services = Service.where(profile_id: params[:id])
+      puts "##########################"
+      puts @services
+    rescue ActiveRecord::RecordNotFound
+      redirect_to '/500.html'
     end
-    @services = Service.where(profile_id: params[:id])
-    puts "##########################"
-    puts @services
+    
+    
   end
 
   def new
     init_view(params[:from_there])
     @my_services = Service.where(profile_id: params[:from_there])
-    profile = Profile.find(params[:from_there])
-    user = profile.user
-    @mail_box = MailBox.find_by_user_id(user.id)
-    @mail_box = Message.where(mail_box_id: @mail_box.id).sorted 
-    puts "##########################"
-    puts @my_services
+    begin
+      profile = Profile.find(params[:from_there])
+      user = profile.user
+      @mail_box = MailBox.find_by_user_id(user.id)
+      @mail_box = Message.where(mail_box_id: @mail_box.id).sorted 
+      puts "##########################"
+      puts @my_services
+    rescue ActiveRecord::RecordNotFound
+      redirect_to '/404.html'
+    end
+
   end
 
   def create

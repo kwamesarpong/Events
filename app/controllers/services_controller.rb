@@ -20,8 +20,14 @@ class ServicesController < ApplicationController
   end
 
   def show
-    @service = Service.find(params[:id])
-    @message = Message.new
+
+    begin
+      @service = Service.find(params[:id])
+      @message = Message.new
+    rescue ActiveRecord::RecordNotFound
+      redirect_to '/404.html'
+    end
+    
   end
 
   def new

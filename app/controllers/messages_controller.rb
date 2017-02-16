@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
     skip_before_action :verify_authenticity_token, only: :update
 
     def create
-        body = params[:message][:body] #GET MESSAGE
+        body = params[:body] #GET MESSAGE
         id = params[:id] #PULL THE PROFILE ID
         profile = Profile.find(id.to_i) #GET PROFILE OBJECT
         to = profile.user #GET CORRESPONDING USER OBJECT
@@ -16,9 +16,14 @@ class MessagesController < ApplicationController
         message.recipient = to
         message.mail_box = to.mail_box
         message.read = false
-        message.sender = User.find(from.to_i)
-        #FIRE MESSAGE
-        message.save
+
+        begin
+            message.sender = User.find(from.to_i)
+            message.save
+        rescue ActiveRecord::RecordNotFound
+            redirect_to controller: :users, action: :new
+        end
+        
     end
 
     def inbox
@@ -31,7 +36,11 @@ class MessagesController < ApplicationController
         message.save
     end
 
+    
+    
+    private
+
     def white_list
-        params.require(:message).permit(:body)
+        params.require(:message).permit(:id, :body)
     end
 end
