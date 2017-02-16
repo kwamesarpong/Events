@@ -9,8 +9,8 @@ class OutsidesController < ApplicationController
             if @authorization = Authorization.find_by_provider_and_uid(auth.provider, auth.uid)
                 #now sigin in user
                 session[:user_id] = @authorization.user.id
-                
-                redirect_to '/'
+
+                redirect_after_oauth
 
             elsif @user = User.find_by_email(auth.info.email)
                 #user email exist but different provider
@@ -20,6 +20,8 @@ class OutsidesController < ApplicationController
                 @user.authorizations << @authorization
                 session[:user_id] = @user.id
 
+                redirect_after_oauth
+                
             else
                 #sign user_up
                 @user = User.new
@@ -67,4 +69,16 @@ class OutsidesController < ApplicationController
 
     def finish_sign_up_from_outside
     end
+
+    private
+
+    def redirect_after_oauth
+        @user = User.find(session[:user_id].to_i)
+        if @user.kind == User::SERVICE_PROVIDER
+            redirect_to controller: :profiles, action: :new, from_there: @user.profile.id
+        else
+            redirect_to '/'
+        end
+    end
+    
 end
