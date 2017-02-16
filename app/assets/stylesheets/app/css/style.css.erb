@@ -3437,15 +3437,32 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
 
 /*--- reset code ---*/
-/*-- /link-effect --*/
+/*-- link-effect --*/
 .banner-profile {
-	background: url(<%= asset_path 'app/kwaku1.jpg' %>) no-repeat;
 	background-position:center;
 	background-size:cover;
 	-webkit-background-size:cover;
 	-moz-background-size:cover;
 	-o-background-size:cover;
 	min-height:500px;
+}
+.banner-profile img{
+	position: absolute;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+    height: 500px;
+}
+input.upload-custom-banner {
+    cursor: pointer;
+    margin: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 500px;
 }
 /*-- slider --*/
 .banner-profile .rslides {
@@ -3472,6 +3489,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	width: 100%;
 	left: 0;
 	top: 0;
+    z-index: 99;
 }
 .rslides li:first-child {
 	position: relative;
@@ -3907,6 +3925,17 @@ hr{
 	.banner-profile-info {
 	margin: 250px 0 0 390px;
 	}
+    input.upload-custom-banner {
+    cursor: pointer;
+    margin: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 500px;
+}
 }
 
 @media (max-width: 1366px) {
@@ -3956,6 +3985,17 @@ hr{
 }
 	.banner-profile-info {
     margin: 180px 0 0 262px;
+}
+input.upload-custom-banner {
+    cursor: pointer;
+    margin: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 500px;
 }
 }
 
@@ -4038,6 +4078,9 @@ hr{
 	.banner-profile-info {
     margin: 180px 0 0 200px;
 }
+input.upload-custom-banner {
+    display: none;
+}
 	.mygallery img.img-responsive {
     height: 245px;
 }
@@ -4084,6 +4127,10 @@ hr{
 	.banner-profile {
 	min-height:360px;
 }
+
+input.upload-custom-banner {
+    display: none;
+}
 	.banner-profile .rslides {
     height: 360px;
 }
@@ -4105,6 +4152,9 @@ hr{
 	.banner-profile-info h3 {
 	font-size:35px;
 }
+input.upload-custom-banner {
+    display:none;
+}
 	.banner-profile-info p {
 	font-size:19px;
 }
@@ -4117,6 +4167,9 @@ hr{
 }
 
 @media (max-width: 640px) {
+input.upload-custom-banner {
+    display:none;
+}
 	.banner-profile-info {
     margin: 45px 0 0 165px;
 }
@@ -4141,6 +4194,10 @@ hr{
 	.content-img {
     height: 350px;
 }
+
+input.upload-custom-banner {
+    display: none;
+}
 	.close-content {
 	top:-17px;
 }
@@ -4152,6 +4209,10 @@ hr{
 @media (max-width: 568px){
 	.banner-profile {
     min-height: 265px;
+}
+
+input.upload-custom-banner {
+    display: none;
 }
 	.banner-profile .rslides {
     height: 265px;

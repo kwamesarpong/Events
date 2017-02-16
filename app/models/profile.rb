@@ -6,6 +6,8 @@ class Profile < ApplicationRecord
 
     mount_uploader :profile_picture, ProfilePictureUploader
 
+    mount_uploader :banner, BannerUploader
+
     belongs_to :user
 
     belongs_to :subscription

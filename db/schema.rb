@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170214163059) do
+ActiveRecord::Schema.define(version: 20170215214406) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "profile_id"
@@ -55,12 +55,14 @@ ActiveRecord::Schema.define(version: 20170214163059) do
   create_table "messages", force: :cascade do |t|
     t.integer  "mail_box_id"
     t.string   "body"
-    t.string   "recipient"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.string   "sender"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.boolean  "read"
+    t.integer  "recipient_id"
+    t.integer  "sender_id"
     t.index ["mail_box_id"], name: "index_messages_on_mail_box_id"
+    t.index ["recipient_id"], name: "index_messages_on_recipient_id"
+    t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
 
   create_table "pg_search_documents", force: :cascade do |t|

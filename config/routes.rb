@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
   post '/search', to: 'mains#search'
 
+  get 'outsides/finish_sign_up', to: 'outsides#finish_sign_up'
+
   get '/auth/:provider/callback', to: 'outsides#create'
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'

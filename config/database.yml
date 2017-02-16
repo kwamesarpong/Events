@@ -6,8 +6,9 @@
 #
 default: &default
   adapter: sqlite3
-  username: root
-  password: 
+  username: kitchenapp
+  password: playoffs
+  host: localhost
   database: eventify_dev
   host: localhost
   pool: 5
