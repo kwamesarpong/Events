@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
   def new
     if session[:user_id]
-      profile = Profile.find_by_user_id(session[:user_id])
+      profile = Profile.find_by_user_id(session[:user_id].to_i)
       redirect_to controller: :profiles, action: :show, id: profile.id
     else
       @categories = Category.all

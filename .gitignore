@@ -22,11 +22,9 @@
 
 # Ignore Byebug command history file.
 .byebug_history
-
 config/database.yml
 schema.rb
 
-database.yml
 
 *.rbc
 capybara-*.html
@@ -71,4 +69,8 @@ bower.json
 .powenv
 
 # Ignore Byebug command history file.
-.byebug_history
+
+database.yml
+schema.rb
+
+eventify_dev
