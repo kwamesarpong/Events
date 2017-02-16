@@ -32,14 +32,14 @@
 				<div class="single-right">
 					<%= link_to profile_path(@service.profile_id) do %>
 						<h3><%= @service.profile.name_of_agency %></h3>
-					<% end %>      <!--  Dummy text, feed the name from the database  -->				
+					<% end %>
 					<div class="pr-single">
-						<p class="reduced "><%= @service.price %></p>      <!--  Dummy text, feed the price from the database  -->
+						<p class="reduced "><%= @service.price %></p>
 					</div>
 					<div class="block block-w3">
-						<div class="starbox small ghosting"> </div>      <!--  Dummy ratings, feed the ratings from the database  -->
+						<div class="starbox small ghosting"> </div>
 					</div>
-					<p class="in-pa"> <%= @service.desc_service %></p> <!--  Dummy ratings, feed the ratings from the database  -->
+					<p class="in-pa"> <%= @service.desc_service %></p>
 			   	
 					<div class="style-textarea">
 						<%= form_for @message, url: { controller: :messages, action: :create, id: @service.profile.id } do |f| %>

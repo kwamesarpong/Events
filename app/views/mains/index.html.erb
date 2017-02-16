@@ -85,7 +85,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 						<%= text_field_tag :q, params[:q], placeholder: "Supplier or Service" %>
 					</div>
 					<div class="col-md-4 col-sm-4 hidden-xs search-no-padding-right">
-						<%= text_field_tag :q, params[:q], placeholder: "Location" %> <!-- Provide auto generated locations -->
+						<%= text_field_tag :q, params[:q], placeholder: "Location" %>
 					</div>
 					<div class="col-md-2 col-sm-4 col-xs-12 search-no-padding">
 						<%= submit_tag "Search", class: "search-no-border btn-search" %>
@@ -314,7 +314,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 	<div class="product">
 		<div class="container">
 			<div class="spec ">
-				<h3>Latest Listings</h3> <!-- Pull this data from the database -->
+				<h3>Latest Listings</h3>
 				<div class="ser-t">
 					<b></b>
 					<span><i></i></span>
@@ -340,7 +340,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 										</div>
 										<br />
 										<div class="add" align="right"><br />
-											<a href="/">    <!-- Link this to the details page -->
+											<a href="/">
 										   		<%= image_tag "app/viewer.png", class: "img-responsive" %>
 										   	</a>
 										</div>
