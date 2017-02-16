@@ -16,7 +16,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
-		$(".scroll").click(function(event){		
+		$("#works").click(function(event){		
 			event.preventDefault();
 			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
 		});
@@ -56,8 +56,10 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 <body>
 	
 		<div class="header">
-			<div class="container-fluid main-nav-shadow">
-    			<%= image_tag "app/logo.png", class: "img-head" %>
+			<div class="container-fluid main-nav-shadow logo-padd">
+				<a href="/">
+    				<%= image_tag "app/logo1.png", class: "img-head" %>
+    			</a>
     			<ul class="card">
 					<li><a href=".lgmd" data-toggle="modal"><i class="fa fa-user" aria-hidden="true"></i>Log in</a></li>
 					<li><a href=".sumd" data-toggle="modal"><i class="fa fa-user" aria-hidden="true"></i>Sign Up</a></li>
@@ -72,21 +74,17 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 			<h3>You deserve the best event</h3>
 			<h4>The best events start with the best suppliers. Find everything you need, all in one place</h4>
 			<br /><br /><br />
-			<h4><a href="">See how it works</a></h4>
+			<h4><a href="#howto" id="works">See how it works</a></h4>
 			<button class="banner-info-button"><a href=".sumd" data-toggle="modal">Create a listing</a></button>
 			<br /><br /><br /><br /><br />
 			<h3>What are you looking for?</h3>
 			<div class="search-form container overlay">
 				<%= form_tag({ controller: :mains, action: :search }, :method => "get", id: "search-form") do %>
 					<div class="col-md-6 col-sm-4 col-xs-12 search-no-padding-left search-no-padding-right">
-						<%= text_field_tag :q, params[:q], placeholder: "Search" %>
+						<%= text_field_tag :q, params[:q], placeholder: "Supplier or Service" %>
 					</div>
 					<div class="col-md-4 col-sm-4 hidden-xs search-no-padding-right">
-						<select>
-							<option>Select location</option>
-							<option>Accra</option>
-							<option>Kumasi</option>
-						</select>
+						<%= text_field_tag :q, params[:q], placeholder: "Location" %> <!-- Provide auto generated locations -->
 					</div>
 					<div class="col-md-2 col-sm-4 col-xs-12 search-no-padding">
 						<%= submit_tag "Search", class: "search-no-border btn-search" %>
@@ -99,6 +97,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
     <script src="js/jquery.vide.min.js"></script>
+
 <div class="gray-div-bg">
 <div class=" container-fluid categories-tab">
 	<h4>Explore by Categories</h4>
@@ -238,7 +237,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 		</div>
 </div>
 
-<div class="container-fluid">
+<div class="container-fluid" id="howto">
 	<div class="row">
 		<div class="col-md-6">
 			<div class="the-padding"></div>
@@ -256,7 +255,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 					</tr>
 					<tr>
 						<td class="grid-table1"><%= image_tag "app/running.png", class: "img-head" %></td>
-						<td class="grid-table2"><b>Stop running all over town trying out multiple blind supplier auditions.Check out our reviews & ratings</b></td>
+						<td class="grid-table2"><b>Stop running all over town trying out multiple blind supplier auditions. Check out our reviews & ratings</b></td>
 					</tr>
 					<tr>
 						<td class="grid-table1"><%= image_tag "app/handshake.png", class: "img-head" %></td>
@@ -314,7 +313,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 	<div class="product">
 		<div class="container">
 			<div class="spec ">
-				<h3>Featured Listings</h3>
+				<h3>Latest Listings</h3> <!-- Pull this data from the database -->
 				<div class="ser-t">
 					<b></b>
 					<span><i></i></span>
@@ -340,7 +339,9 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 										</div>
 										<br />
 										<div class="add" align="right"><br />
-										   	<%= image_tag "app/viewer.png", class: "img-responsive" %>
+											<a href="/">    <!-- Link this to the details page -->
+										   		<%= image_tag "app/viewer.png", class: "img-responsive" %>
+										   	</a>
 										</div>
 									</div>
 								</div>
@@ -363,7 +364,9 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 										</div>
 										<br />
 										<div class="add" align="right"><br />
-										   	<%= image_tag "app/viewer.png", class: "img-responsive" %>
+										   	<a href="/">    <!-- Link this to the details page -->
+										   		<%= image_tag "app/viewer.png", class: "img-responsive" %>
+										   	</a>
 										</div>
 									</div>
 								</div>
@@ -387,7 +390,9 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 										</div>
 										<br />
 										<div class="add" align="right"><br />
-										   	<%= image_tag "app/viewer.png", class: "img-responsive" %>
+										   	<a href="/">    <!-- Link this to the details page -->
+										   		<%= image_tag "app/viewer.png", class: "img-responsive" %>
+										   	</a>
 										</div>
 									</div>
 								</div>
@@ -404,12 +409,12 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 <div class="footer">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-4 some-justify">
+			<div class="col-md-4 col-xs-12 some-justify">
 				<h2>About Us</h2>
 				<br />
 				<p>Evventor is an innovative community marketplace that enables people list and discover a wide variety of events suppliers around them to make their event successful. We know quality, speed and reviews are important concerns when selecting your desired event service provider. That’s why if you’re organizing your next event, Evventor is your best sourcing buddy. Our mission is to help promote businesses online.</p>
 			</div>
-			<div class="col-md-8">
+			<div class="col-md-8 col-xs-12">
 				<div class="row">
 					<div class="col-md-12" align="center">
 						<h2>Evventor</h2>
@@ -421,20 +426,20 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 					</div>
 					<div class="col-md-12">
 						<div class="col-md-4 fo-grid1">
-							<p><i class="fa fa-home" aria-hidden="true"></i>No.32 Aluguntugui Street, East Legon, Accra</p>
+							<p><i class="fa fa-home" aria-hidden="true"></i>No. 20 Aluguntugui Street, East Legon, Accra</p>
 						</div>
 						<div class="col-md-4 fo-grid1">
-							<p><i class="fa fa-phone" aria-hidden="true"></i>+1234 758 839 , +1273 748 730</p>	
+							<p><i class="fa fa-phone" aria-hidden="true"></i>+254 716 808880, +233 50 982 5831, +233 26 288 9802</p>	
 						</div>
 						<div class="col-md-4 fo-grid1">
 							<p><a href="mailto:info@example.com"><i class="fa fa-envelope-o" aria-hidden="true"></i>info@evventor.com</a></p>
 						</div>
 					</div>
 					<div class="col-md-12" align="center">
+						<br /><br />
 						<ul class="social-for">
 							<li><a href="#" class=" face"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
 							<li><a href="#" class=" twi"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-							<li><a href="#" class=" pin"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
 							<li><a href="#" class=" dri"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
 						</ul>
 					</div>
@@ -542,6 +547,8 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 		</div>
 
 	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+
+
 <script type="text/javascript">
     window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var r=t.forceSSL||"https:"===document.location.protocol,a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=(r?"https:":"http:")+"//cdn.heapanalytics.com/js/heap-"+e+".js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n);for(var o=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["addEventProperties","addUserProperties","clearEventProperties","identify","removeEventProperty","setEventProperties","track","unsetEventProperty"],c=0;c<p.length;c++)heap[p[c]]=o(p[c])};
       heap.load("1926082673");
