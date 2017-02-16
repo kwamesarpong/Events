@@ -23,6 +23,6 @@
 .byebug_history
 
 config/database.yml
-db/schema.rb
+schema.rb
 
-config/database.yml
+database.yml
