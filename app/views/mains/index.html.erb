@@ -4,7 +4,6 @@
 <title>Find supplier listings for all your event needs</title>
 <%= csrf_meta_tags %>
 
-<!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta property="og:title" content="Vide" />
@@ -13,14 +12,7 @@
 function hideURLbar(){ window.scrollTo(0,1); } </script>
 <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-<!-- //for-mobile-apps -->
-<!--<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
-<link href="css/style.css" rel='stylesheet' type='text/css' />-->
-<!-- js -->
 
-<!-- //js <script src="js/jquery-1.11.1.min.js"></script> -->
-<!-- start-smoth-scrolling <script type="text/javascript" src="js/move-top.js"></script>
-<script type="text/javascript" src="js/easing.js"></script> -->
 
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
@@ -30,14 +22,13 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 		});
 	});
 </script>
-<!-- start-smoth-scrolling -->
-<!--<link href="css/font-awesome.css" rel="stylesheet">--> 
+
 <link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Noto+Sans:400,700' rel='stylesheet' type='text/css'>
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-<!--- start-rate -->
+
 <script src="js/jstarbox.js"></script>
-	<!--<link rel="stylesheet" href="css/jstarbox.css" type="text/css" media="screen" charset="utf-8" />-->
+	
 		<script type="text/javascript">
 			jQuery(function() {
 			jQuery('.starbox').each(function() {
@@ -59,7 +50,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 			});
 		});
 		</script>
-<!---//End-rate -->
+
 
 </head>
 <body>
@@ -68,16 +59,12 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 			<div class="container-fluid main-nav-shadow">
     			<%= image_tag "app/logo.png", class: "img-head" %>
     			<ul class="card">
-					<!-- <li><a href="wishlist.html" ><i class="fa fa-heart" aria-hidden="true"></i>Wishlist</a></li> -->
-					<!-- Have to put a blog link here -->
-
 					<li><a href=".lgmd" data-toggle="modal"><i class="fa fa-user" aria-hidden="true"></i>Log in</a></li>
 					<li><a href=".sumd" data-toggle="modal"><i class="fa fa-user" aria-hidden="true"></i>Sign Up</a></li>
-					<!--<li><a href="about.html" ><i class="fa fa-file-text-o" aria-hidden="true"></i>Order History</a></li>
-					<li><a href="shipping.html" ><i class="fa fa-ship" aria-hidden="true"></i>Shipping</a></li>-->
+					
 				</ul>
     		</div>
-<div class="top-top-banner">                                     <!-- there are two types of images to be used here -->
+<div class="top-top-banner">
     
     <div class="container">
 		<div class="banner-info">
@@ -86,25 +73,23 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 			<h4>The best events start with the best suppliers. Find everything you need, all in one place</h4>
 			<br /><br /><br />
 			<h4><a href="">See how it works</a></h4>
-			<button class="banner-info-button">Create a listing</button>
+			<button class="banner-info-button"><a href=".sumd" data-toggle="modal">Create a listing</a></button>
 			<br /><br /><br /><br /><br />
 			<h3>What are you looking for?</h3>
 			<div class="search-form container overlay">
 				<%= form_tag({ controller: :mains, action: :search }, :method => "get", id: "search-form") do %>
 					<div class="col-md-6 col-sm-4 col-xs-12 search-no-padding-left search-no-padding-right">
 						<%= text_field_tag :q, params[:q], placeholder: "Search" %>
-						<!--<input type="text" placeholder="Search" name="Search">-->
 					</div>
 					<div class="col-md-4 col-sm-4 hidden-xs search-no-padding-right">
 						<select>
-							<option>Select location</option>                                     <!-- fix the locations with stella -->
+							<option>Select location</option>
 							<option>Accra</option>
 							<option>Kumasi</option>
 						</select>
 					</div>
 					<div class="col-md-2 col-sm-4 col-xs-12 search-no-padding">
 						<%= submit_tag "Search", class: "search-no-border btn-search" %>
-						<!--<button class="search-no-border" type="submit">Search</button>-->
 					</div>
 				<% end %>
 			</div>		
@@ -114,7 +99,6 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
     <script src="js/jquery.vide.min.js"></script>
-<!-- The gray background div starts from here -->
 <div class="gray-div-bg">
 <div class=" container-fluid categories-tab">
 	<h4>Explore by Categories</h4>
@@ -253,7 +237,6 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 		<div class="the-padding">
 		</div>
 </div>
-<!-- The gray background ends here -->
 
 <div class="container-fluid">
 	<div class="row">
@@ -328,35 +311,6 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 	</div>
 </div>
 
-<!--content-->
-<!--content-->
-  <!-- Carousel
-    ================================================== --><!--
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-      <!-- Indicators --><!--
-      <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-      </ol>
-      <div class="carousel-inner" role="listbox">
-        <div class="item active">
-         <a href="kitchen.html"> <%= image_tag "app/ba", class: "first-slide", alt: "First Slide" %></a>
-       
-        </div>
-        <div class="item">
-         <a href="care.html"> <%= image_tag "app/ba1.jpg", class: "second-slide ", alt: "Second slide" %></a>
-         
-        </div>
-        <div class="item">
-          <a href="hold.html"><%= image_tag "app/ba2.jpg", class: "third-slide ", alt:"Third slide" %></a>
-          
-        </div>
-      </div>
-    
-    </div><!-- /.carousel -->
-
-
 	<div class="product">
 		<div class="container">
 			<div class="spec ">
@@ -385,9 +339,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 											<div class="starbox small ghosting"> </div>
 										</div>
 										<br />
-										<div class="add" align="right">
-											<!-- <button class="btn btn-danger my-cart-btn my-cart-b" data-id="25" data-name="Peach Halves" data-summary="summary 25" data-price="4.50" data-quantity="1" data-image="images/of25.png">Add to Cart</button> -->
-										   	<!-- I'm putting a fake star rating system here, it needs to be called and replaced from the database --><br />
+										<div class="add" align="right"><br />
 										   	<%= image_tag "app/viewer.png", class: "img-responsive" %>
 										</div>
 									</div>
@@ -410,9 +362,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 											<div class="starbox small ghosting"> </div>
 										</div>
 										<br />
-										<div class="add" align="right">
-											<!-- <button class="btn btn-danger my-cart-btn my-cart-b" data-id="25" data-name="Peach Halves" data-summary="summary 25" data-price="4.50" data-quantity="1" data-image="images/of25.png">Add to Cart</button> -->
-										   	<!-- I'm putting a fake star rating system here, it needs to be called and replaced from the database --><br />
+										<div class="add" align="right"><br />
 										   	<%= image_tag "app/viewer.png", class: "img-responsive" %>
 										</div>
 									</div>
@@ -436,9 +386,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 											<div class="starbox small ghosting"> </div>
 										</div>
 										<br />
-										<div class="add" align="right">
-											<!-- <button class="btn btn-danger my-cart-btn my-cart-b" data-id="25" data-name="Peach Halves" data-summary="summary 25" data-price="4.50" data-quantity="1" data-image="images/of25.png">Add to Cart</button> -->
-										   	<!-- I'm putting a fake star rating system here, it needs to be called and replaced from the database --><br />
+										<div class="add" align="right"><br />
 										   	<%= image_tag "app/viewer.png", class: "img-responsive" %>
 										</div>
 									</div>
@@ -452,9 +400,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 	</div>
 
 <div class="container-fluid">
-	<!-- <%= image_tag "app/evventor.jpg", class: "the-image" %> -->
 </div>
-<!--footer-->
 <div class="footer">
 	<div class="container">
 		<div class="row">
@@ -502,15 +448,12 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 	</div>
 </div>
 </div>
-<!-- //footer-->
 
-<!-- Modal for signup -->
 		<div class="container">
-  			<!-- Modal -->
+  			
   			<div class="modal fade sumd" id="signupModal" role="dialog">
     			<div class="modal-dialog">
     
-      			<!-- Modal content-->
       				<div class="modal-content">
         				<div class="modal-header the-modal-header">
           					<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -546,14 +489,11 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
   			</div>
   
 		</div>
-<!-- Modal -->
-<!-- Modal for login -->
 		<div class="container">
-  			<!-- Modal -->
+  			
   			<div class="modal fade lgmd" id="loginModal" role="dialog">
     			<div class="modal-dialog">
     
-      			<!-- Modal content-->
       				<div class="modal-content">
         				<div class="modal-header the-modal-header">
           					<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -600,12 +540,6 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
   			</div>
   
 		</div>
-<!-- Modal -->
 
 	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
-<!-- //smooth scrolling -->
-<!-- for bootstrap working <script src="js/bootstrap.js"></script> -->
-		
-<!-- //for bootstrap working <script type='text/javascript' src="js/jquery.mycart.js"></script> -->
-  <!-- product -->
 			
