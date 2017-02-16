@@ -1,5 +1,8 @@
 class MessagesController < ApplicationController
 
+
+    skip_before_action :verify_authenticity_token, only: :update
+
     def create
         body = params[:message][:body] #GET MESSAGE
         id = params[:id] #PULL THE PROFILE ID
@@ -10,15 +13,22 @@ class MessagesController < ApplicationController
         message = Message.new #create THE MESSAGE OBJECT
         #SET REQUIREMENTS
         message.body = body
-        message.recipient = to.id
+        message.recipient = to
         message.mail_box = to.mail_box
-        message.sender = from
+        message.read = false
+        message.sender = User.find(from.to_i)
         #FIRE MESSAGE
         message.save
     end
 
     def inbox
         
+    end
+
+    def update
+        message = Message.find(params[:id])
+        message.read = true
+        message.save
     end
 
     def white_list

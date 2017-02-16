@@ -60,9 +60,9 @@ ActiveRecord::Schema.define(version: 20170215214406) do
     t.boolean  "read"
     t.integer  "recipient_id"
     t.integer  "sender_id"
-    t.index ["mail_box_id"], name: "index_messages_on_mail_box_id", using: :btree
-    t.index ["recipient_id"], name: "index_messages_on_recipient_id", using: :btree
-    t.index ["sender_id"], name: "index_messages_on_sender_id", using: :btree
+    t.index ["mail_box_id"], name: "index_messages_on_mail_box_id"
+    t.index ["recipient_id"], name: "index_messages_on_recipient_id"
+    t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
 
   create_table "pg_search_documents", force: :cascade do |t|
@@ -155,6 +155,4 @@ ActiveRecord::Schema.define(version: 20170215214406) do
     t.string   "name"
   end
 
-  add_foreign_key "messages", "users", column: "recipient_id"
-  add_foreign_key "messages", "users", column: "sender_id"
 end

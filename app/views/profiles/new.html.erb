@@ -79,36 +79,18 @@
       					<div class="myskills slideanim">
 							<div class="row">
   								<div class="panel-group" id="accordion">
+								  <% @mail_box.each do |message| %>
     								<div class="panel panel-default">
       									<div class="panel-heading">
         									<h4 class="panel-title">
-          										<a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Sender Name</a>
+          										<a class="message-mail" title="<%= message.id %>" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= message.id %>"><%= message.sender.name %></a>
         									</h4>
       									</div>
-      									<div id="collapse1" class="panel-collapse collapse">
-        									<div class="panel-body">Hi, I came across your listing and would like to book it for so and so date.</div>
+      									<div id="collapse<%= message.id %>" class="panel-collapse collapse">
+        									<div class="panel-body"><%=  message.body %></div>
       									</div>
     								</div>
-    								<div class="panel panel-default">
-      									<div class="panel-heading">
-        									<h4 class="panel-title">
-          										<a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Sender Name</a>
-        									</h4>
-      									</div>
-      									<div id="collapse2" class="panel-collapse collapse">
-        									<div class="panel-body">Hi, I came across your listing and would like to book it for so and so date.</div>
-      									</div>
-    								</div>
-    								<div class="panel panel-default">
-      									<div class="panel-heading">
-        									<h4 class="panel-title">
-          										<a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Sender Name</a>
-        									</h4>
-      									</div>
-      									<div id="collapse3" class="panel-collapse collapse">
-        									<div class="panel-body">Hi, I came across your listing and would like to book it for so and so date.</div>
-      									</div>
-    								</div>
+									<% end %>
   								</div> 
 							</div>
 						</div>
@@ -310,6 +292,30 @@ $(document).keypress(function(e) {
 	}
 
 
+});
+
+$(document).ready(function(e){
+	$('.message-mail').click(function(e){
+		var messageId = $(this).attr('title');
+		var messageForm = new FormData();
+		messageForm.append('message[read]', 1);
+
+		$.ajax({
+		  url: "/messages/"+messageId,
+		 type: "PATCH",
+		 data: messageForm,
+		cache: false,
+  contentType: false,
+  processData: false,
+	  success: function(resp){ 
+			console.log(resp);
+			},
+		 fail:  function(resp){
+			console.log(resp);
+	   }
+		});
+
+	});
 });
 
 </script>

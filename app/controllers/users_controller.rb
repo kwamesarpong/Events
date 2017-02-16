@@ -49,7 +49,7 @@ class UsersController < ApplicationController
           redirect_to controller: :profiles, action: :new, from_there: profile.id
         else
         #USER IS ORGANIZER
-        redirect_to action: :index
+          redirect_to controller: :mains, action: :index
         end
 
       
