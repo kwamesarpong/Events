@@ -10,10 +10,6 @@ class User < ApplicationRecord
 
     has_one  :mail_box
 
-    has_many :messages
-
-    has_many :messages
-
     EMAIL_REGEX = /\A[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}\Z/i
 
     EMAIL_MESSAGE = "Please provide an correct email address with more than 5 characters"
