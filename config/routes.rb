@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
   post '/search', to: 'mains#search'
 
+  post '/async_search', to: 'mains#async_search'
+
   get 'outsides/finish_sign_up', to: 'outsides#finish_sign_up'
 
   get '/auth/:provider/callback', to: 'outsides#create'

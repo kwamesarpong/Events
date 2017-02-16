@@ -21,5 +21,6 @@
 //= require app/js/jquery.zoomtoo
 //= require app/js/classie
 //= require app/js/grid3d
+//= require app/js/async.search
 //= require turbolinks
 //= require_tree .

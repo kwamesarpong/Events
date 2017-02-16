@@ -1,0 +1,18 @@
+<%= link_to profile_path(item.id) do %>
+                <%= image_tag "app/kwaku.jpg", { class: "img-responsive img-fix-height", width:"492", height:"300" } %>
+            <% end %>
+            <div class="mid-1">
+                <div class="women">
+                    <h6><%= link_to item.name_of_agency, profile_path(item.id) %></h6>
+                    <!-- All listings have to be read from the database -->
+                </div>
+            <div class="mid-2">
+                <p><%= item.tagline %></p>
+                    <div class="block">
+                        <div class="starbox small ghosting"> </div>				<!-- Ratings also from database -->
+                    </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>

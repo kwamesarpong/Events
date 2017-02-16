@@ -1,5 +1,10 @@
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 <div class="banner-profile">
+<% if @profile.banner.url.nil? %>
+	<%= image_tag "app/kwaku1.jpg", class: "custom-profile-banner" %>
+<% else %>
+	<%= image_tag @profile.banner.url, class: "custom-profile-banner" %>
+<% end %>
 	<ul class="rslides" id="slider" value="<%= @profile.id %>" >
 		<li>
 			<div class="banner-profile-info">
