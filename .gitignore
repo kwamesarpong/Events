@@ -22,7 +22,7 @@
 # Ignore Byebug command history file.
 .byebug_history
 
-config/database.yml
-db/schema.rb
+database.yml
+schema.rb
 
-config/database.yml
+eventify_dev
