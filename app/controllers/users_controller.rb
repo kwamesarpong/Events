@@ -14,14 +14,20 @@ class UsersController < ApplicationController
   end
 
   def new
-    if session[:user_id]
-      profile = Profile.find_by_user_id(session[:user_id].to_i)
-      redirect_to controller: :profiles, action: :show, id: profile.id
-    else
-      @categories = Category.all
-      @user = User.new
-      render :new
+
+    begin
+      if !session[:user_id] == nil
+        profile = Profile.find_by_user_id(session[:user_id].to_i)
+        redirect_to controller: :profiles, action: :show, id: profile.id
+      else
+        @categories = Category.all
+        @user = User.new
+        render :new
+      end
+    rescue ActiveRecord::RecordNotFound
+      redirect_to '/404.html'
     end
+    
 
   end
 
