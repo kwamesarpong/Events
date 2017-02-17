@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
     skip_before_action :verify_authenticity_token, only: :update
 
     def create
-        body = params[:body] #GET MESSAGE
+        body = params[:message][:body] #GET MESSAGE
         id = params[:id] #PULL THE PROFILE ID
         profile = Profile.find(id.to_i) #GET PROFILE OBJECT
         to = profile.user #GET CORRESPONDING USER OBJECT

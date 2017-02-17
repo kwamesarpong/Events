@@ -1,7 +1,7 @@
 $(document).keyup(function(e){
     //e.preventDefault();
     var searchquery = $("#search-form input[type='text']").val().trim();
-    if(searchquery.length > 3){
+    if(searchquery.length > 5){
         //todo
         //1. you want to fire request to rails api for suggestion now.
 
