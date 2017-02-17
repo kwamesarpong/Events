@@ -6,7 +6,17 @@ class MainsController < ApplicationController
 
     
     def index
-       @categories = Category.all 
+       @categories = Category.all
+       #check to see if user is signed in.
+       if !session[:user_id].nil?
+           begin
+             user = User.find(session[:user_id])
+             @profile = user.profile
+           rescue ActiveRecord::RecordNotFound
+             redirect_to '404.html'
+           end
+           
+       end
     end
 
 

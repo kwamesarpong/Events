@@ -62,8 +62,13 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
     				<%= image_tag "app/logo1.png", class: "img-head" %>
     			</a>
     			<ul class="card">
-					<li><a href=".lgmd" data-toggle="modal"><i class="fa fa-user" aria-hidden="true"></i>Log in</a></li>
+				<% if !@profile.nil? %>
+				  <li><a href="/profiles/<%= @profile.id %>" ><i class="fa fa-user" aria-hidden="true"></i>Profile</a></li>
+				<% else %>
+				  <li><a href=".lgmd" data-toggle="modal"><i class="fa fa-user" aria-hidden="true"></i>Log in</a></li>
 					<li><a href=".sumd" data-toggle="modal"><i class="fa fa-user" aria-hidden="true"></i>Sign Up</a></li>
+				<% end %>
+					
 					
 				</ul>
     		</div>
@@ -85,7 +90,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 						<%= text_field_tag :q, params[:q], placeholder: "Supplier or Service" %>
 					</div>
 					<div class="col-md-4 col-sm-4 hidden-xs search-no-padding-right">
-						<%= text_field_tag :q, params[:q], placeholder: "Location" %>
+						<input type="text" placeholder="Location" name="location" />
 					</div>
 					<div class="col-md-2 col-sm-4 col-xs-12 search-no-padding">
 						<%= submit_tag "Search", class: "search-no-border btn-search" %>
