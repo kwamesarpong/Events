@@ -82,7 +82,7 @@
           					<h3 class="modal-title"><%= message.body %> </h3>
         				</div>
         				<div class="modal-body md-body" align="center">
-        					<%= form_for @message, url: { controller: :messages, action: :create, id: message.sender.profile.id } do |f| %>
+        					<%= form_for @message, url: { controller: :messages, action: :create, profile_id: message.sender.profile.id } do |f| %>
         						<%= f.text_area :body, placeholder: "Message" %>
         						<br /><br /><br />
         				</div>

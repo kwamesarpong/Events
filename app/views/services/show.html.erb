@@ -42,7 +42,7 @@
 					<p class="in-pa"> <%= @service.desc_service %></p>
 			   	
 					<div class="style-textarea">
-						<%= form_for @message, url: { controller: :messages, action: :create, id: @service.profile.id } do |f| %>
+						<%= form_for @message, url: { controller: :messages, action: :create, profile_id: @service.profile_id } do |f| %>
 							<%= f.text_area :body, placeholder: "Start a negotiation" %>
 							
 						

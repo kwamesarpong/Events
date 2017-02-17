@@ -13,5 +13,17 @@ class Message < ApplicationRecord
     scope :sorted, lambda {order("messages.id DESC")}
 
 
+    def self.check_communication_between? user_one, user_two
+        mail_box_of_user_one = user_one.mail_box
+        mail_box_of_user_one.messages.each do |message|
+            if message.sender_id == user_two.id
+                return true
+                break
+            end
+       end
+       return false
+    end
+
+
 
 end

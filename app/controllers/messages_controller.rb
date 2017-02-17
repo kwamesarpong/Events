@@ -1,11 +1,12 @@
 class MessagesController < ApplicationController
 
+    include ApplicationHelper
 
     skip_before_action :verify_authenticity_token, only: :update
 
-    def create
+    def create 
         body = params[:message][:body] #GET MESSAGE
-        id = params[:id] #PULL THE PROFILE ID
+        id = params[:profile_id] #PULL THE PROFILE ID
         profile = Profile.find(id.to_i) #GET PROFILE OBJECT
         to = profile.user #GET CORRESPONDING USER OBJECT
         from = session[:user_id] #GET THE LOGGED IN USERS ID
@@ -16,10 +17,10 @@ class MessagesController < ApplicationController
         message.recipient = to
         message.mail_box = to.mail_box
         message.read = false
-
         begin
             message.sender = User.find(from.to_i)
             message.save
+            #display_object_attributes(message)
         rescue ActiveRecord::RecordNotFound
             redirect_to controller: :users, action: :new
         end
@@ -41,6 +42,6 @@ class MessagesController < ApplicationController
     private
 
     def white_list
-        params.require(:message).permit(:id, :body)
+        params.require(:message).permit(:id, :body, :profile_id)
     end
 end
