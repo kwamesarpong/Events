@@ -36,6 +36,7 @@ class ProfilesController < ApplicationController
       user = profile.user
       @mail_box = MailBox.find_by_user_id(user.id)
       @mail_box = Message.where(mail_box_id: @mail_box.id).sorted 
+      @message = Message.new
       puts "##########################"
       puts @my_services
     rescue ActiveRecord::RecordNotFound
