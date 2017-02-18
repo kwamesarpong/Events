@@ -55,6 +55,9 @@ gem 'carrierwave', '~> 1.0'
 #mini_magick for image processing
 gem "mini_magick"
 
+#cloudinary for storing images on a different cdn
+gem 'cloudinary'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

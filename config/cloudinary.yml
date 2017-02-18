@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: bkwaku
+  api_key: '759838114638514'
+  api_secret: Pnim5ExDKW8V8SLfVVfh2VU_eiw
+  enhance_image_tag: true
+  static_image_support: true
+production:
+  cloud_name: bkwaku
+  api_key: '759838114638514'
+  api_secret: Pnim5ExDKW8V8SLfVVfh2VU_eiw
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: bkwaku
+  api_key: '759838114638514'
+  api_secret: Pnim5ExDKW8V8SLfVVfh2VU_eiw
+  enhance_image_tag: true
+  static_image_support: true

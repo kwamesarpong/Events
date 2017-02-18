@@ -2,10 +2,12 @@ class CategoryPicUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  include CarrierWave::MiniMagick
+  #include CarrierWave::MiniMagick
+
+  include Cloudinary::CarrierWave
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
+  #storage :file
   # storage :fog
 
   # Override the directory where uploaded files will be stored.
@@ -36,11 +38,11 @@ class CategoryPicUploader < CarrierWave::Uploader::Base
     process resize_to_fit: [40, 40]
   end
 
-  version :thumb do
+  version :thumbnail do
     process resize_to_fit: [90, 90]
   end
 
-  version :large do
+  version :standard do
     process resize_to_fit: [700, 850]
   end
 
