@@ -39,9 +39,11 @@ class ServicesController < ApplicationController
     @service.profile_id = params["profile"]
     @service.picture = params[:service][:picture]
     if @service.save!
-        redirect_to controller: :profiles, action: :show, id: @service.profile_id
+        flash[:notice] = @service.id.to_s
+        redirect_to controller: :profiles, action: :new, from_there: @service.profile_id
       else
-        puts "not here"
+        flash[:notice] = nil
+        render controller: :profiles, action: :new
     end
 
   end

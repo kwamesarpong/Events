@@ -42,8 +42,7 @@
 					<p class="in-pa"> <%= @service.desc_service %></p>
 			   	
 					<div class="style-textarea">
-						<%= form_for @message, url: { controller: :messages, action: :create, profile_id: @service.profile_id } do |f| %>
-							<%= f.text_area :body, placeholder: "Start a negotiation" %>
+							<textarea id="body" row="10" col="10"></textarea>
 							
 						
 					</div>
@@ -55,8 +54,7 @@
 						<li><a href="#" class="icon dribbble"><i class="fa fa-dribbble" aria-hidden="true"></i><span></span></a></li>
 					</ul>
 					<div class="add add-3">	
-						<%= submit_tag 'Contact Supplier' %>
-						<% end %>
+						<button id="message-supplier">Contact Supplier</button>
 					</div>		 
 				<div class="clearfix"> </div>
 			</div>
@@ -70,3 +68,29 @@
 
 <div class="the-padding">
 </div>
+
+<script>
+$('#message-supplier').click(function(e){
+	e.preventDefault();
+	var messageId = $(this).attr('title');
+	var messageForm = new FormData();
+	messageForm.append('message[body]', $('#body').val().trim());
+	messageForm.append('message[profile_id]', <%= @service.profile_id %>);
+
+$.ajax({
+		url: "/messages/",
+		type: "POST",
+		data: messageForm,
+	   cache: false,
+ contentType: false,
+ processData: false,
+	 success: function(resp){ 
+		console.log(resp);
+		$('.single-top-left').prepend("<div class='alert alert-success' role='alert'> Message sent sucessfully!</div>");
+		},
+		fail:  function(resp){
+		$('.single-top-left').prepend("<div class='alert alert-danger' role='alert'> You cannot send this message at this time!</div>");
+		}
+	});
+});
+</script>

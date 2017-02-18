@@ -96,9 +96,14 @@ class ProfilesController < ApplicationController
   private
 
   def init_view(param)
-    @profile = Profile.find_by_id(param)
-    @service = Service.new
-    @categories = Category.all
+    begin
+      @profile = Profile.find_by_id(param)
+      @service = Service.new
+      @categories = Category.all
+    rescue ActiveRecord::RecordNotFound
+      redirect_to '/404.html'
+    end
+
   end
 
   def white_list

@@ -57,6 +57,11 @@
 
 				</div>
 			</div>
+			<% if flash[:notice].nil? %>
+				<%= display_errors_for_object @service %>
+			<% else %>
+				<%= display_service_posted_success flash[:notice] %>
+			<% end %>
 			<div class="col-md-8 col-xs-12">
 
 				<div class="navigation-div">
@@ -193,16 +198,18 @@
           					<button type="button" class="close" data-dismiss="modal">&times;</button>
           					<%= image_tag "app/logo1.png", class: "img-head" %>
           					<br /><br /><br />
+
           					<h3 class="modal-title"><%= message.body %> </h3>
         				</div>
         				<div class="modal-body md-body" align="center">
-        					<%= form_for @message, url: { controller: :messages, action: :create, profile_id: message.sender.profile.id } do |f| %>
-        						<%= f.text_area :body, placeholder: "Message" %>
+        					
+        						<textarea id="body" row="10" col="10"></textarea>
+								<p class="sender-this" style="display: none;"><%= message.sender.profile.id %></p>
         						<br /><br /><br />
         				</div>
         				<div class="modal-footer the-modal-footer">
-						<%= submit_tag 'Send Reply', class: "textbox-button" %>
-						<% end %>
+						<button id="message-supplier">Contact Supplier</button>
+						
         					
         					
         				</div>
@@ -327,7 +334,6 @@ $(document).keypress(function(e) {
 
 });
 
-$(document).ready(function(e){
 	$('.message-mail').click(function(e){
 		var messageId = $(this).attr('title');
 		var messageForm = new FormData();
@@ -349,6 +355,53 @@ $(document).ready(function(e){
 		});
 
 	});
+
+
+
+
+
+
+
+
+
+
+
+	$('#message-supplier').click(function(e){
+	e.preventDefault();
+	var messageId = $(this).attr('title');
+	var messageForm = new FormData();
+	messageForm.append('message[body]', $('#body').val().trim());
+	messageForm.append('message[profile_id]',$('.sender-this').html().trim());
+
+$.ajax({
+		url: "/messages/",
+		type: "POST",
+		data: messageForm,
+	   cache: false,
+ contentType: false,
+ processData: false,
+	 success: function(resp){ 
+		console.log(resp);
+		$('.alert').html("");
+		$('.modal-body').prepend("<div class='alert alert-success' role='alert'> Message sent sucessfully!</div>");
+		},
+		fail:  function(resp){
+		$('.alert').html("");
+		$('.modal-body').prepend("<div class='alert alert-danger' role='alert'> You cannot send this message at this time!</div>");
+		}
+	});
 });
+
+
+
+
+
+
+
+
+
+
+
+
 
 </script>
