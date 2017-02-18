@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   def new
 
     begin
-      if !session[:user_id] == nil
+      if !session[:user_id].nil?
         profile = Profile.find_by_user_id(session[:user_id].to_i)
         redirect_to controller: :profiles, action: :show, id: profile.id
       else
