@@ -7,7 +7,6 @@ Rails.application.config.middleware.use OmniAuth::Builder do
 
 
 
-  provider :facebook, "1759008331021490", "6cffd0ebe4234e19debbf4f68ba34b58",
-    scope: 'email,user_birthday', display: 'popup'
+  provider :facebook, "1759008331021490", "e512d4fd7034b881f730c41d6863c344"
   
 end

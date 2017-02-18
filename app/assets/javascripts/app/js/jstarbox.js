@@ -148,6 +148,8 @@
 				
 				positioner.bind('click'+eventNamespace, function(event) {
 					if(!opts.changeable) return;
+
+
 					
 					if(opts.autoUpdateAverage) {
 						methods.markAsRated.call(element);
@@ -155,8 +157,12 @@
 					}
 					
 					var new_average = element.triggerHandler('starbox-value-changed', opts.currentValue);
+					
+					console.log("New average is: " + new_average);
+
 					if(!isNaN(parseFloat(new_average)) && isFinite(new_average)) {
 						methods.setOption.call(element, 'average', new_average);
+						console.log("New average is: " + new_average);
 					}
 					
 					if(opts.changeable === 'once') {
