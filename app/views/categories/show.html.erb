@@ -14,7 +14,7 @@
 				  <div class="col-md-4 pro-1">
 						<div class="col-m">
 							<%= link_to service_path(service.id) do %>
-								<%= image_tag service.picture.large.url, { class: "img-responsive img-fix-height", width:"492", height:"300" } %>
+								<%= image_tag service.picture.standard.url, { class: "img-responsive img-fix-height", width:"492", height:"300" } %>
 							<% end %>
 							<div class="mid-1">
 								<div class="women">
@@ -53,7 +53,7 @@
 			<div class="modal-body modal-spa">
 					<div class="col-md-5 span-2">
 						<div class="item">
-							<%= image_tag service.picture.large.url, class: "img-responsive" %>
+							<%= image_tag service.picture.standard.url, class: "img-responsive" %>
 						</div>
 					</div>
 					<div class="col-md-7 span-1 ">
