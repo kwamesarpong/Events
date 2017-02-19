@@ -1,6 +1,6 @@
 <%= link_to service_path(item.id) do %>
-								<%= image_tag item.picture.standard.url, { class: "img-responsive img-fix-height", width:"492", height:"300" } %>
-							<% end %>
+	<%= image_tag item.picture.standard.url, { class: "img-responsive img-fix-height", width:"492", height:"300" } %>
+<% end %>
 							<div class="mid-1">
 								<div class="women">
 									<h6><%= link_to item.profile.name_of_agency, profile_path(item.profile_id) %></h6>

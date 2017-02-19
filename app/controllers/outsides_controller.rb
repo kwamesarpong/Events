@@ -6,6 +6,7 @@ class OutsidesController < ApplicationController
 
     def create
             auth = request.env['omniauth.auth']
+            #if I can find the provider and uid then we sign in the user
             if @authorization = Authorization.find_by_provider_and_uid(auth.provider, auth.uid)
                 #now sigin in user
                 session[:user_id] = @authorization.user.id
@@ -51,7 +52,7 @@ class OutsidesController < ApplicationController
                 mail_box = MailBox.new
                 mail_box.user = @user
                 mail_box.save
-                display_object_attributes profile
+                #display_object_attributes profile
                 #redirect_to login screen and pass user id
                 #from there we can update the password field
                 redirect_to controller: :outsides, action: :finish_sign_up, from_there: @user.id

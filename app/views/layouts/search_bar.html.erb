@@ -55,7 +55,9 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 				<div class="row">
 					<div class="col-md-2">
 						<br /><br />
-    					<%= image_tag "app/logo1.png", class: "img-responsive" %>
+						<%= link_to root_path do %>
+    						<%= image_tag "app/logo1.png", class: "img-responsive" %>
+						<% end %>
     				</div>
     				<div class="col-md-8 the-bar-width">
 						<%= form_tag({ controller: :mains, action: :search }, :method => "get", id: "search-form") do %>
