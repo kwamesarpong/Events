@@ -23,4 +23,3 @@
 //= require app/js/grid3d
 //= require app/js/async.search
 //= require turbolinks
-//= require_tree .
