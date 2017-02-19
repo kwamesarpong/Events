@@ -11,6 +11,7 @@
 				<span class="line1"></span>
 				<p class="tagline_text"><%= @profile.tagline %><i class="tagline fa fa-pencil" aria-hidden="true"></i></p>
 				<span class="line2"></span>
+				<button class="save-button">Save</button><!-- The save button appears under this -->
 			</div>
 		</li>
 	</ul>
@@ -64,6 +65,12 @@
     					<li class="active"><a data-toggle="tab" href="#home">My Inbox</a></li>
     					<li><a data-toggle="tab" href="#menu1">Post Service</a></li>
     					<li><a data-toggle="tab" href="#menu3">About</a></li>
+    					<li class="dropdown">
+    						<a class="dropdown-toggle" data-toggle="dropdown">Other<span class="caret"></span></a>
+    							<ul class="dropdown-menu">
+      								<li><a href="#">Sign out</a></li>
+    							</ul>
+  						</li>
   					</ul>
   				</div>
 
@@ -102,6 +109,18 @@
                     				<td>Your service type</td>
                     				<td>
 										<%= f.select :category_id, @categories.map {|c| [c.name, c.id]}, class: "form-control" %>
+									</td>
+								</tr>
+								<tr>
+                    				<td>Your service sub-category</td>
+                    				<td>
+										
+									</td>
+								</tr>
+								<tr>
+                    				<td>Name of product</td>
+                    				<td>
+										
 									</td>
 								</tr>
 								<tr>
