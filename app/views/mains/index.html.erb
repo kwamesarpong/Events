@@ -327,86 +327,35 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 				</div>
 			</div>
 				<div class=" con-w3l">
-							<div class="col-md-4 pro-1">
-								<div class="col-m">
-								<a href="#" data-toggle="modal" data-target="#myModal17" class="offer-img">
-										<%= image_tag "app/cakehouse.png", class: "img-responsive" %>
+				<% @latest_listings.each do |service| %>
+					<div class="col-md-4 pro-1">
+						<div class="col-m">
+						<a href="#" data-toggle="modal" data-target="#myModal17" class="offer-img">
+								<%= image_tag service.picture.standard.url, class: "img-responsive" %>
+							</a>
+							<div class="mid-1">
+								<div class="women">
+									<h6><a href="single.html"><%= service.profile.name_of_agency %></a></h6>							
+								</div>
+								<div class="mid-2">
+									<p><%= service.desc_service %></p>
+									<div class="clearfix"></div>
+								</div>
+								<div class="block">
+									<div class="starbox small ghosting"> </div>
+								</div>
+								<br />
+								<div class="add" align="right"><br />
+									<a href="/">
+										<%= image_tag "app/viewer.png", class: "img-responsive" %>
 									</a>
-									<div class="mid-1">
-										<div class="women">
-											<h6><a href="single.html">Valentine Cake House</a></h6>							
-										</div>
-										<div class="mid-2">
-											<p>Biggest cake supplier in Nairobi</p>
-											<div class="clearfix"></div>
-										</div>
-										<div class="block">
-											<div class="starbox small ghosting"> </div>
-										</div>
-										<br />
-										<div class="add" align="right"><br />
-											<a href="/">
-										   		<%= image_tag "app/viewer.png", class: "img-responsive" %>
-										   	</a>
-										</div>
-									</div>
 								</div>
 							</div>
-							<div class="col-md-4 pro-1">
-								<div class="col-m">
-									<a href="#" data-toggle="modal" data-target="#myModal18" class="offer-img">
-										<%= image_tag "app/cakehouse.png", class: "img-responsive" %>
-									</a>
-									<div class="mid-1">
-										<div class="women">
-											<h6><a href="single.html">Valentine Cake House</a></h6>							
-										</div>
-										<div class="mid-2">
-											<p>Biggest cake supplier in Nairobi</p>
-											<div class="clearfix"></div>
-										</div>
-										<div class="block">
-											<div class="starbox small ghosting"> </div>
-										</div>
-										<br />
-										<div class="add" align="right"><br />
-										   	<a href="/">    <!-- Link this to the details page -->
-										   		<%= image_tag "app/viewer.png", class: "img-responsive" %>
-										   	</a>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 pro-1">
-								<div class="col-m">
-									<a href="#" data-toggle="modal" data-target="#myModal19" class="offer-img">
-										<%= image_tag "app/cakehouse.png", class: "img-responsive" %>
-									</a>
-									<div class="mid-1">
-										<div class="women">
-											<h6><a href="single.html">Valentine Cake House</a></h6>							
-										</div>
-										<div class="mid-2">
-											<p>Biggest cake supplier in Nairobi</p>
-											
-											<div class="clearfix"></div>
-										</div>
-										<div class="block">
-											<div class="starbox small ghosting"> </div>
-										</div>
-										<br />
-										<div class="add" align="right"><br />
-										   	<a href="/">    <!-- Link this to the details page -->
-										   		<%= image_tag "app/viewer.png", class: "img-responsive" %>
-										   	</a>
-										</div>
-									</div>
-								</div>
-							</div>
-							
-							
-							<div class="clearfix"></div>
-						 </div>
+						</div>
+					</div>
+				<% end %>							
+				<div class="clearfix"></div>
+			</div>
 		</div>
 	</div>
 

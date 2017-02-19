@@ -7,6 +7,7 @@ class MainsController < ApplicationController
     
     def index
        @categories = Category.all
+       @latest_listings = Service.last(3).reverse
        #check to see if user is signed in.
        if !session[:user_id].nil?
            begin
@@ -14,8 +15,7 @@ class MainsController < ApplicationController
              @profile = user.profile
            rescue ActiveRecord::RecordNotFound
              redirect_to '404.html'
-           end
-           
+           end   
        end
     end
 
