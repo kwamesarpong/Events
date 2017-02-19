@@ -11,7 +11,7 @@
 				<span class="line1"></span>
 				<p class="tagline_text"><%= @profile.tagline %><i class="tagline fa fa-pencil" aria-hidden="true"></i></p>
 				<span class="line2"></span>
-				<button class="save-button">Save</button><!-- The save button appears under this -->
+				<button id="save-changes" class="save-button">Save</button><!-- The save button appears under this -->
 			</div>
 		</li>
 	</ul>
@@ -73,7 +73,7 @@
     					<li class="dropdown">
     						<a class="dropdown-toggle" data-toggle="dropdown">Other<span class="caret"></span></a>
     							<ul class="dropdown-menu">
-      								<li><a href="#">Sign out</a></li>
+      								<li><a href="/user/sign_out/">Sign out</a></li>
     							</ul>
   						</li>
   					</ul>
@@ -317,21 +317,21 @@ function previewFile() {
 
 
 
-$(document).keypress(function(e) {
-	if(e.which == 13) {
+$('#save-changes').click(function(e) {
 		e.preventDefault();
 		var profile;
 		var formData = new FormData();
     	$input = $("input[type=file].upload-custom-banner");
 		formData.append('profile[banner]', $input[0].files[0]);
-		formData.append('profile[name_of_agency]', $('.full_name_text').text());
-		formData.append('profile[desc]', $('.long_desc_text').text());
-		formData.append('profile[short_desc]', $('.short_desc_text').text());
-		formData.append('profile[tagline]', $('.tagline_text').text());
-		formData.append('address[physical_address]', $('.address_text').text());
+		formData.append('profile[name_of_agency]', $('.full_name_text').text().trim());
+		formData.append('profile[desc]', $('.long_desc_text').text().trim());
+		formData.append('profile[short_desc]', $('.short_desc_text').text().trim());
+		formData.append('profile[tagline]', $('.tagline_text').text().trim());
+		formData.append('address[physical_address]', $('.address_text').text().trim());
 		$('#slider').attr("value", function( i, val ){
 			profile = val;
 		});
+
 		$.ajax({
 		  url: "/profiles/"+profile,
 		 type: "PATCH",
@@ -346,9 +346,6 @@ $(document).keypress(function(e) {
 			console.log(resp);
 	   }
 		});
-	   
-
-	}
 
 
 });

@@ -29,6 +29,10 @@ class ProfilesController < ApplicationController
   end
 
   def new
+    if session[:user_id].nil?
+      redirect_to controller: :users, action: :new
+    end
+    
     init_view(params[:from_there])
     @my_services = Service.where(profile_id: params[:from_there].to_i)
     begin

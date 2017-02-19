@@ -4,17 +4,9 @@ class UsersController < ApplicationController
 
   layout :set_layout
   
-  before_action :get_user, only: [:show, :update, :destroy]
-
-
-  def index
-  end
-
-  def show
-  end
+  #before_action :get_user, only: [:show, :update]
 
   def new
-
     begin
       if !session[:user_id].nil?
         profile = Profile.find_by_user_id(session[:user_id].to_i)
@@ -89,12 +81,14 @@ class UsersController < ApplicationController
   end
 
 
-  def login
-    
+  def sign_out
+    session[:user_id] = nil
+  	#session[:username] = nil
+  	flash[:notice] = "You are now logged out"
+  	redirect_to controller: :users, action: :new
   end
 
-  def edit
-  end
+
 
   def update
     #if !params[:sign_up].nil?
@@ -107,12 +101,6 @@ class UsersController < ApplicationController
       display_object_attributes @user
       redirect_to controller: :profiles, action: :new, from_there: @user.profile.id
     #end
-  end
-
-  def delete
-  end
-
-  def destroy
   end
 
   private

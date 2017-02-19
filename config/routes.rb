@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
   post 'users/attempt_login', to: 'users#attempt_login'
 
+  get  'user/sign_out', to: 'users#sign_out'
+
   post 'messages/send', to: 'messages#send'
 
   get '/search', to: 'mains#search'
@@ -30,6 +32,8 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback', to: 'outsides#create'
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
+  match ':controller(/:action(/:id))', via: ["get", "post", "patch"]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 end
