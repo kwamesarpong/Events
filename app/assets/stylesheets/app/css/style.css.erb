@@ -1693,6 +1693,7 @@ h2.resp-accordion:first-child {
 .nav-tabs > li > a {
 	background: #ffffff;
 	margin-right: 3px;
+  margin-left: 3px;
 	border: none;
 	border-radius: 0;
 	font-family: 'Open Sans', sans-serif;
@@ -1707,17 +1708,19 @@ h2.resp-accordion:first-child {
 	margin-right: 10px;
 }
 .nav-tabs > li.active > a{
-	border: none;
+	border-bottom: 2px solid #e67e22;
 }
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
-	color: #fff;
-	background-color:#e67e22;
-	border: none;
-	border-radius: 0;
+  border-top: none;
+	border-bottom: 2px solid #e67e22;
+  border-right: none;
+  border-left: none;
 }
 .nav-tabs > li > a:hover, .nav-tabs > li > a:focus {
-	color: #fff;
-	background-color:#e67e22;
+	border-top: none;
+  border-bottom: 2px solid #e67e22;
+  border-right: none;
+  border-left: none;
 }
 .nav-tabs > li > a i {
 	font-size: 32px;
@@ -1957,7 +1960,7 @@ a#myTabDrop1 {
     line-height: 30px;
 }
 .bottom-div {
-	background-color: #f2f2f2;
+	background-color: #fff;
 }
 .panel-group .panel+.panel {
     margin-top: 0px;
@@ -3570,7 +3573,6 @@ span.line2 {
 .about-me {
 	padding:0;
 	margin:0 auto;
-  background-color: #f2f2f2;
 }
 .about-me h3 {
 	color:#A1B3A4;
@@ -3595,7 +3597,7 @@ img.img-responsive {
 }
 .mydetails {
 	padding: 6%;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-right: 2px solid #aa9a80;
 }
 .mydetails h3 {
 	color:#000;
@@ -3606,9 +3608,9 @@ img.img-responsive {
 	font-weight:bold;
 }
 .mydetails p {
-	font-size:20px;
-	line-height:25px;
-	font-weight:400;
+	font-size: 15px;
+	line-height: 25px;
+	font-weight: 400;
 }
 .mydetails .social-icons {
 	padding: 1.3em 0 0;
@@ -3634,7 +3636,6 @@ img.img-responsive {
 }
 .myskills {
 	padding:2em 2em;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 .myskills h3 {
 	color:#000;
@@ -3753,8 +3754,13 @@ span.shortline5 {
 .navigation-div {
   border: 1px solid white;
   background-color: white;
+  float: right;
 }
 /* -- new style for the nav div -- */
+
+.img-border {
+  border: 7px solid #fff;
+}
 
 /* The inbox and reply message */
 .messaging-body {
@@ -3824,14 +3830,6 @@ span.shortline5 {
 	-moz-transition:0.5s all;
 	-o-transition:0.5s all;
 	-ms-transition:0.5s all;
-}
-
-.some-border {
-  border-top: 1px solid #f2f2f2;
-}
-
-.contact-info {
-    margin-top: 10%;
 }
 
 .contact-info h4 {
