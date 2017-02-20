@@ -1,21 +1,56 @@
+<div class="header">
+			<div class="container-fluid main-nav-shadow">
+				<div class="row">
+					<div class="col-md-2">
+						<br /><br />
+						<%= link_to root_path do %>
+    						<%= image_tag "app/logo1.png", class: "img-responsive" %>
+						<% end %>
+    				</div>
+    				<div class="col-md-8 the-bar-width">
+						<%= form_tag({ controller: :mains, action: :search }, :method => "get", id: "search-form") do %>
+						<div class="row" align="center">
+							<div class="col-md-2 col-sm-2 col-xs-12"></div>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<%= text_field_tag :q, params[:q], placeholder: "Search" %>
+							</div>
+							<div class="col-md-2 col-sm-2 col-xs-12" align="center">
+								<%= submit_tag "Search", class: "search-no-border btn-search" %>
+							</div>
+							<div class="col-md-2 col-sm-2 col-xs-12"></div>
+						</div>
+						<% end %>
+					</div>	
+					<div class="col-md-2">
+						<br /><br />
+    					<ul class="card">
+							<li><button class="edit-button">Edit Profile</button></li><!-- Edit profile button-->
+							<li><a href=""><i class="fa fa-user" aria-hidden="true"></i>Sign out</a></li>
+							<!-- Sign out link is here -->
+						</ul>
+					</div>
+    			</div>
+    		<br />
+			</div>
+		</div>
+
+
 <div class="banner-profile">
 <% if @profile.banner.url.nil? %>
-	<%= image_tag "app/kwaku1.jpg", class: "custom-profile-banner" %>
+	<%= image_tag "app/banner.jpg", class: "custom-profile-banner" %>
 <% else %>
 	<%= image_tag @profile.banner.url, class: "custom-profile-banner" %>
 <% end %>
+
 	<ul class="rslides" id="slider" value="<%= @profile.id %>" >
 		<li>
 			<div class="banner-profile-info">
-				<h3 class="full_name_text"><%= @profile.name_of_agency %> <i class="full_name fa fa-pencil" aria-hidden="true"></i></h3>
-				<span class="line1"></span>
-				<p class="tagline_text"><%= @profile.tagline %><i class="tagline fa fa-pencil" aria-hidden="true"></i></p>
-				<span class="line2"></span>
-				<button id="save-changes" class="save-button">Save</button><!-- The save button appears under this -->
+				<h3>Name of business</h3>
+				<p>Tagline</p>
+				<br /><br /><br />
 			</div>
 		</li>
 	</ul>
-	<input type="file" class="upload-custom-banner"  style="width:100%;" title="Click to upload a banner" onchange="previewFile()"/>
 </div>
 <div class="about-me" id="about">
 	<div class="container-fluid">
@@ -28,27 +63,28 @@
 						<br /><br />
 						<div class="row">
 							<div class="col-md-4">
-								<h4>125</h4>
+								<h4><b>125</b></h4><!-- Call from database -->
 								<p>Reviews</p>
 							</div>
 							<div class="col-md-4" style="border-left: 1px solid white; border-right: 1px solid white;">
-								<h4>85</h4>
+								<h4><b>85</b></h4><!-- Call from database -->
 								<p>Messages</p>
 							</div>
 							<div class="col-md-4">
-								<h4>210</h4>
+								<h4><b>210</b></h4><!-- Call from database -->
 								<p>Listings</p>
 							</div>
 						</div>
 						<br /><br />
-					</div>
-					<div>
-						<!-- Some image here to show editing can be done here -->
+						<div>
+							<button class="save-button">New Listing</button><!-- To new listing tab -->
+						</div>
+						<br /><br />
 					</div>
 					<div>
 						<h3>WHO WE ARE</h3>
 						<div style="padding: 0em 2em 0em 2em;">
-							<p class="short_desc_text">Really short descriptive text about who we are and our mission and vision.</p>
+							<p class="short_desc_text">Really short descriptive text about who you are and your mission and vision.</p>
 						</div>
 						<br />
 						<div>
@@ -62,7 +98,7 @@
 									<h3>WHY WE DO IT</h3>
 									<p>Talk your company's why we do it over here</p>
 								</div>
-								<br />
+								<br /><br />
 							</div>
 						</div>
 					</div>
@@ -82,9 +118,9 @@
     					<li><a data-toggle="tab" href="#menu1">Inbox</a></li>
   					</ul>
   				</div>
-
-  				<div class="tab-content">
-  					<div id="home" class="tab-pane fade in active">
+  				<br /><br />
+  				<div class="tab-content" align="center" style="width: 60%; margin: auto;">
+  					<div id="home" class="tab-pane fade in active from-prof">
       					<div class="myskills slideanim">
 							<h3 class="text-center">Post a Listing</h3>
 							<%= form_for @service, url: { controller: :services, action: :create, profile: @profile.id } do |f| %>
@@ -241,6 +277,42 @@
 		</div>
 <% end %>
 
+
+		<div class="container">
+  			
+  			<div class="modal fade" id="welcome-screen" role="dialog">
+    			<div class="modal-dialog">
+    
+      				<div class="modal-content">
+        				<div class="modal-header the-modal-header">
+          					<button type="button" class="close" data-dismiss="modal">&times;</button>
+          					<%= image_tag "app/logo1.png", class: "img-head" %>
+          					<br /><br /><br />
+          					<h2>Welcome to your profile</h2>
+          					<span class="line1"></span>
+        				</div>
+        				<div class="modal-body md-body" align="center">
+        					<h3>Please take some time and edit your company details</h3>
+        					<br /><br /><br />
+        					<h4>Editing your profile details will enable you to be found by searchers looking for your service quickly and easily</h4>
+        					<br /><br /><br />
+        				</div>
+        				<div class="modal-footer the-modal-footer">
+        					<br />
+        					<button type="button" class="save-button" data-dismiss="modal">Continue</button>
+        				</div>
+      				</div>
+      
+    			</div>
+  			</div>
+  
+		</div>
+
+		<script type="text/javascript">
+            $(window).load(function(){
+                $('#welcome-screen').modal('show');
+            });
+        </script>
 
 
 <script>
