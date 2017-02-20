@@ -31,7 +31,7 @@ Rails.application.routes.draw do
 
   get '/auth/:provider/callback', to: 'outsides#create'
 
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  mount RailsAdmin::Engine => '/adonai', as: 'rails_admin'
 
   match ':controller(/:action(/:id))', via: ["get", "post", "patch"]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
