@@ -73,4 +73,6 @@ bower.json
 database.yml
 schema.rb
 
+db/schema.rb
+
 eventify_dev
