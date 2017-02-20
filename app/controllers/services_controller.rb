@@ -63,6 +63,6 @@ class ServicesController < ApplicationController
   private 
 
   def white_list
-    params.require(:service).permit(:category_id,:desc_service,:price)
+    params.require(:service).permit(:category_id,:desc_service,:price,:name_of_service)
   end
 end

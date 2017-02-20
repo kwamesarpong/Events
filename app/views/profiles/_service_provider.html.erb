@@ -117,15 +117,15 @@
 									</td>
 								</tr>
 								<tr>
-                    				<td>Your service sub-category</td>
+                    				<!--<td>Your service sub-category</td>
                     				<td>
 										
-									</td>
+									</td>-->
 								</tr>
 								<tr>
                     				<td>Name of product</td>
                     				<td>
-										
+										<%= f.text_field :name_of_service, placeholder: "Name", class: "form-control" %>	
 									</td>
 								</tr>
 								<tr>
@@ -163,11 +163,6 @@
 						<br />
 						<div class="myskills slideanim move-down">
 							<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-								<ol class="carousel-indicators">
-									<% 0.upto(@my_services.size - 1) do |n| %>
-									<li data-target="#carousel-example-generic" data-slide-to="<%= n %>" class="active"></li>
-									<% end %>
-								</ol>
 								<div class="carousel-inner" role="listbox">
 									<% if @my_services.blank? %>
 

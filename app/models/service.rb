@@ -2,7 +2,7 @@ class Service < ApplicationRecord
 
     include PgSearch
 
-    multisearchable against: [:desc_service]
+    multisearchable against: [:desc_service, :name_of_service]
 
     mount_uploader :picture, PictureUploader
 
