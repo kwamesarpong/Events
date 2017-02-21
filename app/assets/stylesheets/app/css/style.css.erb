@@ -1693,7 +1693,6 @@ h2.resp-accordion:first-child {
 .nav-tabs > li > a {
 	background: #ffffff;
 	margin-right: 3px;
-  margin-left: 3px;
 	border: none;
 	border-radius: 0;
 	font-family: 'Open Sans', sans-serif;
@@ -1708,19 +1707,17 @@ h2.resp-accordion:first-child {
 	margin-right: 10px;
 }
 .nav-tabs > li.active > a{
-	border-bottom: 2px solid #e67e22;
+	border: none;
 }
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
-  border-top: none;
-	border-bottom: 2px solid #e67e22;
-  border-right: none;
-  border-left: none;
+	color: #fff;
+	background-color:#e67e22;
+	border: none;
+	border-radius: 0;
 }
 .nav-tabs > li > a:hover, .nav-tabs > li > a:focus {
-	border-top: none;
-  border-bottom: 2px solid #e67e22;
-  border-right: none;
-  border-left: none;
+	color: #fff;
+	background-color:#e67e22;
 }
 .nav-tabs > li > a i {
 	font-size: 32px;
@@ -3512,12 +3509,12 @@ input.upload-custom-banner {
 	margin: 0 auto;
 }
 .banner-profile-info {
-    width: 50%;
-    background-color: rgba(255, 255, 255, 0.72);
+    text-align: center;
+    width: 100%;
     /** margin: 280px 0 0 390px; **/
 }
 .banner-profile-info h3{
-	color: #3c3737;
+	color: #fff;
 	font-size: 52px;
 	font-weight: bold;
 	text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
@@ -3526,7 +3523,7 @@ input.upload-custom-banner {
 	padding: 60px 0 20px 0;
 }
 .banner-profile-info p {
-	color: #3c3737;
+	color: #fff;
 	text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
 	font-size: 34px;
 	font-weight: normal;
@@ -3573,6 +3570,7 @@ span.line2 {
 .about-me {
 	padding:0;
 	margin:0 auto;
+  background-color: #f2f2f2;
 }
 .about-me h3 {
 	color:#A1B3A4;
@@ -3597,9 +3595,7 @@ img.img-responsive {
 }
 .mydetails {
 	padding: 6%;
-  border-right: 2px solid #aa9a80;
-  border-left: 2px solid #aa9a80;
-  border-bottom: 2px solid #aa9a80;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 .mydetails h3 {
 	color:#000;
@@ -3610,9 +3606,9 @@ img.img-responsive {
 	font-weight:bold;
 }
 .mydetails p {
-	font-size: 15px;
-	line-height: 25px;
-	font-weight: 400;
+	font-size:20px;
+	line-height:25px;
+	font-weight:400;
 }
 .mydetails .social-icons {
 	padding: 1.3em 0 0;
@@ -3638,6 +3634,7 @@ img.img-responsive {
 }
 .myskills {
 	padding:2em 2em;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 .myskills h3 {
 	color:#000;
@@ -3742,7 +3739,7 @@ span.shortline5 {
 }
 /*-- /About me--*/
 
-/* Save button and table vertical align */
+/* Save button */
 .save-button {
   width: 100px;
   height: 41px;
@@ -3750,26 +3747,14 @@ span.shortline5 {
   background-color: #e67e22;
   border: none;
 }
-.edit-button {
-  width: 100px;
-  height: 41px;
-  color: #000;
-  background-color: #fff;
-  border: 2px solid #827f7f;
-}
 /* Save button */
 
 /* -- new style for the nav div -- */
 .navigation-div {
   border: 1px solid white;
   background-color: white;
-  float: right;
 }
 /* -- new style for the nav div -- */
-
-.img-border {
-  border: 7px solid #fff;
-}
 
 /* The inbox and reply message */
 .messaging-body {
@@ -3839,6 +3824,14 @@ span.shortline5 {
 	-moz-transition:0.5s all;
 	-o-transition:0.5s all;
 	-ms-transition:0.5s all;
+}
+
+.some-border {
+  border-top: 1px solid #f2f2f2;
+}
+
+.contact-info {
+    margin-top: 10%;
 }
 
 .contact-info h4 {
@@ -3959,8 +3952,7 @@ hr{
 	height: 500px;
 	}
 	.banner-profile-info {
-    margin-top: 100px;
-	padding-left: 7em;
+	margin: 250px 0 0 390px;
 	}
     input.upload-custom-banner {
     cursor: pointer;
@@ -3977,15 +3969,13 @@ hr{
 
 @media (max-width: 1366px) {
 	.banner-profile-info {
-    margin-top: 100px;
-  padding-left: 7em;
+    margin: 235px 0 0 350px;
 }
 }
 
 @media (max-width: 1280px) {
 	.banner-profile-info {
-    margin-top: 100px;
-  padding-left: 7em;
+    margin: 235px 0 0 320px;
 }
 }
 
@@ -4007,8 +3997,7 @@ hr{
 	width:400px;
 }
 	.banner-profile-info {
-    margin-top: 100px;
-  padding-left: 7em;
+    margin: 235px 0 0 262px;
 }
 	.banner-profile-info p {
 	font-size:25px;
@@ -4024,8 +4013,7 @@ hr{
     height: 675px;
 }
 	.banner-profile-info {
-    margin-top: 100px;
-  padding-left: 7em;
+    margin: 180px 0 0 262px;
 }
 input.upload-custom-banner {
     cursor: pointer;
@@ -4091,8 +4079,7 @@ input.upload-custom-banner {
     height: 600px;
 }
 	.banner-profile-info {
-    margin-top: 100px;
-  padding-left: 7em;
+    margin: 180px 0 0 205px;
 }
 	.grid figure, .grid .placeholder {
     width: 230px;
@@ -4118,8 +4105,7 @@ input.upload-custom-banner {
 
 @media (max-width: 768px) {
 	.banner-profile-info {
-    margin-top: 100px;
-  padding-left: 7em;
+    margin: 180px 0 0 200px;
 }
 input.upload-custom-banner {
     display: none;

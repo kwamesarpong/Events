@@ -21,6 +21,13 @@ class ProfilesController < ApplicationController
       @services = Service.where(profile_id: params[:id])
       puts "##########################"
       puts @services
+      user = @profile.user
+      @mail_box = MailBox.find_by_user_id(user.id)
+      @mail_box = Message.where(mail_box_id: @mail_box.id).sorted 
+      @message = Message.new
+      puts "##########################"
+      #display_object_attributes @mail_box
+      puts @my_services
     rescue ActiveRecord::RecordNotFound
       redirect_to '/500.html'
     end
@@ -35,17 +42,6 @@ class ProfilesController < ApplicationController
     
     init_view(params[:from_there])
     @my_services = Service.where(profile_id: params[:from_there].to_i)
-    begin
-      user = @profile.user
-      @mail_box = MailBox.find_by_user_id(user.id)
-      @mail_box = Message.where(mail_box_id: @mail_box.id).sorted 
-      @message = Message.new
-      puts "##########################"
-      #display_object_attributes @mail_box
-      puts @my_services
-    rescue ActiveRecord::RecordNotFound
-      redirect_to '/404.html'
-    end
 
   end
 

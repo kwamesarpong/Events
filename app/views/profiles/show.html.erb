@@ -44,8 +44,8 @@
 	<ul class="rslides" id="slider" value="<%= @profile.id %>" >
 		<li>
 			<div class="banner-profile-info">
-				<h3>Name of business</h3>
-				<p>Tagline</p>
+				<h3><%= @profile.name_of_agency %></h3>
+				<p><%= @profile.tagline %></p>
 				<br /><br /><br />
 			</div>
 		</li>
@@ -63,15 +63,15 @@
 						<br /><br />
 						<div class="row">
 							<div class="col-md-4">
-								<h4><b>125</b></h4><!-- Call from database -->
+								<h4><b><%= @profile.user.reviews.size %></b></h4><!-- Call from database -->
 								<p>Reviews</p>
 							</div>
 							<div class="col-md-4" style="border-left: 1px solid white; border-right: 1px solid white;">
-								<h4><b>85</b></h4><!-- Call from database -->
+								<h4><b><%= @profile.user.mail_box.messages.size %></b></h4><!-- Call from database -->
 								<p>Messages</p>
 							</div>
 							<div class="col-md-4">
-								<h4><b>210</b></h4><!-- Call from database -->
+								<h4><b><%= @profile.services.size %></b></h4><!-- Call from database -->
 								<p>Listings</p>
 							</div>
 						</div>
@@ -84,20 +84,16 @@
 					<div>
 						<h3>WHO WE ARE</h3>
 						<div style="padding: 0em 2em 0em 2em;">
-							<p class="short_desc_text">Short description about your company</p>
+							<p class="short_desc_text"><%= @profile.short_desc %></p>
 						</div>
 						<br />
 						<div>
 							<h3>WHAT WE DO</h3>
                         	<div class="footer-info">
 								<div style="padding: 0em 2em 0em 2em;">
-									<p>What type of products or services do you provide to customers </p>
+									<p><%= @profile.desc %> </p>
 								</div>
 								<br />
-								<div style="padding: 0em 2em 0em 2em;">
-									<h3>WHY WE DO IT</h3>
-									<p>What makes you special</p>
-								</div>
 								<br /><br />
 							</div>
 						</div>
@@ -174,12 +170,12 @@
 						<div class="myskills slideanim move-down">
 							<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 								<ol class="carousel-indicators">
-									<% 0.upto(@my_services.size - 1) do |n| %>
+									<% 0.upto(@services.size - 1) do |n| %>
 									<li data-target="#carousel-example-generic" data-slide-to="<%= n %>" class="active"></li>
 									<% end %>
 								</ol>
 								<div class="carousel-inner" role="listbox">
-									<% if @my_services.blank? %>
+									<% if @services.blank? %>
 
 									<h3 class="text-center">You are yet to post a listing</h3>
 									<hr style="margin:0;">
@@ -187,7 +183,7 @@
 
 									<% else %>
 
-									<% @my_services.each do |service| %>
+									<% @services.each do |service| %>
 										<div class="col-md-4">
 											<%= image_tag service.picture.small.url %>
 										</div>
@@ -274,44 +270,6 @@
   
 		</div>
 <% end %>
-
-
-		<div class="container">
-  			
-  			<div class="modal fade" id="welcome-screen" role="dialog">
-    			<div class="modal-dialog">
-    
-      				<div class="modal-content">
-        				<div class="modal-header the-modal-header">
-          					<button type="button" class="close" data-dismiss="modal">&times;</button>
-          					<%= image_tag "app/logo1.png", class: "img-head" %>
-          					<br /><br /><br />
-          					<h2>Welcome to your profile</h2>
-          					<span class="line1"></span>
-        				</div>
-        				<div class="modal-body md-body" align="center">
-        					<h3>Please take some time and edit your company details</h3>
-        					<br /><br /><br />
-        					<h4>Editing your profile details will enable you to be found by searchers looking for your service quickly and easily</h4>
-        					<br /><br /><br />
-        				</div>
-        				<div class="modal-footer the-modal-footer">
-        					<br />
-        					<button type="button" class="save-button" data-dismiss="modal">Continue</button>
-        				</div>
-      				</div>
-      
-    			</div>
-  			</div>
-  
-		</div>
-
-		<script type="text/javascript">
-            $(window).load(function(){
-                $('#welcome-screen').modal('show');
-            });
-        </script>
-
 
 <script>
 
@@ -470,11 +428,11 @@ $.ajax({
 	 success: function(resp){ 
 		console.log(resp);
 		$('.alert').html("");
-		$('.modal-body').prepend("<div class='alert alert-success' role='alert'> Message sent sucessfully!</div>");
+		$('.modal-body').prepend("<div class='alert alert-success' role='alert'> <button aria-hidden='true' data-dismiss='alert' class='close' type='button'> × </button> Message sent sucessfully!</div>");
 		},
 		fail:  function(resp){
 		$('.alert').html("");
-		$('.modal-body').prepend("<div class='alert alert-danger' role='alert'> You cannot send this message at this time!</div>");
+		$('.modal-body').prepend("<div class='alert alert-danger' role='alert'> <button aria-hidden='true' data-dismiss='alert' class='close' type='button'> × </button>You cannot send this message at this time!</div>");
 		}
 	});
 });
