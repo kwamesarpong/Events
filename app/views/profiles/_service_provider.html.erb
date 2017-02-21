@@ -15,7 +15,7 @@
 								<%= text_field_tag :q, params[:q], placeholder: "Search" %>
 							</div>
 							<div class="col-md-2 col-sm-2 col-xs-12" align="center">
-								<%= submit_tag "Search", class: "search-no-border btn-search" %>
+								<%= submit_tag "Search", class: "save-button" %>
 							</div>
 							<div class="col-md-2 col-sm-2 col-xs-12"></div>
 						</div>
@@ -24,7 +24,6 @@
 					<div class="col-md-2">
 						<br /><br />
     					<ul class="card">
-							<li></li><!-- Edit profile button-->
 							<li><a href=""><i class="fa fa-user" aria-hidden="true"></i>Sign out</a></li>
 							<!-- Sign out link is here -->
 						</ul>
@@ -85,19 +84,19 @@
 					<div>
 						<h3>WHO WE ARE</h3>
 						<div style="padding: 0em 2em 0em 2em;">
-							<p class="short_desc_text">Really short descriptive text about who you are and your mission and vision.</p>
+							<p class="short_desc_text">Short description about your company</p>
 						</div>
 						<br />
 						<div>
 							<h3>WHAT WE DO</h3>
                         	<div class="footer-info">
 								<div style="padding: 0em 2em 0em 2em;">
-									<p>Talk about your company's what we do over here</p>
+									<p>What type of products or services do you provide to customers </p>
 								</div>
 								<br />
 								<div style="padding: 0em 2em 0em 2em;">
 									<h3>WHY WE DO IT</h3>
-									<p>Talk your company's why we do it over here</p>
+									<p>What makes you special</p>
 								</div>
 								<br /><br />
 							</div>
@@ -127,44 +126,44 @@
 							<%= form_for @service, url: { controller: :services, action: :create, profile: @profile.id } do |f| %>
                     		<table class="table table-striped">
                     			<tr>
-                    				<td>Your service type</td>
-                    				<td>
+                    				<td><p>Your service type</p></td>
+                    				<td style="vertical-align: middle;">
 										<%= f.select :category_id, @categories.map {|c| [c.name, c.id]}, class: "form-control" %>
 									</td>
 								</tr>
 								<tr>
-                    				<td>Your service sub-category</td>
-                    				<td>
-										
+                    				<td><p>Your service sub-category</p></td>
+                    				<td style="vertical-align: middle;">
+										<!-- sub-categories should be here and from database -->
 									</td>
 								</tr>
 								<tr>
-                    				<td>Name of product</td>
-                    				<td>
-										
+                    				<td><p>Name of product</p></td>
+                    				<td style="vertical-align: middle;">
+										<!-- name of product should be a form input textbox -->
 									</td>
 								</tr>
 								<tr>
-									<td>Please upload a picture of your product</td>
-									<td>
+									<td><p>Please upload a picture of your product</p></td>
+									<td style="vertical-align: middle;">
 										<%= f.file_field :picture, class: "form-control" %>
 									</td>
 								</tr>
 								<tr>
-									<td>Description of the product or service</td>
-									<td>
+									<td><p>Description of the product or service</p></td>
+									<td style="vertical-align: middle;">
 										<%= f.text_area :desc_service, rows:"10", cols:"31", placeholder: "Service Description", class:"form-control" %>
 									</td>
 								</tr>
 								<tr>
-									<td>Minimal Price</td>
-									<td>
+									<td><p>Minimal Price</p></td>
+									<td style="vertical-align: middle;">
 										<%= f.text_field :price, placeholder: "Price", class: "form-control" %>	
 									</td>
 								</tr>
 								<tr>
 									<td colspan="2" align="center">	
-										<%= f.submit "Submit", class: "btn btn-success" %>
+										<%= f.submit "Submit", class: "btn btn-success save-button" %>
 									</td>
 								</tr>
 								<% end %>
@@ -189,10 +188,9 @@
 									<% else %>
 
 									<% @my_services.each do |service| %>
-									
-									<div class="col-md-4">
-										<%= image_tag service.picture.small.url %>
-									</div>
+										<div class="col-md-4">
+											<%= image_tag service.picture.small.url %>
+										</div>
 
 									<% end %>		
 									<% end %>
@@ -202,8 +200,8 @@
 
 
     				</div>
-    				<div id="menu1" class="tab-pane fade"><!-- Can you put one of those messages here -->
-      					<div class="myskills slideanim"><!-- So that it won't be blank just like that -->
+    				<div id="menu1" class="tab-pane fade"><!-- Please put "no mesages yet" if there are no messages so that it won't be blank just like that -->
+      					<div class="myskills slideanim">
 							<div class="row">
   								<div class="panel-group" id="accordion">
 								  <% @mail_box.each do |message| %>
