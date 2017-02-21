@@ -36,6 +36,7 @@ class ServicesController < ApplicationController
 
   def create
     @service = Service.new(white_list)
+    @service.name_of_service = "Music"
     @service.profile_id = params["profile"]
     @service.picture = params[:service][:picture]
     if @service.save!
