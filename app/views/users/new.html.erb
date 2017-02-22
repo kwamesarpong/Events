@@ -8,17 +8,17 @@
 					<%= form_for @user, url: { action: :create }, html: { class: :form_nice } do |f| %>
 						<div class="key">
 							<i class="fa fa-user" aria-hidden="true"></i>
-                            <%= f.text_field :name, placeholder: :Full_Name %>
+                            <%= f.text_field :name, placeholder: :Full_Name, required: true %>
 							<div class="clearfix"></div>
 						</div>
 						<div class="key">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
-                            <%= f.text_field :email, placeholder: :Email, value: "" %>
+                            <%= f.text_field :email, placeholder: :Email, value: "", required: true %>
 							<div class="clearfix"></div>
 						</div>
 						<div class="key">
 							<i class="fa fa-lock" aria-hidden="true"></i>
-                            <%= f.password_field :password, placeholder: :Password %>
+                            <%= f.password_field :password, placeholder: :Password, required: true %>
 							<div class="clearfix"></div>
 						</div>
 						<div class="key the-table">

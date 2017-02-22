@@ -1,6 +1,4 @@
 class ServicesController < ApplicationController
-  
-  #include ApplicationHelper
 
   NUMBER_OF_RECORDS_PER_PAGE = 2
 
@@ -36,7 +34,6 @@ class ServicesController < ApplicationController
 
   def create
     @service = Service.new(white_list)
-    #@service.name_of_service = "Music"
     @service.profile_id = params["profile"]
     @service.picture = params[:service][:picture]
     if @service.save!

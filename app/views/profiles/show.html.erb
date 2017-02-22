@@ -143,7 +143,7 @@
                     				<td><p>Name of product</p></td>
                     				<td style="vertical-align: middle;">
 										<!-- name of product should be a form input textbox -->
-										<%= f.text_field :name_of_service, placeholder: "Service Name" , class: "form-control" %>
+										<%= f.text_field :name_of_service, placeholder: "Service Name" , class: "form-control", required: true %>
 									</td>
 								</tr>
 								<tr>
@@ -155,13 +155,13 @@
 								<tr>
 									<td><p>Description of the product or service</p></td>
 									<td style="vertical-align: middle;">
-										<%= f.text_area :desc_service, rows:"10", cols:"31", placeholder: "Service Description", class:"form-control" %>
+										<%= f.text_area :desc_service, rows:"10", cols:"31", placeholder: "Service Description", class:"form-control", required: true %>
 									</td>
 								</tr>
 								<tr>
 									<td><p>Minimal Price</p></td>
 									<td style="vertical-align: middle;">
-										<%= f.text_field :price, placeholder: "Price", class: "form-control" %>	
+										<%= f.text_field :price, placeholder: "Price", class: "form-control", required: true %>	
 									</td>
 								</tr>
 								<tr>

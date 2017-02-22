@@ -31,8 +31,6 @@ class ProfilesController < ApplicationController
       redirect_to controller: :users, action: :new
     end
     init_view(params[:from_there])
-    #@my_services = Service.where(profile_id: params[:from_there].to_i)
-
   end
 
   def create
