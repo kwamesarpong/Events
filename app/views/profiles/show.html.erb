@@ -13,7 +13,7 @@
 						<div class="row" align="center">
 							<div class="col-md-2 col-sm-2 col-xs-12"></div>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<%= text_field_tag :q, params[:q], placeholder: "Search" %>
+								<%= text_field_tag :q, params[:q], placeholder: "Search", required: true %>
 							</div>
 							<div class="col-md-2 col-sm-2 col-xs-12" align="center">
 								<%= submit_tag "Search", class: "save-button" %>
@@ -25,7 +25,9 @@
 					<div class="col-md-2">
 						<br /><br />
     					<ul class="card">
-							<li><a href=""><i class="fa fa-user" aria-hidden="true"></i>Sign out</a></li>
+						<% if @profile.user.id == session[:user_id] %>
+							<li><a href="/user/sign_out/"><i class="fa fa-user" aria-hidden="true"></i>Sign out</a></li>
+						<% end %>
 						</ul>
 					</div>
     			</div>
@@ -174,34 +176,29 @@
 						</div>
     				</div>
     				<div id="menu3" class="tab-pane fade">
-						<div class="myskills slideanim move-down">
-							<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-								<ol class="carousel-indicators">
-									<% 0.upto(@services.size - 1) do |n| %>
-									<li data-target="#carousel-example-generic" data-slide-to="<%= n %>" class="active"></li>
-									<% end %>
-								</ol>
-								<div class="carousel-inner" role="listbox">
+						<div class="myskills slideanim move-down">					
 									<% if @services.blank? %>
-
 									<h3 class="text-center">You are yet to post a listing</h3>
 									<hr style="margin:0;">
 									<p class="text-center">When you post listings, they will appear here.</p>
-
 									<% else %>
-
-									<% @services.each do |service| %>
-										<div class="col-md-4">
-											<%= image_tag service.picture.small.url %>
-										</div>
-
-									<% end %>		
-									<% end %>
-								</div>
-							</div>
+										<% @services.each do |service| %>
+											<div class="col-md-6">
+													<div class="col-m">
+														<%= link_to service_path(service.id) do %>
+															<%= image_tag service.picture.small.url, { class: "img-responsive img-fix-height", width:"492", height:"300" } %>
+														<% end %>
+														<div class="mid-1">
+															<div class="mid-2">
+																<p><%= service.desc_service %></p>
+																<div class="clearfix"></div>
+															</div>
+														</div>
+													</div>
+											</div>
+										<% end %>		
+								<% end %>
 						</div>
-
-
     				</div>
     				<div id="menu1" class="tab-pane fade"><!-- Please put "no mesages yet" if there are no messages so that it won't be blank just like that -->
       					<div class="myskills slideanim">

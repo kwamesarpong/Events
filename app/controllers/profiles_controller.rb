@@ -14,7 +14,7 @@ class ProfilesController < ApplicationController
     init_view(params[:id])
     begin
       profile = Profile.find(params[:id].to_i)
-      @services = Service.where(profile_id: params[:id])
+      @services = Service.where(profile_id: params[:id]).last(2).reverse
       user = @profile.user
       @mail_box = MailBox.find_by_user_id(user.id)
       @mail_box = Message.where(mail_box_id: @mail_box.id).sorted 
