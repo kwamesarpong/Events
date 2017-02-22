@@ -65,6 +65,30 @@
 </div>
 
 <script>
+
+$('.message-mail').click(function(e){
+		var messageId = $(this).attr('title');
+		var messageForm = new FormData();
+		messageForm.append('message[read]', 1);
+
+		$.ajax({
+		  url: "/messages/"+messageId,
+		 type: "PATCH",
+		 data: messageForm,
+		cache: false,
+  contentType: false,
+  processData: false,
+	  success: function(resp){ 
+			console.log(resp);
+			},
+		 fail:  function(resp){
+			console.log(resp);
+	   		}
+		});
+
+	});
+
+	
 $('#message-supplier').click(function(e){
 	e.preventDefault();
 	var messageId = $(this).attr('title');
