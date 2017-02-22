@@ -1,3 +1,18 @@
+<div class="header nav-bar-banner">
+				<div class="row">
+					<div class="col-md-2 col-xs-6" style="padding-left: 3em;">
+						<br /><br />
+						<%= link_to root_path do %>
+    						<%= image_tag "app/logo1.png" %>
+						<% end %>
+    				</div>
+					<div class="col-md-10 col-xs-6" style="padding-right: 3em;">
+						<br /><br />
+						<button id="save-changes" class="save-button" style="float: right;">Save changes</button>
+					</div>
+    			</div>
+		</div>
+
 <div class="banner-profile">
 <% if @profile.banner.url.nil? %>
 	<%= image_tag "app/kwaku1.jpg", class: "custom-profile-banner" %>
@@ -6,12 +21,11 @@
 <% end %>
 	<ul class="rslides" id="slider" value="<%= @profile.id %>" >
 		<li>
-			<div class="banner-profile-info">
+			<div class="banner-profile-info" style="margin-top: 10%;">
 				<h3 class="full_name_text"><%= @profile.name_of_agency %> <i class="full_name fa fa-pencil" aria-hidden="true"></i></h3>
 				<span class="line1"></span>
 				<p class="tagline_text"><%= @profile.tagline %><i class="tagline fa fa-pencil" aria-hidden="true"></i></p>
 				<span class="line2"></span>
-				<button id="save-changes" class="save-button">Save</button><!-- The save button appears under this -->
 			</div>
 		</li>
 	</ul>
@@ -125,17 +139,22 @@
 							<%= image_tag "app/logo1.png", class: "img-head" %>
 							<br /><br /><br />
 							<h2>Welcome to your profile</h2>
-							<span class="line1"></span>
 						</div>
 						<div class="modal-body md-body" align="center">
-							<h3>Please take some time and edit your company details</h3>
 							<br /><br /><br />
+							<h4>Please take some time and edit your company details</h4>
+							<br /><br />
 							<h4>Editing your profile details will enable you to be found by searchers looking for your service quickly and easily</h4>
+							<br /><br />
+							<h4>To edit a particular field, just click on the pencil and then click on the text you want to edit</h4>
+							<br /><br />
+							<h4>Click the lower part of the banner to upload a picture for your product</h4>
 							<br /><br /><br />
 						</div>
 						<div class="modal-footer the-modal-footer">
 							<br />
 							<button type="button" class="save-button" data-dismiss="modal">Continue</button>
+							<br /><br />
 						</div>
 					</div>
 		
@@ -254,8 +273,9 @@ $('#save-changes').click(function(e) {
   contentType: false,
   processData: false,
 	  success: function(resp){ 
-			console.log(resp);
-			window.location = "show/"+profile;
+			//console.log(resp);
+			console.log(location.origin +"/profiles/show/"+profile);
+			window.location.replace(location.origin +"/profiles/show/"+profile);
 			},
 		 fail:  function(resp){
 			console.log(resp);

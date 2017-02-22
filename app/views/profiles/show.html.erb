@@ -1,3 +1,4 @@
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 <div class="header">
 			<div class="container-fluid main-nav-shadow">
 				<div class="row">
@@ -25,7 +26,6 @@
 						<br /><br />
     					<ul class="card">
 							<li><a href=""><i class="fa fa-user" aria-hidden="true"></i>Sign out</a></li>
-							<!-- Sign out link is here -->
 						</ul>
 					</div>
     			</div>
@@ -51,33 +51,37 @@
 		</li>
 	</ul>
 </div>
+
+
+
+
 <div class="about-me" id="about" style="background-color: #f2f2f2;">
 	<div class="container">
 	<br /><br />
 		<div class="row">
 			<div class="col-md-3">
 				<div class="mydetails slideanim text-center" style="padding: 0px;">
-					<div style="background-color: #aa9a80; width: 100%; height: 100%; color: white;">
+					<div style="background-color: rgba(175, 169, 164, 0.75); width: 100%; height: 100%; color: white;">
 						<br /><br />
 						<%= image_tag "app/man.jpg", { class: "img-circle img-responsive img-border", alt: "Generic placeholder image", width: "200", height: "200" } %>
 						<br /><br />
 						<div class="row">
 							<div class="col-md-4">
-								<h4><b><%= @profile.user.reviews.size %></b></h4><!-- Call from database -->
-								<p>Reviews</p>
+								<h4><b><%= @profile.user.reviews.size %></b></h4>
+								<p><i class="fa fa-star" aria-hidden="true"></i></p>
 							</div>
 							<div class="col-md-4" style="border-left: 1px solid white; border-right: 1px solid white;">
-								<h4><b><%= @profile.user.mail_box.messages.size %></b></h4><!-- Call from database -->
-								<p>Messages</p>
+								<h4><b><%= @profile.user.mail_box.messages.size %></b></h4>
+								<p><i class="fa fa-comments" aria-hidden="true"></i></p>
 							</div>
 							<div class="col-md-4">
-								<h4><b><%= @profile.services.size %></b></h4><!-- Call from database -->
-								<p>Listings</p>
+								<h4><b><%= @profile.services.size %></b></h4>
+								<p><i class="fa fa-list" aria-hidden="true"></i></p>
 							</div>
 						</div>
 						<br /><br />
 						<div>
-							<button class="save-button">Edit Profile</button>
+							<button class="the-edit-button">Edit Profile</button>
 						</div>
 						<br /><br />
 					</div>
@@ -105,7 +109,7 @@
 			<% else %>
 				<%= display_service_posted_success flash[:notice] %>
 			<% end %>
-			<div class="col-md-9" style="background-color: #fff;">
+			<div class="col-md-9" style="background-color: #fff;padding: 0;">
 
 				<div class="navigation-div">
 					<ul class="nav nav-tabs">
