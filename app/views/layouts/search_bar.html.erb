@@ -77,8 +77,12 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 					<div class="col-md-2">
 						<br /><br />
     					<ul class="card">
-							<li><a href=".lgmd" data-toggle="modal"><i class="fa fa-user" aria-hidden="true"></i>Log in</a></li>
-							<li><a href=".sumd" data-toggle="modal"><i class="fa fa-user" aria-hidden="true"></i>Sign Up</a></li>
+							<% if !@profile.nil? %>
+								<li><a href="/profiles/<%= @profile.id %>" ><i class="fa fa-user" aria-hidden="true"></i>Profile</a></li>
+							<% else %>
+								<li><a href=".lgmd" data-toggle="modal"><i class="fa fa-user" aria-hidden="true"></i>Log in</a></li>
+								<li><a href=".sumd" data-toggle="modal"><i class="fa fa-user" aria-hidden="true"></i>Sign Up</a></li>
+							<% end %>
 						</ul>
 					</div>
     			</div>

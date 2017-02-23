@@ -103,6 +103,12 @@ class UsersController < ApplicationController
     #end
   end
 
+
+  def login
+    @user = User.new
+  end
+  
+
   private
 
   def white_list

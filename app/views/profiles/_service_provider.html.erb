@@ -1,17 +1,17 @@
 <div class="header nav-bar-banner">
-				<div class="row">
-					<div class="col-md-2 col-xs-6" style="padding-left: 3em;">
-						<br /><br />
-						<%= link_to root_path do %>
-    						<%= image_tag "app/logo1.png" %>
-						<% end %>
-    				</div>
-					<div class="col-md-10 col-xs-6" style="padding-right: 3em;">
-						<br /><br />
-						<button id="save-changes" class="save-button" style="float: right;">Save changes</button>
-					</div>
-    			</div>
+	<div class="row">
+		<div class="col-md-2 col-xs-6" style="padding-left: 3em;">
+			<br /><br />
+			<%= link_to root_path do %>
+				<%= image_tag "app/logo1.png" %>
+			<% end %>
 		</div>
+		<div class="col-md-10 col-xs-6" style="padding-right: 3em;">
+			<br /><br />
+			<button id="save-changes" class="save-button" style="float: right;">Save changes</button>
+		</div>
+	</div>
+</div>
 
 <div class="banner-profile">
 <% if @profile.banner.url.nil? %>
@@ -151,6 +151,7 @@
 		</div>
 
 </div>
+<<<<<<< HEAD
 <script type="text/javascript">
 	$(window).load(function(){
 		$('#welcome-screen').modal('show');
@@ -300,3 +301,5 @@ $.ajax({
 });
 
 </script>
+=======
+>>>>>>> 6f68d0f5118a4dabf5d27f9948dffe0e7bdb20f0

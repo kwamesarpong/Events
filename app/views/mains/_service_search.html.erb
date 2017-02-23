@@ -1,57 +1,153 @@
-<%= link_to service_path(item.id) do %>
-	<%= image_tag item.picture.standard.url, { class: "img-responsive img-fix-height", width:"492", height:"300" } %>
+<div class="header nav-bar-banner">
+	<div class="row">
+		<div class="col-md-2 col-xs-6" style="padding-left: 3em;">
+			<br /><br />
+			<%= link_to root_path do %>
+				<%= image_tag "app/logo1.png" %>
+			<% end %>
+		</div>
+		<div class="col-md-10 col-xs-6" style="padding-right: 3em;">
+			<br /><br />
+			<button id="save-changes" class="save-button" style="float: right;">Save changes</button>
+		</div>
+	</div>
+</div>
+
+<div class="banner-profile">
+<% if @profile.banner.url.nil? %>
+	<%= image_tag "app/kwaku1.jpg", class: "custom-profile-banner" %>
+<% else %>
+	<%= image_tag @profile.banner.url, class: "custom-profile-banner" %>
 <% end %>
-							<div class="mid-1">
-								<div class="women">
-									<h6><%= link_to item.profile.name_of_agency, profile_path(item.profile_id) %></h6>
-									<!-- All listings have to be read from the database -->
-								</div>
-								<div class="mid-2">
-									<p><%= item.desc_service %></p>
-										<div class="block">
-											<div class="starbox small ghosting"> </div>				<!-- Ratings also from database -->
-										</div>
-									<div class="clearfix"></div>
-								</div>
-								<div class="add" align="right">
-									<!-- <button class="btn btn-danger my-cart-btn my-cart-b" data-id="25" data-name="Peach Halves" data-summary="summary 25" data-price="4.50" data-quantity="1" data-image="images/of25.png">Add to Cart</button> -->
-									<!-- I'm putting a fake star rating system here, it needs to be called and replaced from the database --><br />
-									<a href="#" data-toggle="modal" data-target="#myModa<%= item.id %>">
-										<%= image_tag "app/viewer.png", class: "img-responsive" %>
-									</a>
-								</div>
+	<ul class="rslides" id="slider" value="<%= @profile.id %>" >
+		<li>
+			<div class="banner-profile-info" style="margin-top: 10%;">
+				<h3 class="full_name_text"><%= @profile.name_of_agency %> <i class="full_name fa fa-pencil" aria-hidden="true"></i></h3>
+				<span class="line1"></span>
+				<p class="tagline_text"><%= @profile.tagline %><i class="tagline fa fa-pencil" aria-hidden="true"></i></p>
+				<span class="line2"></span>
+			</div>
+		</li>
+	</ul>
+	<input type="file" class="upload-custom-banner"  style="width:100%;" title="Click to upload a banner" onchange="previewFile()"/>
+</div>
+<div class="about-me">
+	<br />
+</div>
+<div class="about-me" id="about">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 col-xs-12">
+				<div class="mydetails slideanim text-center">
+					<div>
+						<%= image_tag "app/man.jpg", { class: "img-circle img-responsive", alt: "Generic placeholder image", width: "200", height: "200" } %>
+						<h3>Who we are</h3>
+						<p class="short_desc_text"><%= @profile.short_desc %><i class="short_desc fa fa-pencil" aria-hidden="true"></i></p>
+					</div>
+					<br />
+					<div class="contact-info some-border">
+						<i class="short_desc fa fa-pencil" aria-hidden="true"></i>
+						<h3>Where you can find us</h3>
+						<i aria-hidden="true"></i>
+                        <div class="footer-info">
+							<div class="some-border">
+								<i class="fa fa-globe" aria-hidden="true"></i>
+								<p class="p1 address_text">77727 Moi Avenue </p>
+								<p class="p2 address_text_2">Nairobi, Kenya</p>
+							</div>
+							<div class="some-border">
+								<i class="fa fa-phone" aria-hidden="true"></i>
+								<p class="p1 phone_number_text">+1 515 151515</p>
+								<p class="p2 phone_number_text_2">+00 1010101010</p>
+							</div>
+							<div class="some-border">
+								<i class="fa fa-envelope" aria-hidden="true"></i>
+								<p class="p1 email_text"><%= @profile.user.email %></p>
+								<p class="p2 email_text_2">myemail2@example.com</p>
 							</div>
 						</div>
 					</div>
 
-<div class="modal fade" id="myModa<%= item.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content modal-info">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>						
-			</div>
-			<div class="modal-body modal-spa">
-					<div class="col-md-5 span-2">
-						<div class="item">
-							<%= image_tag item.picture.standard.url, class: "img-responsive" %>
-						</div>
-					</div>
-					<div class="col-md-7 span-1 ">
-						<h3><%= item.profile.name_of_agency %> </h3>
-						<p class="in-para"> <%= item.profile.desc  %></p>
-						<div class="price_single">
-							Minimum Price:<span class="reducedfrom "><%= item.price %></span>
-						
-							<div class="clearfix"></div>
-						</div>
-						<h4 class="quick">Quick Overview:</h4>
-						<p class="quick_desc"><%= item.desc_service %></p>
-							<div class="add-to">
-								<%= button_to "Contact Service Provider",  { controller: :profiles, action: :show, id: item.profile_id }, method: :get ,class: "btn btn-danger my-cart-btn my-cart-btn1 " %>
-							</div>
-					</div>
-					<div class="clearfix"> </div>
+
+
 				</div>
 			</div>
+			<% if flash[:notice].nil? %>
+				<%= display_errors_for_object @service %>
+			<% else %>
+				<%= display_service_posted_success flash[:notice] %>
+			<% end %>
+			<div class="col-md-8 col-xs-12">
+
+				<div class="navigation-div">
+					<ul class="nav nav-tabs">
+    					<li class="active"><a data-toggle="tab" href="#home">About</a></li>
+  					</ul>
+  				</div>
+
+  				<div class="tab-content">
+    				<div id="home" class="tab-pane fade in active">
+      					<div class="myskills slideanim">
+							<h3 class="text-center">Why hire us <i class="long_desc fa fa-pencil" aria-hidden="true"></i></h3>
+							<p class="skill-text long_desc_text"><%= @profile.desc %></p>
+						</div>
+						<br />
+						<div class="myskills slideanim move-down">
+							<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+								<div class="carousel-inner" role="listbox">
+									<h3 class="text-center">You are yet to post a service</h3>
+									<hr style="margin:0;">
+									<p class="text-center">When you post a service, you’ll see them here.</p>
+								</div>
+							</div>
+						</div>
+    				</div>
+			</div>
+
+				
+				
+			
+				
+			</div>
 		</div>
+	</div>
+	<div class="bottom-div">
+		<br />
+	</div>
+
+
+<div class="container">
+  			
+  			<div class="modal fade" id="welcome-screen" role="dialog">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header the-modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<%= image_tag "app/logo1.png", class: "img-head" %>
+							<br /><br /><br />
+							<h2>Welcome to your profile</h2>
+						</div>
+						<div class="modal-body md-body" align="center">
+							<br /><br /><br />
+							<h4>Please take some time and edit your company details</h4>
+							<br /><br />
+							<h4>Editing your profile details will enable you to be found by searchers looking for your service quickly and easily</h4>
+							<br /><br />
+							<h4>To edit a particular field, just click on the pencil and then click on the text you want to edit</h4>
+							<br /><br />
+							<h4>Click the lower part of the banner to upload a picture for your product</h4>
+							<br /><br /><br />
+						</div>
+						<div class="modal-footer the-modal-footer">
+							<br />
+							<button type="button" class="save-button" data-dismiss="modal">Continue</button>
+							<br /><br />
+						</div>
+					</div>
+		
+				</div>
+			</div>
+
+		</div>
+
 </div>
