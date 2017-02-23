@@ -99,16 +99,15 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 						<div class="col-md-4 fo-grid1">
 							<p><i class="fa fa-phone" aria-hidden="true"></i>+254 716 808880, +233 50 982 5831, +233 26 288 9802</p>	
 						</div>
-						<div class="col-md-4 fo-grid1">
-							<p><a href="mailto:info@example.com"><i class="fa fa-envelope-o" aria-hidden="true"></i>info@evventor.com</a></p>
+						<div class="col-md-4 fo-grid1" style="background-color: #e67e22; color: #fff;" align="center">
+							<p><a href="#feedbk" data-toggle="modal"><i class="fa fa-envelope-o" aria-hidden="true"></i>Click to send us your feedback</a></p>
 						</div>
 					</div>
 					<div class="col-md-12" align="center">
 						<br /><br />
 						<ul class="social-for">
-							<li><a href="#" class=" face"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-							<li><a href="#" class=" twi"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-							<li><a href="#" class=" dri"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+							<li><a href="https://www.facebook.com/Evventor-225391007924258/" class=" face"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+							<li><a href="https://www.twitter.com/evventor" class=" twi"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
 						</ul>
 					</div>
 				</div>
@@ -214,6 +213,37 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
         				</div>
         				<div class="modal-footer the-modal-footer">
         					<p>Don't have an account? <a href="">Sign up</a></p>
+        				</div>
+      				</div>
+      
+    			</div>
+  			</div>
+  
+		</div>
+
+		<div class="container">
+  			
+  			<div class="modal fade" id="feedbk" role="dialog">
+    			<div class="modal-dialog">
+    
+      				<div class="modal-content">
+        				<div class="modal-header the-modal-header">
+          					<button type="button" class="close" data-dismiss="modal">&times;</button>
+          					<%= image_tag "app/logo1.png", class: "img-head" %>
+          					<br /><br /><br />
+          					<h3 class="modal-title">Feedback and Suggestions</h3>
+        				</div>
+        				<div class="modal-body md-body" align="center">
+        					<form action="mailto:evventor@gmail.com" method="post"><!-- send feedback to email -->
+        						<input type="text" placeholder="Your name" class="fdbk-mdl-input" />
+        						<br /><br />
+        						<input type="text" placeholder="Your email" class="fdbk-mdl-input" />
+        						<br /><br />
+        						<textarea id="body" placeholder="Your feedback" class="fdbk-mdl"></textarea>
+        						<br /><br /><br />
+        						<button type="submit" class="fdbk-mdl-button">Send</button>
+        						<br /><br />
+							</form>
         				</div>
       				</div>
       

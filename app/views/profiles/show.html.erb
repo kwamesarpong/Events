@@ -16,7 +16,7 @@
 						<%= text_field_tag :q, params[:q], placeholder: "Search" %>
 					</div>
 					<div class="col-md-2 col-sm-2 col-xs-12" align="center">
-						<%= submit_tag "Search", class: "save-button" %>
+						<%= submit_tag "Search", class: "save-button color-orange" %>
 					</div>
 					<div class="col-md-2 col-sm-2 col-xs-12"></div>
 				</div>
@@ -68,7 +68,7 @@
 				<div class="mydetails slideanim text-center" style="padding: 0px;">
 					<div style="background-color: rgba(175, 169, 164, 0.75); width: 100%; height: 100%; color: white;">
 						<br /><br />
-						<%= image_tag "app/man.jpg", { class: "img-circle img-responsive img-border", alt: "Generic placeholder image", width: "200", height: "200" } %>
+						<%= image_tag "app/man_profile.jpg", { class: "img-circle img-responsive img-border", alt: "Generic placeholder image", width: "200", height: "200" } %>
 						<br /><br />
 						<div class="row">
 							<div class="col-md-4">
@@ -176,7 +176,7 @@
 								<tr>
 									<td><p>Metric</p></td>
 									<td style="vertical-align: middle;">
-										<%= f.text_field :metric, placeholder: "Per Night", class: "form-control" %>	
+										<%= f.text_field :metric, placeholder: "Eg. Per Kg", class: "form-control" %>	
 									</td>
 								</tr>
 								<tr>
