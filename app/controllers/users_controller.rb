@@ -70,7 +70,7 @@ class UsersController < ApplicationController
   		flash[:notice] = "You are now logged in"
       if found_user.kind == User::SERVICE_PROVIDER
         #send user to profile
-        redirect_to controller: :profiles, action: :new, from_there: found_user.profile.id
+        redirect_to controller: :profiles, action: :show, id: found_user.profile.id
       else
         redirect_to '/'
       end
@@ -102,6 +102,12 @@ class UsersController < ApplicationController
       redirect_to controller: :profiles, action: :new, from_there: @user.profile.id
     #end
   end
+
+
+  def login
+    @user = User.new
+  end
+  
 
   private
 

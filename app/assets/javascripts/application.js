@@ -23,4 +23,5 @@
 //= require app/js/grid3d
 //= require app/js/jstarbox
 //= require app/js/async.search
+//= require app/js/create.profile
 //= require turbolinks

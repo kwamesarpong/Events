@@ -1,42 +1,47 @@
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 <div class="header">
-			<div class="container-fluid main-nav-shadow">
-				<div class="row">
-					<div class="col-md-2">
-						<br /><br />
-						<%= link_to root_path do %>
-    						<%= image_tag "app/logo1.png", class: "img-responsive" %>
-						<% end %>
-    				</div>
-    				<div class="col-md-8 the-bar-width">
-						<%= form_tag({ controller: :mains, action: :search }, :method => "get", id: "search-form") do %>
-						<div class="row" align="center">
-							<div class="col-md-2 col-sm-2 col-xs-12"></div>
-							<div class="col-md-6 col-sm-6 col-xs-12">
-								<%= text_field_tag :q, params[:q], placeholder: "Search" %>
-							</div>
-							<div class="col-md-2 col-sm-2 col-xs-12" align="center">
-								<%= submit_tag "Search", class: "save-button" %>
-							</div>
-							<div class="col-md-2 col-sm-2 col-xs-12"></div>
-						</div>
-						<% end %>
-					</div>	
-					<div class="col-md-2">
-						<br /><br />
-    					<ul class="card">
-							<li><a href=""><i class="fa fa-user" aria-hidden="true"></i>Sign out</a></li>
-						</ul>
+	<div class="container-fluid main-nav-shadow">
+		<div class="row">
+			<div class="col-md-2">
+				<br /><br />
+				<%= link_to root_path do %>
+					<%= image_tag "app/logo1.png", class: "img-responsive" %>
+				<% end %>
+			</div>
+			<div class="col-md-8 the-bar-width">
+				<%= form_tag({ controller: :mains, action: :search }, :method => "get", id: "search-form") do %>
+				<div class="row" align="center">
+					<div class="col-md-2 col-sm-2 col-xs-12"></div>
+					<div class="col-md-6 col-sm-6 col-xs-12">
+						<%= text_field_tag :q, params[:q], placeholder: "Search" %>
 					</div>
-    			</div>
-    		<br />
+					<div class="col-md-2 col-sm-2 col-xs-12" align="center">
+						<%= submit_tag "Search", class: "save-button" %>
+					</div>
+					<div class="col-md-2 col-sm-2 col-xs-12"></div>
+				</div>
+				<% end %>
+			</div>	
+			<div class="col-md-2">
+				<br /><br />
+				<ul class="card">
+				<% if @profile.user.id == session[:user_id] %>
+					<li><a href="/user/sign_out/"><i class="fa fa-user" aria-hidden="true"></i>Sign out</a></li>
+					<% else %>
+					<li><a href="/users/new/"><i class="fa fa-user" aria-hidden="true"></i>Login</a></li>
+					<li><a href="/users/new/"><i class="fa fa-user" aria-hidden="true"></i>Sign Up</a></li>
+				<% end %>
+				</ul>
 			</div>
 		</div>
+	<br />
+	</div>
+</div>
 
 
 <div class="banner-profile">
 <% if @profile.banner.url.nil? %>
-	<%= image_tag "app/banner.jpg", class: "custom-profile-banner" %>
+	<%= image_tag "app/kwaku1.jpg", class: "custom-profile-banner" %>
 <% else %>
 	<%= image_tag @profile.banner.url, class: "custom-profile-banner" %>
 <% end %>
@@ -115,13 +120,17 @@
 
 				<div class="navigation-div">
 					<ul class="nav nav-tabs">
+					<% if @profile.user.id == session[:user_id] %>
 						<li class="active"><a data-toggle="tab" href="#home">New Listing</a></li>
+						<li><a data-toggle="tab" href="#menu1">Mailbox</a></li>
+					<% end %>
 						<li><a data-toggle="tab" href="#menu3">Listings</a></li>
-    					<li><a data-toggle="tab" href="#menu1">Mailbox</a></li>
+    					
   					</ul>
   				</div>
   				<br /><br />
   				<div class="tab-content" align="center">
+				  <% if @profile.user.id == session[:user_id] %>
   					<div id="home" class="tab-pane fade in active from-prof">
       					<div class="myskills slideanim">
 							<h3 class="text-center">Post a Listing</h3>
@@ -173,35 +182,27 @@
 							</table>
 						</div>
     				</div>
-    				<div id="menu3" class="tab-pane fade">
+					<% end %>
+					<% if @profile.user.id == session[:user_id] %>
+    					<div id="menu3" class="tab-pane fade">
+					<% else %>
+						<div id="menu3" class="tab-pane fade in active from-prof">
+					<% end %>
+					
 						<div class="myskills slideanim move-down">
-							<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-								<ol class="carousel-indicators">
-									<% 0.upto(@services.size - 1) do |n| %>
-									<li data-target="#carousel-example-generic" data-slide-to="<%= n %>" class="active"></li>
-									<% end %>
-								</ol>
-								<div class="carousel-inner" role="listbox">
-									<% if @services.blank? %>
+							<% if @services.blank? %>
+								<h3 class="text-center">No Listings</h3>
+								<hr style="margin:0;">
+								<p class="text-center">When listings are posted, they will appear here.</p>
+							<% else %>
+								<% @services.each do |service| %>
+									<div class="col-md-4">
+										<%= image_tag service.picture.small.url %>
+									</div>
 
-									<h3 class="text-center">You are yet to post a listing</h3>
-									<hr style="margin:0;">
-									<p class="text-center">When you post listings, they will appear here.</p>
-
-									<% else %>
-
-									<% @services.each do |service| %>
-										<div class="col-md-4">
-											<%= image_tag service.picture.small.url %>
-										</div>
-
-									<% end %>		
-									<% end %>
-								</div>
-							</div>
+								<% end %>		
+							<% end %>
 						</div>
-
-
     				</div>
     				<div id="menu1" class="tab-pane fade"><!-- Please put "no mesages yet" if there are no messages so that it won't be blank just like that -->
       					<div class="myskills slideanim">
@@ -265,7 +266,7 @@
         						<br /><br /><br />
         				</div>
         				<div class="modal-footer the-modal-footer">
-						<button id="message-supplier">Contact Supplier</button>
+						<button id="message-supplier">Reply</button>
 						
         					
         					

@@ -1,0 +1,33 @@
+<div class="the-padding">
+</div>
+<% unless flash[:notice].nil? %>
+	<%= display_errors_for_object @user %>
+<% end %>
+<div class="login">
+		<div class="main-agileits">
+				<div class="form-w3agile form1">
+					<h3>Register</h3>
+					 <%= form_for @user, url: { controller: "users", action: "attempt_login" }, html: { class: :form_nice } do |f| %>
+						<div class="key">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+                            <%= f.text_field :email, placeholder: :Email, value: "", required: true %>
+							<div class="clearfix"></div>
+						</div>
+						<div class="key">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+                            <%= f.password_field :password, placeholder: :Password, required: true %>
+							<div class="clearfix"></div>
+						</div>
+						<br />
+						<div align="center">
+                           <%= f.submit "Log In", class: "search-no-border btn-search" %>
+						</div>
+						<br /><br />
+						<div align="center">
+							<p>Don't have an account? <a href="/users/new/">Sign Up</a></p>
+						</div>
+					<% end %>
+				</div>
+				
+			</div>
+		</div>
