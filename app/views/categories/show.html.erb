@@ -22,12 +22,17 @@
 									<!-- All listings have to be read from the database -->
 								</div>
 								<div class="mid-2">
+									<p><%= service.name_of_service %></p>
+									<div class="clearfix"></div>
+								</div>
+								<div class="mid-2">
 									<p><%= service.desc_service %></p>
 										<div class="block">
 										<div class="starbox small ghosting"> </div>				<!-- Ratings also from database -->
 									</div>
 									<div class="clearfix"></div>
 								</div>
+
 								<div class="add" align="right">
 									<!-- <button class="btn btn-danger my-cart-btn my-cart-b" data-id="25" data-name="Peach Halves" data-summary="summary 25" data-price="4.50" data-quantity="1" data-image="images/of25.png">Add to Cart</button> -->
 									<!-- I'm putting a fake star rating system here, it needs to be called and replaced from the database --><br />
@@ -63,9 +68,9 @@
 							<div class="clearfix"></div>
 						</div>
 						<h4 class="quick">Quick Overview:</h4>
-						<p class="quick_desc"><%= service.desc_service %></p>
+						<p class="quick_desc"><%= service.desc_service[0..15] %></p>
 							<div class="add-to">
-								<%= button_to "Contact Service Provider",  { controller: :profiles, action: :show, id: service.profile_id }, method: :get ,class: "btn btn-danger my-cart-btn my-cart-btn1 " %>
+								<%= button_to "View Profile",  { controller: :profiles, action: :show, id: service.profile_id }, method: :get ,class: "btn btn-danger my-cart-btn my-cart-btn1 " %>
 							</div>
 					</div>
 					<div class="clearfix"> </div>

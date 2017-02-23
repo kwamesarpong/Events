@@ -18,7 +18,6 @@ class ServicesController < ApplicationController
   end
 
   def show
-
     begin
       @service = Service.find(params[:id])
       @message = Message.new
@@ -61,6 +60,6 @@ class ServicesController < ApplicationController
   private 
 
   def white_list
-    params.require(:service).permit(:category_id,:desc_service,:price,:name_of_service)
+    params.require(:service).permit(:category_id,:desc_service,:price,:name_of_service, :metric)
   end
 end

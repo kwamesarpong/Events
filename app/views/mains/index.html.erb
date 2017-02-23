@@ -330,12 +330,12 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 				<% @latest_listings.each do |service| %>
 					<div class="col-md-4 pro-1">
 						<div class="col-m">
-						<a href="#" data-toggle="modal" data-target="#myModal17" class="offer-img">
-								<%= image_tag service.picture.standard.url, class: "img-responsive" %>
-							</a>
+						<%= link_to service_path(service.id), class: "offer-img" do %>
+							<%= image_tag service.picture.standard.url, class: "img-responsive" %>
+						<% end %>
 							<div class="mid-1">
 								<div class="women">
-									<h6><a href="single.html"><%= service.profile.name_of_agency %></a></h6>							
+									<h6><%= link_to service.name_of_service, service_path(service.id) %></a></h6>							
 								</div>
 								<div class="mid-2">
 									<p><%= service.desc_service %></p>

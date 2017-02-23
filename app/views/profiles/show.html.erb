@@ -149,10 +149,10 @@
 									</td>-->
 								</tr>
 								<tr>
-                    				<td><p>Name of product</p></td>
+                    				<td><p>Name of Product or Service</p></td>
                     				<td style="vertical-align: middle;">
 										<!-- name of product should be a form input textbox -->
-										<%= f.text_field :name_of_service, placeholder: "Service Name" , class: "form-control" %>
+										<%= f.text_field :name_of_service, placeholder: "Name" , class: "form-control" %>
 									</td>
 								</tr>
 								<tr>
@@ -171,6 +171,12 @@
 									<td><p>Minimal Price</p></td>
 									<td style="vertical-align: middle;">
 										<%= f.text_field :price, placeholder: "Price", class: "form-control" %>	
+									</td>
+								</tr>
+								<tr>
+									<td><p>Metric</p></td>
+									<td style="vertical-align: middle;">
+										<%= f.text_field :metric, placeholder: "Per Night", class: "form-control" %>	
 									</td>
 								</tr>
 								<tr>
