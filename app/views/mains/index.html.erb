@@ -26,7 +26,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 
 <link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Noto+Sans:400,700' rel='stylesheet' type='text/css'>
-<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+<link href='//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css' rel='stylesheet' type='text/css'>
 
 <script src="js/jstarbox.js"></script>
 	
@@ -338,7 +338,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 									<h6><%= link_to service.name_of_service, service_path(service.id) %></a></h6>							
 								</div>
 								<div class="mid-2">
-									<p><%= service.desc_service %></p>
+									<p><%= service.desc_service[0...45] %></p>
 									<div class="clearfix"></div>
 								</div>
 								<div class="block">
@@ -386,9 +386,6 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 						</div>
 						<div class="col-md-4 fo-grid1">
 							<p><i class="fa fa-phone" aria-hidden="true"></i>+254 716 808880, +233 50 982 5831, +233 26 288 9802</p>	
-						</div>
-						<div class="col-md-4 fo-grid1" style="background-color: #e67e22; color: #fff;" align="center">
-							<p><a href="#feedbk" data-toggle="modal"><i class="fa fa-envelope-o" aria-hidden="true"></i>Click to send us your feedback</a></p>
 						</div>
 					</div>
 					<div class="col-md-12" align="center">
@@ -500,36 +497,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
   			</div>
   
 		</div>
-		<div class="container">
-  			
-  			<div class="modal fade" id="feedbk" role="dialog">
-    			<div class="modal-dialog">
-    
-      				<div class="modal-content">
-        				<div class="modal-header the-modal-header">
-          					<button type="button" class="close" data-dismiss="modal">&times;</button>
-          					<%= image_tag "app/logo1.png", class: "img-head" %>
-          					<br /><br /><br />
-          					<h3 class="modal-title">Feedback and Suggestions</h3>
-        				</div>
-        				<div class="modal-body md-body" align="center">
-        					<form action="mailto:evventor@gmail.com" method="post"><!-- send feedback to email -->
-        						<input type="text" placeholder="Your name" class="fdbk-mdl-input" />
-        						<br /><br />
-        						<input type="text" placeholder="Your email" class="fdbk-mdl-input" />
-        						<br /><br />
-        						<textarea id="body" placeholder="Your feedback" class="fdbk-mdl"></textarea>
-        						<br /><br /><br />
-        						<button type="submit" class="fdbk-mdl-button">Send</button>
-        						<br /><br />
-							</form>
-        				</div>
-      				</div>
-      
-    			</div>
-  			</div>
-  
-		</div>
+		
 
 
 

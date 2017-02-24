@@ -123,15 +123,12 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 						<div class="col-md-4 fo-grid1">
 							<p><i class="fa fa-phone" aria-hidden="true"></i>+254 716 808880, +233 50 982 5831, +233 26 288 9802</p>	
 						</div>
-						<div class="col-md-4 fo-grid1" style="background-color: #e67e22; color: #fff;" align="center">
-							<p><a href="#feedbk" data-toggle="modal"><i class="fa fa-envelope-o" aria-hidden="true"></i>Click to send us your feedback</a></p>
-						</div>
 					</div>
 					<div class="col-md-12" align="center">
 						<br /><br />
 						<ul class="social-for">
 							<li><a href="https://www.facebook.com/Evventor-225391007924258/" class=" face"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-							<li><a href="https://www.twitter.com/evventor class=" twi"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+							<li><a href="https://www.twitter.com/evventor" class=" twi"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
 						</ul>
 					</div>
 				</div>
@@ -230,35 +227,49 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
   
 		</div>
 
-		<div class="container">
-  			
-  			<div class="modal fade" id="feedbk" role="dialog">
-    			<div class="modal-dialog">
-    
-      				<div class="modal-content">
-        				<div class="modal-header the-modal-header">
-          					<button type="button" class="close" data-dismiss="modal">&times;</button>
-          					<%= image_tag "app/logo1.png", class: "img-head" %>
-          					<br /><br /><br />
-          					<h3 class="modal-title">Feedback and Suggestions</h3>
-        				</div>
-        				<div class="modal-body md-body" align="center">
-        					<form action="mailto:evventor@gmail.com" method="post"><!-- send feedback to email -->
-        						<input type="text" placeholder="Your name" class="fdbk-mdl-input" />
-        						<br /><br />
-        						<input type="text" placeholder="Your email" class="fdbk-mdl-input" />
-        						<br /><br />
-        						<textarea id="body" placeholder="Your feedback" class="fdbk-mdl"></textarea>
-        						<br /><br /><br />
-        						<button type="submit" class="fdbk-mdl-button">Send</button>
-        						<br /><br />
-							</form>
-        				</div>
-      				</div>
-      
-    			</div>
-  			</div>
-  
-		</div>
-
 	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+
+
+	<script>
+// Include the UserVoice JavaScript SDK (only needed once on a page)
+UserVoice=window.UserVoice||[];(function(){var uv=document.createElement('script');uv.type='text/javascript';uv.async=true;uv.src='//widget.uservoice.com/6QeckcqGhcowCOqNWLxI9w.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(uv,s)})();
+
+//
+// UserVoice Javascript SDK developer documentation:
+// https://www.uservoice.com/o/javascript-sdk
+//
+
+// Set colors
+UserVoice.push(['set', {
+  accent_color: '#448dd6',
+  trigger_color: 'white',
+  trigger_background_color: 'rgba(46, 49, 51, 0.6)'
+}]);
+
+// Identify the user and pass traits
+// To enable, replace sample data with actual user traits and uncomment the line
+UserVoice.push(['identify', {
+  //email:      'john.doe@example.com', // User’s email address
+  //name:       'John Doe', // User’s real name
+  //created_at: 1364406966, // Unix timestamp for the date the user signed up
+  //id:         123, // Optional: Unique id of the user (if set, this should not change)
+  //type:       'Owner', // Optional: segment your users by type
+  //account: { // Account traits are only available on some plans
+  //  id:           123, // Optional: associate multiple users with a single account
+  //  name:         'Acme, Co.', // Account name
+  //  created_at:   1364406966, // Unix timestamp for the date the account was created
+  //  monthly_rate: 9.99, // Decimal; monthly rate of the account
+  //  ltv:          1495.00, // Decimal; lifetime value of the account
+  //  plan:         'Enhanced' // Plan name for the account
+  //}
+}]);
+
+// Add default trigger to the bottom-right corner of the window:
+UserVoice.push(['addTrigger', {mode: 'contact', trigger_position: 'bottom-right' }]);
+
+// Or, use your own custom trigger:
+//UserVoice.push(['addTrigger', '#id', { mode: 'contact' }]);
+
+// Autoprompt for Satisfaction and SmartVote (only displayed under certain conditions)
+UserVoice.push(['autoprompt', {}]);
+</script>
