@@ -76,7 +76,7 @@ class OutsidesController < ApplicationController
     def redirect_after_oauth
         @user = User.find(session[:user_id].to_i)
         if @user.kind == User::SERVICE_PROVIDER
-            redirect_to controller: :profiles, action: :new, from_there: @user.profile.id
+            redirect_to controller: :profiles, action: :show, id: @user.profile.id
         else
             redirect_to '/'
         end
