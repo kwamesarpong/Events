@@ -1,3 +1,4 @@
+require 'file_size_validator'
 class Profile < ApplicationRecord
 
     include PgSearch
@@ -24,5 +25,8 @@ class Profile < ApplicationRecord
 
     validates  :desc, presence: true
 
+    validates  :banner, :file_size => { :maximum => 5.megabytes.to_i } 
+
+    validates  :profile_picture, :presence => true, :file_size => { :maximum => 5.megabytes.to_i } 
 
 end
