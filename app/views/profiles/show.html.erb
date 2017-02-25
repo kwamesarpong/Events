@@ -111,10 +111,10 @@
 					</div>
 				</div>
 			</div>
-			<% if flash[:notice].nil? %>
-				<%= display_errors_for_object @service %>
-			<% else %>
+			<% if flash[:error].nil? && !flash[:notice].nil? %>
 				<%= display_service_posted_success flash[:notice] %>
+			<% else %>
+				<%= display_errors flash[:error] %>
 			<% end %>
 			<div class="col-md-9" style="background-color: #fff;padding: 0;">
 
@@ -152,31 +152,32 @@
                     				<td><p>Name of Product or Service</p></td>
                     				<td style="vertical-align: middle;">
 										<!-- name of product should be a form input textbox -->
-										<%= f.text_field :name_of_service, placeholder: "Name" , class: "form-control" %>
+										<%= f.text_field :name_of_service, { placeholder: "Name" , class: "form-control", required: 'true' } %>
 									</td>
 								</tr>
 								<tr>
 									<td><p>Please upload a picture of your product</p></td>
 									<td style="vertical-align: middle;">
-										<%= f.file_field :picture, class: "form-control" %>
+										<%= f.file_field :picture, { class: "form-control", required: 'true' } %>
 									</td>
+									<p> * Picture file size must be less than or equal to 2 MB </p>
 								</tr>
 								<tr>
 									<td><p>Description of the product or service</p></td>
 									<td style="vertical-align: middle;">
-										<%= f.text_area :desc_service, rows:"10", cols:"31", placeholder: "Service Description", class:"form-control" %>
+										<%= f.text_area :desc_service, { rows:"10", cols:"31", placeholder: "Service Description", class:"form-control", required: 'true' } %>
 									</td>
 								</tr>
 								<tr>
 									<td><p>Minimal Price</p></td>
 									<td style="vertical-align: middle;">
-										<%= f.text_field :price, placeholder: "Price", class: "form-control" %>	
+										<%= f.text_field :price, { placeholder: "Price", class: "form-control", required: 'true' } %>	
 									</td>
 								</tr>
 								<tr>
 									<td><p>Metric</p></td>
 									<td style="vertical-align: middle;">
-										<%= f.text_field :metric, placeholder: "Eg. Per Kg", class: "form-control" %>	
+										<%= f.text_field :metric, { placeholder: "Eg. Per Kg", class: "form-control", required: 'true' } %>	
 									</td>
 								</tr>
 								<tr>

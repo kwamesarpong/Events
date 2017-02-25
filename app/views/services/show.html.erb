@@ -68,7 +68,7 @@ $('#message-supply').click(function(e){
 	e.preventDefault();
 	if($('#body').val().trim() === ""){
 		console.log("no");
-		 $('.single-top-left').prepend("<div class='alert alert-danger' role='alert'> You cannot send this message at this time!</div>");
+		 $('.single-top-left').prepend("<div class='alert alert-danger' role='alert'> <button aria-hidden='true' data-dismiss='alert' class='close' type='button'> × </button> You cannot send this message at this time!</div>");
 	}
 	else{
 		var messageId = $(this).attr('title');
@@ -85,10 +85,10 @@ $('#message-supply').click(function(e){
 		 processData: false,
 			 success: function(resp){ 
 				 console.log(resp);
-				 $('.single-top-left').prepend("<div class='alert alert-success' role='alert'> Message sent sucessfully!</div>");
+				 $('.single-top-left').prepend("<div class='alert alert-success' role='alert'> <button aria-hidden='true' data-dismiss='alert' class='close' type='button'> × </button> Message sent sucessfully!</div>");
 				},
 				fail:  function(resp){
-				 $('.single-top-left').prepend("<div class='alert alert-danger' role='alert'> You cannot send this message at this time!</div>");
+				 $('.single-top-left').prepend("<div class='alert alert-danger' role='alert'> <button aria-hidden='true' data-dismiss='alert' class='close' type='button'> × </button> You cannot send this message at this time!</div>");
 				}
 			});
 	}

@@ -17,8 +17,9 @@ class Service < ApplicationRecord
 
     validates  :desc_service, presence: true
     
-    validates  :price, presence: true
+    validates  :price, presence: true, numericality: { only_integer: true } 
 
-    validates :picture, :presence => true, :file_size => { :maximum => 5.megabytes.to_i } 
+    validates  :picture, presence: true, file_size: { less_than_or_equal_to:  2.megabytes.to_i } 
+
 
 end

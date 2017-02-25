@@ -35,14 +35,16 @@ class ServicesController < ApplicationController
     @service = Service.new(white_list)
     @service.profile_id = params["profile"]
     @service.picture = params[:service][:picture]
-    if @service.save!
-        flash[:notice] = @service.id.to_s
-        redirect_to controller: :profiles, action: :show, id: @service.profile_id
-      else
-        flash[:notice] = nil
-        render controller: :profiles, action: :new
+    begin
+      @service.save!
+      flash[:notice] = @service.id.to_s
+      flash[:error] = nil
+      redirect_to controller: :profiles, action: :show, id: @service.profile_id
+    rescue ActiveRecord::RecordInvalid => invalid
+      flash[:error] = invalid.record.errors.full_messages
+      flash[:notice] = nil
+      redirect_to controller: :profiles, action: :show, id: @service.profile_id
     end
-
   end
 
   def edit
