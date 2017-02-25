@@ -2,6 +2,8 @@ class Message < ApplicationRecord
 
     belongs_to :mail_box
 
+    belongs_to :service
+
     belongs_to :recipient, class_name: :User
 
     belongs_to :sender, class_name: :User
