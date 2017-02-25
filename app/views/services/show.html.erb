@@ -34,7 +34,7 @@
 						<h3><%= @service.profile.name_of_agency %></h3>
 					<% end %>
 					<div class="pr-single">
-						<p class="reduced "><%= @service.price %></p>
+						<p class="reduced ">Minimum price: <%= @service.price %> <%= @service.metric %></p>
 					</div>
 					<div class="block block-w3">
 						<div class="starbox small ghosting"> </div>
@@ -42,14 +42,11 @@
 					<p class="in-pa"> <%= @service.desc_service %></p>
 			   	
 					<div class="style-textarea">
-							<textarea id="body" row="10" col="10"></textarea>
-							
-						
+						<textarea id="body" row="10" col="10" required></textarea>
 					</div>
-
 					
 					<div class="add add-3">	
-						<button id="message-supplier">Contact Supplier</button>
+						<button id="message-supply">Contact Supplier</button>
 					</div>		 
 				<div class="clearfix"> </div>
 			</div>
@@ -65,27 +62,36 @@
 </div>
 
 <script>
-$('#message-supplier').click(function(e){
-	e.preventDefault();
-	var messageId = $(this).attr('title');
-	var messageForm = new FormData();
-	messageForm.append('message[body]', $('#body').val().trim());
-	messageForm.append('message[profile_id]', <%= @service.profile_id %>);
 
-$.ajax({
-		url: "/messages/",
-		type: "POST",
-		data: messageForm,
-	   cache: false,
- contentType: false,
- processData: false,
-	 success: function(resp){ 
-		console.log(resp);
-		$('.single-top-left').prepend("<div class='alert alert-success' role='alert'> Message sent sucessfully!</div>");
-		},
-		fail:  function(resp){
-		$('.single-top-left').prepend("<div class='alert alert-danger' role='alert'> You cannot send this message at this time!</div>");
-		}
-	});
+	
+$('#message-supply').click(function(e){
+	e.preventDefault();
+	if($('#body').val().trim() === ""){
+		console.log("no");
+		 $('.single-top-left').prepend("<div class='alert alert-danger' role='alert'> <button aria-hidden='true' data-dismiss='alert' class='close' type='button'> × </button> You cannot send this message at this time!</div>");
+	}
+	else{
+		var messageId = $(this).attr('title');
+		var messageForm = new FormData();
+		messageForm.append('message[body]', $('#body').val().trim());
+		messageForm.append('message[profile_id]', <%= @service.profile_id %>);
+
+		$.ajax({
+				url: "/messages/",
+				type: "POST",
+				data: messageForm,
+			   cache: false,
+		 contentType: false,
+		 processData: false,
+			 success: function(resp){ 
+				 console.log(resp);
+				 $('.single-top-left').prepend("<div class='alert alert-success' role='alert'> <button aria-hidden='true' data-dismiss='alert' class='close' type='button'> × </button> Message sent sucessfully!</div>");
+				},
+				fail:  function(resp){
+				 $('.single-top-left').prepend("<div class='alert alert-danger' role='alert'> <button aria-hidden='true' data-dismiss='alert' class='close' type='button'> × </button> You cannot send this message at this time!</div>");
+				}
+			});
+	}
+
 });
 </script>

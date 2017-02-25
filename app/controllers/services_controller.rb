@@ -1,6 +1,4 @@
 class ServicesController < ApplicationController
-  
-  #include ApplicationHelper
 
   NUMBER_OF_RECORDS_PER_PAGE = 2
 
@@ -20,7 +18,6 @@ class ServicesController < ApplicationController
   end
 
   def show
-
     begin
       @service = Service.find(params[:id])
       @message = Message.new
@@ -38,14 +35,16 @@ class ServicesController < ApplicationController
     @service = Service.new(white_list)
     @service.profile_id = params["profile"]
     @service.picture = params[:service][:picture]
-    if @service.save!
-        flash[:notice] = @service.id.to_s
-        redirect_to controller: :profiles, action: :new, from_there: @service.profile_id
-      else
-        flash[:notice] = nil
-        render controller: :profiles, action: :new
+    begin
+      @service.save!
+      flash[:notice] = @service.id.to_s
+      flash[:error] = nil
+      redirect_to controller: :profiles, action: :show, id: @service.profile_id
+    rescue ActiveRecord::RecordInvalid => invalid
+      flash[:error] = invalid.record.errors.full_messages
+      flash[:notice] = nil
+      redirect_to controller: :profiles, action: :show, id: @service.profile_id
     end
-
   end
 
   def edit
@@ -63,6 +62,6 @@ class ServicesController < ApplicationController
   private 
 
   def white_list
-    params.require(:service).permit(:category_id,:desc_service,:price,:name_of_service)
+    params.require(:service).permit(:category_id,:desc_service,:price,:name_of_service, :metric)
   end
 end

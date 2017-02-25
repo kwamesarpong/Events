@@ -69,7 +69,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 								<input type="text" placeholder="Location" name="location" />
 							</div>
 							<div class="col-md-2 col-sm-4 col-xs-12" align="center">
-								<%= submit_tag "Search", class: "search-no-border btn-search" %>
+								<%= submit_tag "Search", class: "search-no-border btn-search color-orange" %>
 							</div>
 						</div>
 						<% end %>
@@ -77,8 +77,12 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 					<div class="col-md-2">
 						<br /><br />
     					<ul class="card">
-							<li><a href=".lgmd" data-toggle="modal"><i class="fa fa-user" aria-hidden="true"></i>Log in</a></li>
-							<li><a href=".sumd" data-toggle="modal"><i class="fa fa-user" aria-hidden="true"></i>Sign Up</a></li>
+							<% if !@profile.nil? %>
+								<li><a href="/profiles/<%= @profile.id %>" ><i class="fa fa-user" aria-hidden="true"></i>Profile</a></li>
+							<% else %>
+								<li><a href=".lgmd" data-toggle="modal"><i class="fa fa-user" aria-hidden="true"></i>Log in</a></li>
+								<li><a href=".sumd" data-toggle="modal"><i class="fa fa-user" aria-hidden="true"></i>Sign Up</a></li>
+							<% end %>
 						</ul>
 					</div>
     			</div>
@@ -100,7 +104,9 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 			<div class="col-md-4">
 				<h2>About Us</h2>
 				<br />
-				<p>Evventor is an innovative community marketplace that enables people list and discover a wide variety of events suppliers around them to make their event successful. We know quality, speed and reviews are important concerns when selecting your desired event service provider. That’s why if you’re organizing your next event, Evventor is your best sourcing buddy. Our mission is to help promote businesses online.</p>
+				<p>Evventor is an innovative community marketplace that enables people list and discover a wide variety of events suppliers around them to make their event successful. </p><br/>
+				<p>We know quality, speed and reviews are important concerns when selecting your desired event service provider.</p> <br/>
+				<p>That’s why if you’re organizing your next event, Evventor is your best sourcing buddy. Our mission is to help promote businesses online.</p>
 			</div>
 			<div class="col-md-8">
 				<div class="row">
@@ -119,16 +125,12 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 						<div class="col-md-4 fo-grid1">
 							<p><i class="fa fa-phone" aria-hidden="true"></i>+254 716 808880, +233 50 982 5831, +233 26 288 9802</p>	
 						</div>
-						<div class="col-md-4 fo-grid1">
-							<p><a href="mailto:info@example.com"><i class="fa fa-envelope-o" aria-hidden="true"></i>info@evventor.com</a></p>
-						</div>
 					</div>
 					<div class="col-md-12" align="center">
 						<br /><br />
 						<ul class="social-for">
-							<li><a href="#" class=" face"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-							<li><a href="#" class=" twi"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-							<li><a href="#" class=" dri"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+							<li><a href="https://www.facebook.com/Evventor-225391007924258/" class=" face"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+							<li><a href="https://www.twitter.com/evventor" class=" twi"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
 						</ul>
 					</div>
 				</div>
@@ -228,3 +230,48 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 		</div>
 
 	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+
+
+<script>
+// Include the UserVoice JavaScript SDK (only needed once on a page)
+UserVoice=window.UserVoice||[];(function(){var uv=document.createElement('script');uv.type='text/javascript';uv.async=true;uv.src='//widget.uservoice.com/6QeckcqGhcowCOqNWLxI9w.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(uv,s)})();
+
+//
+// UserVoice Javascript SDK developer documentation:
+// https://www.uservoice.com/o/javascript-sdk
+//
+
+// Set colors
+UserVoice.push(['set', {
+  accent_color: '#e2753a',
+  trigger_color: 'white',
+  trigger_background_color: '#e2753a'
+}]);
+
+// Identify the user and pass traits
+// To enable, replace sample data with actual user traits and uncomment the line
+UserVoice.push(['identify', {
+  //email:      'john.doe@example.com', // User’s email address
+  //name:       'John Doe', // User’s real name
+  //created_at: 1364406966, // Unix timestamp for the date the user signed up
+  //id:         123, // Optional: Unique id of the user (if set, this should not change)
+  //type:       'Owner', // Optional: segment your users by type
+  //account: { // Account traits are only available on some plans
+  //  id:           123, // Optional: associate multiple users with a single account
+  //  name:         'Acme, Co.', // Account name
+  //  created_at:   1364406966, // Unix timestamp for the date the account was created
+  //  monthly_rate: 9.99, // Decimal; monthly rate of the account
+  //  ltv:          1495.00, // Decimal; lifetime value of the account
+  //  plan:         'Enhanced' // Plan name for the account
+  //}
+}]);
+
+// Add default trigger to the bottom-right corner of the window:
+UserVoice.push(['addTrigger', {mode: 'satisfaction', trigger_position: 'bottom-right' }]);
+
+// Or, use your own custom trigger:
+//UserVoice.push(['addTrigger', '#id', { mode: 'satisfaction' }]);
+
+// Autoprompt for Satisfaction and SmartVote (only displayed under certain conditions)
+UserVoice.push(['autoprompt', {}]);
+</script>

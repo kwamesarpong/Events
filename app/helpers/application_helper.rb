@@ -12,9 +12,23 @@ module ApplicationHelper
     def display_errors_for_object object
         unless object.errors.full_messages.blank?
             object.errors.full_messages.each do |message|
-            render(partial: 'application/error_messages', locals: {message: message})
+                render(partial: 'application/error_messages', locals: {message: message})
             end
         end
+    end
+
+
+    def display_errors object
+        if object.is_a? Array
+            message = ""
+            object.each do |o|
+                message = message.to_s + ". " + o.to_s
+            end
+            render(partial: 'application/error_messages', locals: {message: message})
+        else
+            render(partial: 'application/error_messages', locals: {message: object})
+        end
+        
     end
 
 

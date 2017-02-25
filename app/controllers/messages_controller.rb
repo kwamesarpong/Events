@@ -1,7 +1,5 @@
 class MessagesController < ApplicationController
 
-    include ApplicationHelper
-
     skip_before_action :verify_authenticity_token, only: [:update, :create]
 
     def create 
@@ -25,7 +23,6 @@ class MessagesController < ApplicationController
             else
                 render json: message
             end
-            #display_object_attributes(message)
         rescue ActiveRecord::RecordNotFound
             redirect_to controller: :users, action: :new
         end

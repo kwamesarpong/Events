@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   get  'user/sign_out', to: 'users#sign_out'
 
+  get  'user/login', to: 'users#login'
+
   post 'messages/send', to: 'messages#send'
 
   get '/search', to: 'mains#search'

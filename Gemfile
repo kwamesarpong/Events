@@ -10,7 +10,7 @@ end
 gem 'rails', '~> 5.0.1'
 
 #gem 'mysql2'
-gem 'sqlite3'
+#gem 'sqlite3'
 gem 'pg'
 
 #postgres search
@@ -53,10 +53,13 @@ gem 'rails_admin', '~> 1.0'
 gem 'carrierwave', '~> 1.0'
 
 #mini_magick for image processing
-gem "mini_magick"
+#gem "mini_magick"
 
 #cloudinary for storing images on a different cdn
 gem 'cloudinary'
+
+#for file restrictions and validators
+gem 'file_validators'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
