@@ -9,25 +9,32 @@ class MessagesController < ApplicationController
         profile = Profile.find(id.to_i) #GET PROFILE OBJECT
         to = profile.user #GET CORRESPONDING USER OBJECT
         puts to.mail_box
-        from = session[:user_id] #GET THE LOGGED IN USERS ID
-        #NOW WE SEND THE MESSAGE
-        message = Message.new #create THE MESSAGE OBJECT
-        #SET REQUIREMENTS
-        message.body = body
-        message.service = Service.find(service.to_i)
-        message.recipient = to
-        message.mail_box = to.mail_box
-        message.read = false
-        begin
-            message.sender = User.find(from.to_i)
-            if message.save
-                render json: message
-            else
-                render json: message
+
+        if session[:user_id].nil?
+            redirect_to controller: :users, action: :new
+        else
+            from = session[:user_id] #GET THE LOGGED IN USERS ID
+            #NOW WE SEND THE MESSAGE
+            message = Message.new #create THE MESSAGE OBJECT
+            #SET REQUIREMENTS
+            message.body = body
+            message.service = Service.find(service.to_i)
+            message.recipient = to
+            message.mail_box = to.mail_box
+            message.read = false
+            begin
+                message.sender = User.find(from.to_i)
+                if message.save
+                    render json: message
+                else
+                    render json: message
+                end
+            rescue ActiveRecord::RecordNotFound
+                redirect_to '/404.html'
             end
-        rescue ActiveRecord::RecordNotFound
-            redirect_to '/404.html'
         end
+
+
     end
 
     def inbox
