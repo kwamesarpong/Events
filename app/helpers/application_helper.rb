@@ -35,11 +35,16 @@ module ApplicationHelper
     #dispalying success
 
     def display_success flash_hash_notice
-        render(partial: 'application/success_messages', locals: {flash_hash_notice: flash_hash_notice})
+        render partial: 'application/success_messages', locals: {flash_hash_notice: flash_hash_notice}
     end
 
     def display_service_posted_success flash_hash_notice
-        render(partial: 'application/service_success_messages', locals: {flash_hash_notice: flash_hash_notice})
+        render partial: 'application/service_success_messages', locals: {flash_hash_notice: flash_hash_notice}
+    end
+
+
+    def display_pagination controller, action
+        render partial: 'application/pagination', locals: { controller: controller, action: action } 
     end
 
 
