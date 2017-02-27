@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :services
   resources :categories
   resources :messages
+  resources :bookings
 
     
   get 'access/login'

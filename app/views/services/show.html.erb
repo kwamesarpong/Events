@@ -40,14 +40,21 @@
 						<div class="starbox small ghosting"> </div>
 					</div>
 					<p class="in-pa"> <%= @service.desc_service %></p>
-			   	
+
+					<div class="add add-3 booking">	
+						<%= date_field_tag(:book_day, nil, { min: Date.today}) %>
+						<%= submit_tag "Book day", { class: "save-button", id: "book_service" } %>
+					</div>
+					<br/>
+					<br/>
 					<div class="style-textarea">
 						<textarea id="body" row="10" col="10" required></textarea>
 					</div>
 					
 					<div class="add add-3">	
 						<button id="message-supply">Contact Supplier</button>
-					</div>		 
+					</div>	
+		 
 				<div class="clearfix"> </div>
 			</div>
 		</div>
@@ -93,6 +100,29 @@ $('#message-supply').click(function(e){
 				}
 			});
 	}
+});
 
+
+$("#book_service").click(function(e){
+	e.preventDefault();
+	var bookingForm = new FormData();
+	bookingForm.append('booking[book_day]', $('#book_day').val());
+	bookingForm.append('booking[user_id]', <%= @service.profile.user.id %>);
+	bookingForm.append('booking[service_id]', <%= @service.id %>);
+
+	$.ajax({
+			 url: "/bookings/",
+			type: "POST",
+			data: bookingForm,
+		   cache: false,
+	 contentType: false,
+	 processData: false,
+			success: function(resp){
+				$('.single-top-left').prepend("<div class='alert alert-success' role='alert'> <button aria-hidden='true' data-dismiss='alert' class='close' type='button'> × </button> Date has been sucessfully booked!</div>");
+			},
+			fail:  function(resp){
+				$('.single-top-left').prepend("<div class='alert alert-danger' role='alert'> <button aria-hidden='true' data-dismiss='alert' class='close' type='button'> × </button> You cannot book on this date!</div>");
+			}
+		});
 });
 </script>

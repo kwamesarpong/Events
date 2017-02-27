@@ -17,6 +17,8 @@ class Service < ApplicationRecord
 
     has_many   :messages
 
+    has_many   :bookings
+
     validates  :desc_service, presence: true
     
     validates  :price, presence: true, numericality: { only_integer: true } 
