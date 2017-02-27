@@ -27,6 +27,6 @@ class Profile < ApplicationRecord
 
     validates  :banner, file_size: { less_than_or_equal_to: 3.megabytes.to_i }
 
-    validates  :profile_picture, presence: true, file_size: { less_than_or_equal_to: 2.megabytes.to_i } 
+    validates  :profile_picture, file_size: { less_than_or_equal_to: 2.megabytes.to_i } 
 
 end
