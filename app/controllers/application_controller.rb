@@ -11,4 +11,12 @@ class ApplicationController < ActionController::Base
     User.find(params[:from_there])
   end
 
+  def set_page_number
+    if params[:page].nil?
+      params[:page] = 1
+    end
+    @page = params[:page].to_i
+  end
+
+  
 end

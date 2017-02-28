@@ -125,6 +125,7 @@
 						<li><a data-toggle="tab" href="#menu1">Mailbox</a></li>
 					<% end %>
 						<li><a data-toggle="tab" href="#menu3">Listings</a></li>
+						<li><a data-toggle="tab" href="#menu4">Bookings</a></li>
     					
   					</ul>
   				</div>
@@ -206,8 +207,8 @@
 									<div class="col-md-4">
 										<%= image_tag service.picture.small.url %>
 									</div>
-
-								<% end %>		
+								<% end %>
+										
 							<% end %>
 						</div>
     				</div>
@@ -235,6 +236,29 @@
     								</div>
 									<% end %>
   								</div> 
+							</div>
+						</div>
+    				</div>
+    				<div id="menu4" class="tab-pane fade">
+      					<div class="myskills slideanim">
+							<div class="row"><!-- Use this for the loop from the database -->
+  								<div class="col-md-12 main-nav-shadow">
+  									<div style="border-bottom: 1px solid #f2f2f2;" align="left">
+  										<p>So, so and so wants to book your product/service for some date</p>
+  									</div>
+  									<div class="row">
+  										<div class="col-md-4" align="left" style="padding-left: 3.5em;">
+  											<br />
+  											<button class="save-button">Accept</button>
+  										</div>
+  										<div class="col-md-4" align="left">
+  											<br />
+  											<button class="the-edit-button">Decline</button>
+  										</div>
+  										<div class="col-md-4"></div>
+  									</div>
+  									<br />
+  								</div>
 							</div>
 						</div>
     				</div>

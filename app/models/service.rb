@@ -21,7 +21,10 @@ class Service < ApplicationRecord
     
     validates  :price, presence: true, numericality: { only_integer: true } 
 
-    validates  :picture, presence: true, file_size: { less_than_or_equal_to:  2.megabytes.to_i } 
+    validates  :picture, presence: true, file_size: { less_than_or_equal_to:  2.megabytes.to_i }
+
+
+    scope :get_category_listings, lambda { |q| where(category_id: q) }
 
 
 end

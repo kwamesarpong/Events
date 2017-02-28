@@ -1,20 +1,17 @@
+require 'pagination.rb'
 class ServicesController < ApplicationController
 
-  NUMBER_OF_RECORDS_PER_PAGE = 2
-
-  layout "search_bar"
+  layout "search_bar" 
 
   def index
-    @page = params[:page].to_i
+    set_page_number
     count = Service.count
-    #pagination
-    @total_pages = count / NUMBER_OF_RECORDS_PER_PAGE
-    unless @page <= Service.count
+    pagination = Pagination.new(count)
+    @total_pages = pagination.total_page_count
+    unless @page <= pagination.number_of_records
       @page = 1
     end
-    offset = ( @page - 1 ) * NUMBER_OF_RECORDS_PER_PAGE
-    @services = Service.limit(NUMBER_OF_RECORDS_PER_PAGE).offset(offset)
-
+    @services = Service.limit(pagination.get_number_of_records_per_page).offset(pagination.offset(@page)).reverse
   end
 
   def show
