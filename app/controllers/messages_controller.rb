@@ -10,10 +10,10 @@ class MessagesController < ApplicationController
         to = profile.user #GET CORRESPONDING USER OBJECT
         puts to.mail_box
 
-        if session[:user_id].nil?
+        if session[:evventor_user].nil?
             redirect_to controller: :users, action: :new
         else
-            from = session[:user_id] #GET THE LOGGED IN USERS ID
+            from = session[:evventor_user] #GET THE LOGGED IN USERS ID
             #NOW WE SEND THE MESSAGE
             message = Message.new #create THE MESSAGE OBJECT
             #SET REQUIREMENTS

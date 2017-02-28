@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
     has_many :authorizations
 
-    has_many :bookings
+    #has_many :bookings
 
     has_one  :mail_box
 

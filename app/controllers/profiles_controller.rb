@@ -16,6 +16,7 @@ class ProfilesController < ApplicationController
       profile = Profile.find(params[:id].to_i)
       @services = Service.where(profile_id: params[:id]).last(2).reverse
       user = @profile.user
+      @bookings = Booking.where(bookee_id: user.id)
       @mail_box = MailBox.find_by_user_id(user.id)
       @mail_box = Message.where(mail_box_id: @mail_box.id).sorted 
       @message = Message.new
@@ -27,7 +28,7 @@ class ProfilesController < ApplicationController
   end
 
   def new
-    if session[:user_id].nil?
+    if session[:evventor_user].nil?
       redirect_to controller: :users, action: :new
     end
     init_view(params[:from_there])

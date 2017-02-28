@@ -9,7 +9,7 @@ class OutsidesController < ApplicationController
             #if I can find the provider and uid then we sign in the user
             if @authorization = Authorization.find_by_provider_and_uid(auth.provider, auth.uid)
                 #now sigin in user
-                session[:user_id] = @authorization.user.id
+                session[:evventor_user] = @authorization.user.id
 
                 redirect_after_oauth
 
@@ -19,7 +19,7 @@ class OutsidesController < ApplicationController
                 @authorization.uid = auth.uid
                 @authorization.provider = auth.provider
                 @user.authorizations << @authorization
-                session[:user_id] = @user.id
+                session[:evventor_user] = @user.id
 
                 redirect_after_oauth
                 
@@ -39,7 +39,7 @@ class OutsidesController < ApplicationController
                     display_errors_for_object @user
                 end
                 @user.authorizations << @authorization
-                session[:user_id] = @user.id
+                session[:evventor_user] = @user.id
                 puts "######################"
                 profile = Profile.new
                 profile.user_id = @user.id
@@ -74,7 +74,7 @@ class OutsidesController < ApplicationController
     private
 
     def redirect_after_oauth
-        @user = User.find(session[:user_id].to_i)
+        @user = User.find(session[:evventor_user].to_i)
         if @user.kind == User::SERVICE_PROVIDER
             redirect_to controller: :profiles, action: :show, id: @user.profile.id
         else

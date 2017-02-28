@@ -8,8 +8,8 @@ class UsersController < ApplicationController
 
   def new
     begin
-      if !session[:user_id].nil?
-        profile = Profile.find_by_user_id(session[:user_id].to_i)
+      if !session[:evventor_user].nil?
+        profile = Profile.find_by_user_id(session[:evventor_user].to_i)
         redirect_to controller: :profiles, action: :show, id: profile.id
       else
         @categories = Category.all
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(white_list)
     if @user.save
-      session[:user_id] = @user.id
+      session[:evventor_user] = @user.id
       #USER CREATED
       #puts display_object_attributes @user
       
@@ -66,7 +66,7 @@ class UsersController < ApplicationController
     end
   	if authorized_user
   		#mark user as logged in
-  		session[:user_id] = authorized_user.id
+  		session[:evventor_user] = authorized_user.id
   		flash[:notice] = "You are now logged in"
       if found_user.kind == User::SERVICE_PROVIDER
         #send user to profile
@@ -82,7 +82,7 @@ class UsersController < ApplicationController
 
 
   def sign_out
-    session[:user_id] = nil
+    session[:evventor_user] = nil
   	#session[:username] = nil
   	flash[:notice] = "You are now logged out"
   	redirect_to controller: :users, action: :new

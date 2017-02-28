@@ -92,12 +92,12 @@ module ApplicationHelper
         private
 
         def create_session
-            session[:user_id] = @current_user.id
+            session[:evventor_user] = @current_user.id
         end
         
 
         def destroy_session
-            session[:user_id] = nil
+            session[:evventor_user] = nil
         end
 
     end

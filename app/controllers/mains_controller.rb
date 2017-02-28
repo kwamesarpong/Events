@@ -9,9 +9,9 @@ class MainsController < ApplicationController
        @categories = Category.all
        @latest_listings = Service.last(3).reverse
        #check to see if user is signed in.
-       if !session[:user_id].nil?
+       if !session[:evventor_user].nil?
            begin
-             user = User.find(session[:user_id])
+             user = User.find(session[:evventor_user])
              @profile = user.profile
            rescue ActiveRecord::RecordNotFound
              redirect_to '404.html'

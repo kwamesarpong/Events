@@ -107,7 +107,8 @@ $("#book_service").click(function(e){
 	e.preventDefault();
 	var bookingForm = new FormData();
 	bookingForm.append('booking[book_day]', $('#book_day').val());
-	bookingForm.append('booking[user_id]', <%= @service.profile.user.id %>);
+	bookingForm.append('booking[bookee_id]', <%= @service.profile.user.id %>);
+	bookingForm.append('booking[booker_id]', <%= session[:evventor_user]%>);
 	bookingForm.append('booking[service_id]', <%= @service.id %>);
 
 	$.ajax({
