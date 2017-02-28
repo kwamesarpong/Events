@@ -26,7 +26,7 @@ module ApplicationHelper
             end
             render partial: 'application/error_messages', locals: {message: message}
         else
-            render spartial: 'application/error_messages', locals: {message: object}
+            render partial: 'application/error_messages', locals: {message: object}
         end
         
     end
