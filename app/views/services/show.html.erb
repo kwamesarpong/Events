@@ -42,7 +42,7 @@
 					<p class="in-pa"> <%= @service.desc_service %></p>
 
 					<div class="add add-3 booking">	
-						<%= date_field_tag(:book_day, nil, { min: Date.today}) %>
+						<%= date_field_tag(:book_day, nil, { min: Date.today }) %>
 						<%= submit_tag "Book day", { class: "save-button", id: "book_service" } %>
 					</div>
 					<br/>
