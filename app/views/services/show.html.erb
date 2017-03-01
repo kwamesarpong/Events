@@ -93,7 +93,7 @@ $('#message-supply').click(function(e){
 			 success: function(resp){ 
 				 console.log(resp);
 				 $('.single-top-left').prepend("<div class='alert alert-success' role='alert'> <button aria-hidden='true' data-dismiss='alert' class='close' type='button'> × </button> Message sent sucessfully!</div>");
-				 $$('#body').val(""); 
+				 $('#body').val(""); 
 				},
 				fail:  function(resp){
 				 $('.single-top-left').prepend("<div class='alert alert-danger' role='alert'> <button aria-hidden='true' data-dismiss='alert' class='close' type='button'> × </button> You cannot send this message at this time!</div>");
