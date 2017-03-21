@@ -6,4 +6,8 @@ class Subscription < ApplicationRecord
 
     validates :amount, presence: true
 
+    FREE = "FREE"
+
+    PREMIUM = "PAID"
+
 end

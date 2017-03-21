@@ -29,18 +29,23 @@ class ServicesController < ApplicationController
   end
 
   def create
-    @service = Service.new(white_list)
-    @service.profile_id = params["profile"]
-    @service.picture = params[:service][:picture]
-    begin
-      @service.save!
-      flash[:notice] = @service.id.to_s
-      flash[:error] = nil
-      redirect_to controller: :profiles, action: :show, id: @service.profile_id
-    rescue ActiveRecord::RecordInvalid => invalid
-      flash[:error] = invalid.record.errors.full_messages
-      flash[:notice] = nil
-      redirect_to controller: :profiles, action: :show, id: @service.profile_id
+    profile = Profile.find(params[:profile].to_i)
+    if profile.subscription == Subscription::FREE && profile.services == 1
+      #error here user can't upload because he can't pay
+    else
+      @service = Service.new(white_list)
+      @service.profile_id = params[:profile]
+      @service.picture = params[:service][:picture]
+      begin
+        @service.save!
+        flash[:notice] = @service.id.to_s
+        flash[:error] = nil
+        redirect_to controller: :profiles, action: :show, id: @service.profile_id
+      rescue ActiveRecord::RecordInvalid => invalid
+        flash[:error] = invalid.record.errors.full_messages
+        flash[:notice] = nil
+        redirect_to controller: :profiles, action: :show, id: @service.profile_id
+      end
     end
   end
 

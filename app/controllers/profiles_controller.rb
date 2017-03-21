@@ -37,10 +37,11 @@ class ProfilesController < ApplicationController
   def create
     @profile = Profile.new(white_list)
     @profile.profile_picture = params[:profile][:profile_picture]
-    #@profile.paid = false
+    @profile.paid = false
+    @profile.subscription
     if (Profile.find_by_user_id(@profile.id))
       @profile.update_attributes(white_list)
-      render json :@profile
+      render json: @profile
       elsif @profile.save!
         render json: @profile
       else
