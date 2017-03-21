@@ -23,6 +23,7 @@
 //= require app/js/grid3d
 //= require app/js/jstarbox
 //= require app/js/async.search
+//= require app/js/new.profile
 //= require app/js/create.profile
 //= require app/js/reply.message
 //= require turbolinks

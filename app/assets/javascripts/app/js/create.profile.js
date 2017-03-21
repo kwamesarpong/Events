@@ -57,9 +57,9 @@ $(document).ready(function(e){
     });
 
     function previewFile() {
-    var preview = document.querySelector('.custom-profile-banner');
-    var file    = document.querySelector('input[type=file].upload-custom-banner').files[0];
-    var reader  = new FileReader();
+        var preview = document.querySelector('.custom-profile-banner');
+        var file    = document.querySelector('input[type=file].upload-custom-banner').files[0];
+        var reader  = new FileReader();
 
     reader.addEventListener("load", function () {
         preview.src = reader.result;
@@ -71,6 +71,9 @@ $(document).ready(function(e){
     console.log(file)
     //console.log(document.querySelector('input[type=file].upload-custom-banner').files[0].name)
     }
+
+
+    
 
     $('#save-changes').click(function(e) {
         $('.banner-profile').prepend("<div class='alert alert-success' style='margin-bottom:0px' role='alert'> Saving Profile... Please Wait!!!</div>");
