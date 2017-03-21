@@ -38,7 +38,7 @@ class ProfilesController < ApplicationController
     @profile = Profile.new(white_list)
     @profile.profile_picture = params[:profile][:profile_picture]
     @profile.paid = false
-    @profile.subscription
+    @profile.subscription = Subscription::FREE
     if (Profile.find_by_user_id(@profile.id))
       @profile.update_attributes(white_list)
       render json: @profile
