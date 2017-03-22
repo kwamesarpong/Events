@@ -30,8 +30,9 @@ class ServicesController < ApplicationController
 
   def create
     profile = Profile.find(params[:profile].to_i)
-    if profile.subscription == Subscription::FREE && profile.services == 1
+    if profile.subscription == Subscription::FREE && profile.services.size == 1
       #error here user can't upload because he can't pay
+      flash[:error] = Subscription::ERROR
     else
       @service = Service.new(white_list)
       @service.profile_id = params[:profile]

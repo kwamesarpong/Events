@@ -10,4 +10,6 @@ class Subscription < ApplicationRecord
 
     PREMIUM = "PAID"
 
+    ERROR = "You have reached your limit for the FREE TIER, move to the PREMIUM TIER"
+
 end
