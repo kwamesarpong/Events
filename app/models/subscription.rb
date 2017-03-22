@@ -6,17 +6,19 @@ class Subscription < ApplicationRecord
 
     validates :amount, presence: true
 
-    FREE = 1
+    FREE = "Standard"
 
-    PREMIUM = 2
+    BEST = "Best"
+
+    BUSINESS = "Business"
 
     ERROR = "You have reached your limit for the FREE TIER, move to the PREMIUM TIER"
 
 
 
     #check if a user is a PREMIUM user
-    def self.is_premium? profile
-        if profile.subscription_id == PREMIUM
+    def self.is_paid? profile
+        if profile.subscription.name == BEST || profile.subscription.name == BUSINESS
             true
         end
     end
@@ -33,7 +35,7 @@ class Subscription < ApplicationRecord
 
     #rew a subscription
     def self.renew? profile
-        if is_premium? profile
+        if is_paid? profile
             profile.subscription.expiry_date = 30.days.from_now
             if profile.save!
                 true
@@ -44,14 +46,21 @@ class Subscription < ApplicationRecord
     end
 
     #change a user from FREE to PREMIUM
-    def self.change_tier? profile, new_tier
-        unless is_premium? profile
-            profile.subscription_id = new_tier
+    def self.change_tier profile, new_tier
+        unless new_tier == FREE
+            profile.subscription = Subscription.find_by_name(new_tier)
             profile.paid = true
             renew? profile
-        end 
-            
-        
+        end      
     end
 
+
+    #check if subscription is expiried
+    def self.expiried? subscription
+        if subscription.recurring && Date.today >= subscription.expiry_date
+                true
+            else
+                false
+        end
+    end
 end
