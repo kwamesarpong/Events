@@ -15,7 +15,6 @@ Rails.application.routes.draw do
 
   get 'access/logout'
 
-
   post 'users/attempt_login', to: 'users#attempt_login'
 
   get  'user/sign_out', to: 'users#sign_out'
@@ -28,11 +27,14 @@ Rails.application.routes.draw do
 
   post '/search', to: 'mains#search'
 
+  get '/pricing', to: 'pricings#index'
+
   post '/async_search', to: 'mains#async_search'
 
   get 'outsides/finish_sign_up', to: 'outsides#finish_sign_up'
 
   get '/auth/:provider/callback', to: 'outsides#create'
+
 
   mount RailsAdmin::Engine => '/adonai', as: 'rails_admin'
 
