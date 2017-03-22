@@ -47,18 +47,16 @@ class Subscription < ApplicationRecord
 
     #change a user from FREE to PREMIUM
     def self.change_tier profile, new_tier
-        unless new_tier == FREE
-            profile.subscription = Subscription.find_by_name(new_tier)
-            profile.paid = true
-            renew? profile
-        end      
+        profile.subscription = Subscription.find_by_name(new_tier)
+        profile.paid = true
+        renew? profile     
     end
 
 
     #check if subscription is expiried
-    def self.expiried? subscription
-        if subscription.recurring && Date.today >= subscription.expiry_date
-                true
+    def self.expiried? profile, subscription
+        if subscription.recurring && Date.today > subscription.expiry_date
+                change_tier profile, FREE
             else
                 false
         end
